@@ -3,9 +3,8 @@ from PK.page_object.doctors_diary_page import doctors_diary
 from PK.page_object.schedule_page import schedule
 from PK.page_object.hospitalization_page import hospitalization
 from PK.page_object.search_patient_page import search_patient
+# from conftest import browser_SNILS, browser_PK
 import time
-from conftest import browser_SNILS, browser_PK
-
 
 class Test_PK:
     """Актуальный номер СНИЛСа"""
