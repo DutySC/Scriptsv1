@@ -77,16 +77,16 @@ class doctors_diary(BasePage):
         self.find_element_pb()  # прогрессбар
         time.sleep(3)  # ожидание
         self.find_element(locators_doctors_diary.LOCATOR_DIAGNOSIS).click() # выбор вкладки "Диагноз"
-        self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_1).click()  #
+        self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_1).click()  # окно "Результат обращений"
         self.find_element_pb()  # прогрессбар
-        self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_2).click()  #
-        self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_3).click()  #
-        self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_1).click()  #
+        self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_2).click()  # выбор обращения
+        self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_3).click()  # кнопка "Ок"
+        self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_1).click()  # окно "Исход обращения"
         self.find_element_pb()  # прогрессбар
-        self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_2).click()  #
-        self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_3).click()  #
-        self.find_element(locators_doctors_diary.LOCATOR_CIRCULATION_PERIOD_1).click()  #
-        self.find_element(locators_doctors_diary.LOCATOR_CIRCULATION_PERIOD_2).click()  #
+        self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_2).click()  # выбор обращения
+        self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_3).click()  # кнопка "Ок"
+        self.find_element(locators_doctors_diary.LOCATOR_CIRCULATION_PERIOD_1).click()  # выбор периода обращения
+        self.find_element(locators_doctors_diary.LOCATOR_CIRCULATION_PERIOD_2).click()  # повторный период
         self.find_element(locators_doctors_diary.LOCATOR_MKB).click() # окно заболеваний
         self.find_element_pb()  # прогрессбар
         search_string_2 = self.find_element(locators_doctors_diary.LOCATOR_MKB_SEARCH_1) # поиск заболевания "Z00.0"
