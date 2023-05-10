@@ -30,7 +30,7 @@ class locators_doctors_diary:
     LOCATOR_MKB_SEARCH_2 = (By.XPATH, '//td[contains(text(), "Поиск")]')
     LOCATOR_MKB_CHOICE = (By.XPATH, '//td[contains(text(), "Ок")]')
     LOCATOR_SAVE_SERVICE = (By.XPATH, '//body[1]/div[7]//table[2]//td[2][contains(text(), "Сохранить")]')
-    LOCATOR_PATIENT_RCM = (By.XPATH, f'//body[1]//a[contains(text(), "{prm.schedule_patient}")]')
+    LOCATOR_PATIENT_RCM = (By.XPATH, f'//body[1]//a[contains(text(), "{prm.patient}")]')
     LOCATOR_CANCEL_SERVICE = (By.XPATH, '//td[contains(text(), "Отменить оказание")]')
     LOCATOR_DELETE_PATIENT = (By.XPATH, '//body[1]//div[22]//td[contains(text(), "Удалить направление")]')
 

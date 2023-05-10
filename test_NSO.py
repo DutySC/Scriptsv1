@@ -1,6 +1,6 @@
 from NSO.page_object.login_page import login
 from NSO.page_object.doctors_diary_page import doctors_diary
-# from NSO.page_object.schedule_page import schedule
+from NSO.page_object.schedule_page import schedule
 # from NSO.page_object.hospitalization_page import hospitalization
 # from NSO.page_object.search_patient_page import search_patient
 from conftest import browser_SNILS, browser_PK
@@ -15,6 +15,21 @@ class Test_NSO:
         start = time.time()  # начало отсчета
         start_page = login(browser_NSO)  # тест модуля авторизации
         start_page.auth()
+        start_doctors_diary = time.time()
+        doctors_diary_test = doctors_diary(browser_NSO) # тест модуля "Дневник врача"
+        doctors_diary_test.diary()
+        doctors_diary_test.diary_provide_service()
+        doctors_diary_test.diary_delite()
+        end_doctors_diary = time.time()
+        full_doctors_diary = end_doctors_diary - start_doctors_diary
+        print(' ▶️ Модуль - "Дневник врача", выполнен за: ', round(full_doctors_diary, 2), 'с')  # вывод полного времени тестирования
+        start_patient_schedule = time.time()
+        patient_schedule_test = schedule(browser_NSO) # тест модуля "Расписание"
+        patient_schedule_test.patient_schedule()
+        patient_schedule_test.patient_schedule_delete()
+        end_patient_schedule = time.time()
+        full_patient_schedule = end_patient_schedule - start_patient_schedule
+        print(' ▶️ Модуль - "Расписание", выполнен за: ', round(full_patient_schedule, 2), 'с')  # вывод полного времени тестирования
         end = time.time()  # конец отсчета
         full_test = end - start  # полное время авторизации
         print(' ▶️ Затраченное время на тестирование: ', round(full_test, 2), 'с')  # вывод полного времени тестирования
@@ -33,12 +48,12 @@ class Test_NSO:
         doctors_diary_test.diary_delite()
         print('STAGE_2: COMPLETE')
 
-    # def test_PK_schedule(self, browser_NSO):
-    #     self.test_PK_login(browser_NSO) # тест авторизации
-    #     patient_schedule_test = schedule(browser_NSO)
-    #     patient_schedule_test.patient_schedule()
-    #     patient_schedule_test.patient_schedule_delete()
-    #     print('STAGE_3: COMPLETE')
+    def test_PK_schedule(self, browser_NSO):
+        self.test_PK_login(browser_NSO) # тест авторизации
+        patient_schedule_test = schedule(browser_NSO)
+        patient_schedule_test.patient_schedule()
+        patient_schedule_test.patient_schedule_delete()
+        print('STAGE_3: COMPLETE')
 
     # def test_PK_hospitalization(self, browser_NSO):
     #     self.test_PK_login(browser_NSO) # тест авторизации
