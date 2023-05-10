@@ -2,7 +2,7 @@ from NSO.page_object.login_page import login
 from NSO.page_object.doctors_diary_page import doctors_diary
 from NSO.page_object.schedule_page import schedule
 from NSO.page_object.hospitalization_page import hospitalization
-# from NSO.page_object.search_patient_page import search_patient
+from NSO.page_object.search_patient_page import search_patient
 from conftest import browser_SNILS, browser_PK
 import time
 
@@ -30,6 +30,22 @@ class Test_NSO:
         end_patient_schedule = time.time()
         full_patient_schedule = end_patient_schedule - start_patient_schedule
         print(' ▶️ Модуль - "Расписание", выполнен за: ', round(full_patient_schedule, 2), 'с')  # вывод полного времени тестирования
+        start_patient_hospitalization = time.time()
+        patient_hospitalization_test = hospitalization(browser_NSO)
+        patient_hospitalization_test.register_patient()
+        patient_hospitalization_test.patient_hospitalization()
+        patient_hospitalization_test.patient_cancel_hospitalization()
+        patient_hospitalization_test.patient_delete_hospitalization()
+        end_patient_hospitalization = time.time()
+        full_patient_hospitalization = end_patient_hospitalization - start_patient_hospitalization
+        print(' ▶️ Модуль - "Госпитализация", выполнен за: ', round(full_patient_hospitalization, 2), 'с')  # вывод полного времени тестирования
+        start_search_patient = time.time()
+        search_patient_test = search_patient(browser_NSO)
+        search_patient_test.create_patient()
+        search_patient_test.delete_patient()
+        end_search_patient = time.time()
+        full_search_patient = end_search_patient - start_search_patient
+        print(' ▶️ Модуль - "Поиск пациентов", выполнен за: ', round(full_search_patient, 2), 'с')  # вывод полного времени тестирования
         end = time.time()  # конец отсчета
         full_test = end - start  # полное время авторизации
         print(' ▶️ Затраченное время на тестирование: ', round(full_test, 2), 'с')  # вывод полного времени тестирования
@@ -64,10 +80,10 @@ class Test_NSO:
         patient_hospitalization_test.patient_delete_hospitalization()
         print('STAGE_4: COMPLETE')
 
-    # def test_PK_search_patient(self, browser_NSO):
-    #     self.test_PK_login(browser_NSO) # тест авторизации
-    #     search_patient_test = search_patient(browser_NSO)
-    #     search_patient_test.create_patient()
-    #     search_patient_test.delete_patient()
-    #     print('STAGE_5: COMPLETE')
+    def test_PK_search_patient(self, browser_NSO):
+        self.test_PK_login(browser_NSO) # тест авторизации
+        search_patient_test = search_patient(browser_NSO)
+        search_patient_test.create_patient()
+        search_patient_test.delete_patient()
+        print('STAGE_5: COMPLETE')
 
