@@ -1,5 +1,4 @@
 from selenium.common import UnexpectedAlertPresentException, ElementClickInterceptedException
-
 import PK.parametrize as prm
 import time
 from BASE_PAGE import BasePage
