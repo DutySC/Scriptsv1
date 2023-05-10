@@ -1,7 +1,7 @@
 from NSO.page_object.login_page import login
 from NSO.page_object.doctors_diary_page import doctors_diary
 from NSO.page_object.schedule_page import schedule
-# from NSO.page_object.hospitalization_page import hospitalization
+from NSO.page_object.hospitalization_page import hospitalization
 # from NSO.page_object.search_patient_page import search_patient
 from conftest import browser_SNILS, browser_PK
 import time
@@ -55,14 +55,14 @@ class Test_NSO:
         patient_schedule_test.patient_schedule_delete()
         print('STAGE_3: COMPLETE')
 
-    # def test_PK_hospitalization(self, browser_NSO):
-    #     self.test_PK_login(browser_NSO) # тест авторизации
-    #     patient_hospitalization_test = hospitalization(browser_NSO)
-    #     patient_hospitalization_test.register_patient()
-    #     patient_hospitalization_test.patient_hospitalization()
-    #     patient_hospitalization_test.patient_cancel_hospitalization()
-    #     patient_hospitalization_test.patient_delete_hospitalization()
-    #     print('STAGE_4: COMPLETE')
+    def test_PK_hospitalization(self, browser_NSO):
+        self.test_PK_login(browser_NSO) # тест авторизации
+        patient_hospitalization_test = hospitalization(browser_NSO)
+        patient_hospitalization_test.register_patient()
+        patient_hospitalization_test.patient_hospitalization()
+        patient_hospitalization_test.patient_cancel_hospitalization()
+        patient_hospitalization_test.patient_delete_hospitalization()
+        print('STAGE_4: COMPLETE')
 
     # def test_PK_search_patient(self, browser_NSO):
     #     self.test_PK_login(browser_NSO) # тест авторизации
