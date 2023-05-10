@@ -31,7 +31,7 @@ class Test_NSO:
         full_patient_schedule = end_patient_schedule - start_patient_schedule
         print(' ▶️ Модуль - "Расписание", выполнен за: ', round(full_patient_schedule, 2), 'с')  # вывод полного времени тестирования
         start_patient_hospitalization = time.time()
-        patient_hospitalization_test = hospitalization(browser_NSO)
+        patient_hospitalization_test = hospitalization(browser_NSO) # тест модуля "Госпитализации"
         patient_hospitalization_test.register_patient()
         patient_hospitalization_test.patient_hospitalization()
         patient_hospitalization_test.patient_cancel_hospitalization()
@@ -40,7 +40,7 @@ class Test_NSO:
         full_patient_hospitalization = end_patient_hospitalization - start_patient_hospitalization
         print(' ▶️ Модуль - "Госпитализация", выполнен за: ', round(full_patient_hospitalization, 2), 'с')  # вывод полного времени тестирования
         start_search_patient = time.time()
-        search_patient_test = search_patient(browser_NSO)
+        search_patient_test = search_patient(browser_NSO) # тест модуля "Поиск пациентов"
         search_patient_test.create_patient()
         search_patient_test.delete_patient()
         end_search_patient = time.time()
@@ -51,28 +51,35 @@ class Test_NSO:
         print(' ▶️ Затраченное время на тестирование: ', round(full_test, 2), 'с')  # вывод полного времени тестирования
 
     """Тест по модулям"""
-    def test_PK_login(self, browser_NSO):
+    def test_NSO(self, browser_NSO):
+        self.test_NSO_login(browser_NSO)  # тест "Авторизации"
+        self.test_NSO_doctors_diary(browser_NSO) # тест "Дневник врача"
+        self.test_NSO_schedule(browser_NSO) # тест "Расписание"
+        self.test_NSO_hospitalization(browser_NSO) # тест "Госпитализация"
+        self.test_NSO_search_patient(browser_NSO) # тест "Поиск пациентов"
+
+    def test_NSO_login(self, browser_NSO):
         start_page = login(browser_NSO)  # тест модуля авторизации
         start_page.auth()
         print('STAGE_1: COMPLETE')
 
-    def test_PK_doctors_diary(self, browser_NSO):
-        self.test_PK_login(browser_NSO) # тест авторизации
+    def test_NSO_doctors_diary(self, browser_NSO):
+        self.test_NSO_login(browser_NSO) # тест авторизации
         doctors_diary_test = doctors_diary(browser_NSO)
         doctors_diary_test.diary()
         doctors_diary_test.diary_provide_service()
         doctors_diary_test.diary_delite()
         print('STAGE_2: COMPLETE')
 
-    def test_PK_schedule(self, browser_NSO):
-        self.test_PK_login(browser_NSO) # тест авторизации
+    def test_NSO_schedule(self, browser_NSO):
+        self.test_NSO_login(browser_NSO) # тест авторизации
         patient_schedule_test = schedule(browser_NSO)
         patient_schedule_test.patient_schedule()
         patient_schedule_test.patient_schedule_delete()
         print('STAGE_3: COMPLETE')
 
-    def test_PK_hospitalization(self, browser_NSO):
-        self.test_PK_login(browser_NSO) # тест авторизации
+    def test_NSO_hospitalization(self, browser_NSO):
+        self.test_NSO_login(browser_NSO) # тест авторизации
         patient_hospitalization_test = hospitalization(browser_NSO)
         patient_hospitalization_test.register_patient()
         patient_hospitalization_test.patient_hospitalization()
@@ -80,8 +87,8 @@ class Test_NSO:
         patient_hospitalization_test.patient_delete_hospitalization()
         print('STAGE_4: COMPLETE')
 
-    def test_PK_search_patient(self, browser_NSO):
-        self.test_PK_login(browser_NSO) # тест авторизации
+    def test_NSO_search_patient(self, browser_NSO):
+        self.test_NSO_login(browser_NSO) # тест авторизации
         search_patient_test = search_patient(browser_NSO)
         search_patient_test.create_patient()
         search_patient_test.delete_patient()
