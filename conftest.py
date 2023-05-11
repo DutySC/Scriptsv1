@@ -7,7 +7,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 p_link = 'http://172.17.0.2:4444/wd/hub' # адрес для инициализации драйвера
 def browser_SNILS():
-    service = Service(executable_path="./chromedriver.exe") # путь до драйвера
+    service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
@@ -24,7 +24,7 @@ def browser_SNILS():
 
 @pytest.fixture(scope='function')
 def browser_PK():
-    # service = Service(executable_path="./chromedriver.exe") # путь до драйвера
+    # service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     # chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
@@ -46,7 +46,7 @@ def browser_PK():
 
 @pytest.fixture(scope='function')
 def browser_RO():
-    service = Service(executable_path="./chromedriver.exe") # путь до драйвера
+    service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     # chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
@@ -68,7 +68,7 @@ def browser_RO():
 
 @pytest.fixture(scope='function')
 def browser_NSO():
-    service = Service(executable_path="./chromedriver.exe") # путь до драйвера
+    service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     # chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
@@ -90,7 +90,7 @@ def browser_NSO():
 
 @pytest.fixture(scope='function')
 def browser_KURO():
-    service = Service(executable_path="./chromedriver.exe") # путь до драйвера
+    service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     # chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
