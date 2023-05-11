@@ -1,4 +1,4 @@
-import pytest
+import pytest, requests
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 from selenium.webdriver.chrome.service import Service
@@ -35,6 +35,12 @@ def browser_PK():
     driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'https://192.168.233.171:25443/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
+    r = requests.get(link_1)
+    res = r.status_code
+    if res == 200:
+        pass
+    else:
+        print('Страница недоступна, код страницы:', res)
     yield driver # возврат из функции с сохранением состояния ее переменных
     driver.quit() # выход из браузера
 
@@ -51,6 +57,12 @@ def browser_RO():
     # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'http://192.168.233.98:61027/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
+    r = requests.get(link_1)
+    res = r.status_code
+    if res == 200:
+        pass
+    else:
+        print('Страница недоступна, код страницы:', res)
     yield driver # возврат из функции с сохранением состояния ее переменных
     driver.quit()  # выход из браузера
 
@@ -67,6 +79,12 @@ def browser_NSO():
     # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'http://192.168.233.169:3980/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
+    r = requests.get(link_1)
+    res = r.status_code
+    if res == 200:
+        pass
+    else:
+        print('Страница недоступна, код страницы:', res)
     yield driver # возврат из функции с сохранением состояния ее переменных
     driver.quit()  # выход из браузера
 
@@ -83,5 +101,11 @@ def browser_KURO():
     # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'http://192.168.234.14:7280/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
+    r = requests.get(link_1)
+    res = r.status_code
+    if res == 200:
+        pass
+    else:
+        print('Страница недоступна, код страницы:', res)
     yield driver # возврат из функции с сохранением состояния ее переменных
     driver.quit()  # выход из браузера
