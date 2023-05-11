@@ -57,11 +57,11 @@ class doctors_diary(BasePage):
         self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
         time.sleep(3) # ожидание
-        search_string_1 = self.find_element(locators_doctors_diary.LOCATOR_SEARCH_1) # поиск тестового пациента 11/003414
+        search_string_1 = self.find_element(locators_doctors_diary.LOCATOR_SEARCH_1) # поиск тестового пациента 1600046061
         search_string_1.send_keys(prm.patient) # ввод данных
         self.find_element(locators_doctors_diary.LOCATOR_SEARCH_2).click() # кнопка "Найти"
         self.find_element_pb() # прогрессбар
-        self.find_element(locators_doctors_diary.LOCATOR_CHOICE_PATIENT).click() # выбор тестового пациента 11/003414
+        self.find_element(locators_doctors_diary.LOCATOR_CHOICE_PATIENT).click() # выбор тестового пациента 1600046061
         self.find_element_pb() # прогрессбар
         self.find_element(locators_doctors_diary.LOCATOR_SERVICES).click() # выпадающее окно услуг
         self.find_element(locators_doctors_diary.LOCATOR_SERVICE).click() # выбор услуги
@@ -92,7 +92,6 @@ class doctors_diary(BasePage):
         self.find_element(locators_doctors_diary.LOCATOR_MKB).click() # окно заболеваний
         search_string_2 = self.find_element(locators_doctors_diary.LOCATOR_MKB_SEARCH_1) # поиск заболевания "J00.0"
         search_string_2.send_keys(prm.disease)  # ввод данных
-        # time.sleep(1)
         self.find_element_pb()  # прогрессбар
         self.find_element(locators_doctors_diary.LOCATOR_MKB_SEARCH_2).click() # кнопка "Поиск"
         self.find_element_pb()  # прогрессбар
