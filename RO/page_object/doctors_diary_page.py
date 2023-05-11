@@ -32,9 +32,9 @@ class locators_doctors_diary:
     LOCATOR_MKB_TYPE_1 = (By.XPATH, '//body[1]/div[7]//tr[2]//tr[2]//tr[2]//tr[3]//td[4]//img[1]')
     LOCATOR_MKB_TYPE_2 = (By.XPATH, '//body[1]/div[8]//span[contains(text(), "Заключительный")]')
     LOCATOR_SAVE_SERVICE = (By.XPATH, '//body[1]/div[7]//table[2]//td[2][contains(text(), "Сохранить")]')
-    LOCATOR_PATIENT_RCM = (By.XPATH, f'//body[1]//a[contains(text(), "{prm.patient}")]')
+    LOCATOR_PATIENT_RCM = (By.XPATH, f'//body[1]//a[contains(text(), "{prm.name_patient}")]')
     LOCATOR_CANCEL_SERVICE = (By.XPATH, '//td[contains(text(), "Отменить оказание")]')
-    LOCATOR_DELETE_PATIENT = (By.XPATH, '//body[1]//div[22]//td[contains(text(), "Удалить направление")]')
+    LOCATOR_DELETE_PATIENT = (By.XPATH, '//body[1]//div[23]//td[contains(text(), "Удалить направление")]')
 
 class doctors_diary(BasePage):
     def diary(self):
@@ -88,9 +88,12 @@ class doctors_diary(BasePage):
         self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_5).click()  # кнопка "Ок"
         self.find_element(locators_doctors_diary.LOCATOR_NUMBER_PP).click() # номер п/п
         self.find_element_pb()  # прогрессбар
+        self.find_element(locators_doctors_diary.LOCATOR_DIAGNOSIS).click() # вкладка "Диагноз"
         self.find_element(locators_doctors_diary.LOCATOR_MKB).click() # окно заболеваний
         search_string_2 = self.find_element(locators_doctors_diary.LOCATOR_MKB_SEARCH_1) # поиск заболевания "J00.0"
         search_string_2.send_keys(prm.disease)  # ввод данных
+        # time.sleep(1)
+        self.find_element_pb()  # прогрессбар
         self.find_element(locators_doctors_diary.LOCATOR_MKB_SEARCH_2).click() # кнопка "Поиск"
         self.find_element_pb()  # прогрессбар
         self.find_element(locators_doctors_diary.LOCATOR_MKB_CHOICE).click() # выбор заболевания "J00.0"
