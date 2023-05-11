@@ -24,7 +24,7 @@ class login(BasePage):
         self.find_element_pb()  # прогрессбар
         end_auth_1 = time.time() # конец отсчета
         full_auth_1 = end_auth_1 - start_auth_1 # полное время авторизации
-        if full_auth_1 <= 3: # условие
+        if full_auth_1 <= 2: # условие
             print('\n✅ Авторизация: ', round(full_auth_1, 2), 'с')
         else:
             print('\n🅾️ Авторизация: ', round(full_auth_1, 2), 'с')
