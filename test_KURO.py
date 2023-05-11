@@ -1,8 +1,8 @@
 from KURO.page_object.login_page import login
-from KURO.page_object.doctors_diary_page import doctors_diary
-from KURO.page_object.schedule_page import schedule
-from KURO.page_object.hospitalization_page import hospitalization
-from KURO.page_object.search_patient_page import search_patient
+# from KURO.page_object.doctors_diary_page import doctors_diary
+# from KURO.page_object.schedule_page import schedule
+# from KURO.page_object.hospitalization_page import hospitalization
+# from KURO.page_object.search_patient_page import search_patient
 # from conftest import browser_SNILS, browser_KURO
 import time
 
