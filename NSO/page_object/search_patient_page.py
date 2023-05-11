@@ -159,7 +159,7 @@ class search_patient(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
         except TimeoutException:
-            time.sleep(130)
+            time.sleep(100)
         self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_1).click()  # открыть поиск по фильтрам
         search_string_9 = self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_2) # фамилия
         search_string_9.send_keys(prm.last_name) # написать фамилию
