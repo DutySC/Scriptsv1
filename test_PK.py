@@ -56,6 +56,7 @@ class Test_PK:
     #     self.test_PK_doctors_diary(browser_PK) # тест модуля "Дневник врача"
     #     self.test_PK_schedule(browser_PK) # тест модуля "Расписание"
     #     self.test_PK_hospitalization(browser_PK) # тест модуля "Госпитализация"
+    #     self.test_RO_search_patient(browser_RO)  # тест модуля "Поиск пациентов"
 
     # def test_PK_login(self, browser_PK):
     #     start_page = login(browser_PK)

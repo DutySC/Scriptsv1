@@ -56,6 +56,7 @@ class Test_RO:
         self.test_RO_doctors_diary(browser_RO) # тест модуля "Дневник врача"
         self.test_RO_schedule(browser_RO) # тест модуля "Расписание"
         self.test_RO_hospitalization(browser_RO) # тест модуля "Госпитализация"
+        self.test_RO_search_patient(browser_RO) # тест модуля "Поиск пациентов"
 
     def test_RO_login(self, browser_RO):
         start_page = login(browser_RO)
