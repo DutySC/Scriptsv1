@@ -2,7 +2,7 @@ import NSO.parametrize as prm
 import time
 from BASE_PAGE import BasePage
 from selenium.webdriver.common.by import By
-# from conftest import browser_SNILS
+from conftest import browser_SNILS
 
 class search_patient_locators:
     LOCATOR_SEARCH_PATIENT_1 = (By.XPATH, '//span[contains(text(), "Регистратура")]')
@@ -32,6 +32,7 @@ class search_patient_locators:
     LOCATOR_WHO_GAVE = (By.XPATH, '//body[1]/div[7]//td[1]/div[2]/table[1]/tbody[1]/tr[2]/td[1]/div[1]//textarea[1]')
     LOCATOR_TAB_AREAS = (By.XPATH, '//body[1]/div[7]//td[1]/div[2]/table[1]/tbody[1]/tr[1]//div[2]/div[2]')
     LOCATOR_AREA = (By.XPATH, '//body[1]/div[7]//tbody[1]/tr[2]//tr[2]/td[1]//td[1]/div[1]//tr[2]//img[1]')
+    LOCATOR_CHOOSE_DJERJINSTI = (By.XPATH, '//span[contains(text(), "Дзержинский")]')
     LOCATOR_AREA_OK = (By.XPATH, '//td[contains(text(), "Ок")]')
     LOCATOR_ENTER_AREA = (By.XPATH, '//body[1]/div[7]//tr[2]/td[1]/div[2]//td/div[1]//tr[3]//img[1]')
     LOCATOR_CHOOSE_ANYCHINSKIY = (By.XPATH, '//a[contains(text(), "Баганский")]')
@@ -75,7 +76,8 @@ class search_patient(BasePage):
         self.find_element_pb()  # прогрессбар
         self.find_element(search_patient_locators.LOCATOR_SNILS).click()  # ввод СНИЛС
         search_string_5 = self.find_element(search_patient_locators.LOCATOR_SNILS)  # ввод СНИЛС
-        search_string_5.send_keys(prm.snils) # указывается СНИЛС
+        # search_string_5.send_keys(prm.snils) # указывается статичный СНИЛС
+        search_string_5.send_keys(browser_SNILS())  # указывается динамический СНИЛС
         search_string_6 = self.find_element(search_patient_locators.LOCATOR_ENTER_POLIS)  # ввод номера полиса
         search_string_6.send_keys(prm.rand)  # указывается номер полиса
         self.find_element(search_patient_locators.LOCATOR_INSURANCE_COMPANY).click()  # окно для указания страховой компании
@@ -106,6 +108,7 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_TAB_AREAS).click()  # подвкладка "Адреса"
         self.find_element(search_patient_locators.LOCATOR_AREA).click()  # ввод района
         self.find_element_pb()  # прогрессбар
+        self.find_element(search_patient_locators.LOCATOR_CHOOSE_DJERJINSTI).click() # выбрать Дзержинский
         self.find_element(search_patient_locators.LOCATOR_AREA_OK).click()  # кнопка "Ок"
         self.find_element_pb()  # прогрессбар
         self.find_element(search_patient_locators.LOCATOR_ENTER_AREA).click()  # ввод адреса
