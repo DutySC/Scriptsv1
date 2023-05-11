@@ -15,6 +15,7 @@ def browser_SNILS():
     chrome_options.add_argument('--ignore-ssl-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--start-maximized')  # полный экран
     driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
+    # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'https://ortex.github.io/snils-generator/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
     snils_1 = driver.find_element(By.XPATH, '//span').text # получаем содержимое элемента
@@ -38,7 +39,7 @@ def browser_PK():
     driver.quit() # выход из браузера
 
 @pytest.fixture(scope='function')
-def browser_RSO():
+def browser_RO():
     service = Service(executable_path="./chromedriver.exe") # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     # chrome_options.add_argument('--headless') # фоновый режим
@@ -48,7 +49,7 @@ def browser_RSO():
     chrome_options.add_argument('--start-maximized')  # полный экран
     driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
     # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
-    link_1 = 'http://192.168.234.31:1580/' # адрес для подключения
+    link_1 = 'http://192.168.233.98:61027/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
     yield driver # возврат из функции с сохранением состояния ее переменных
     driver.quit()  # выход из браузера
