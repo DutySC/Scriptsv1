@@ -1,0 +1,59 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/timurahtyamov/Documents/Project/Scriptsv0.7
+collected 1 item
+
+test_NSO.py 
+⚠️️ Авторизация:  2.26 с (норма - менее 2 с)
+✅ Выбор ЛПУ:  2.37 с
+ ▶️ Модуль - "Авторизация", выполнен за:  4.64 с
+STAGE_1: COMPLETE
+✅ Формирования окна - Дневник врача:  7.11 сек
+✅ Пациент записан на услугу
+✅ Услуга оказана
+✅ Услуга отменена
+✅ Запись удалена
+STAGE_2: COMPLETE
+ ▶️ Модуль - "Дневник врача", выполнен за:  59.4 с
+✅ Формирование окна - Расписание:  9.67 с
+✅ Пациент записан к врачу
+✅ Запись удалена
+STAGE_3: COMPLETE
+ ▶️ Модуль - "Расписание", выполнен за:  37.26 с
+✅ Пациент записан на госпитализацию
+✅ Пациент госпитализирован
+✅ Госпитализация отменена
+✅ Запись на госпитализацию удалена
+STAGE_4: COMPLETE
+ ▶️ Модуль - "Госпитализация", выполнен за:  30.93 с
+✅ Тестовый пользователь - создан
+Ошибка: Message: element not interactable
+  (Session info: chrome=113.0.5672.92)
+Stacktrace:
+0   chromedriver                        0x00000001046fa598 chromedriver + 4973976
+1   chromedriver                        0x00000001046f1913 chromedriver + 4938003
+2   chromedriver                        0x00000001042aeb50 chromedriver + 469840
+3   chromedriver                        0x00000001042f3ea6 chromedriver + 753318
+4   chromedriver                        0x00000001042e6671 chromedriver + 697969
+5   chromedriver                        0x00000001043169c2 chromedriver + 895426
+6   chromedriver                        0x00000001042e5e51 chromedriver + 695889
+7   chromedriver                        0x0000000104316b7e chromedriver + 895870
+8   chromedriver                        0x0000000104331856 chromedriver + 1005654
+9   chromedriver                        0x0000000104316793 chromedriver + 894867
+10  chromedriver                        0x00000001042e421f chromedriver + 688671
+11  chromedriver                        0x00000001042e556e chromedriver + 693614
+12  chromedriver                        0x00000001046b4bb7 chromedriver + 4688823
+13  chromedriver                        0x00000001046b9a51 chromedriver + 4708945
+14  chromedriver                        0x00000001046c040f chromedriver + 4736015
+15  chromedriver                        0x00000001046ba91a chromedriver + 4712730
+16  chromedriver                        0x000000010468d87c chromedriver + 4528252
+17  chromedriver                        0x00000001046d9f28 chromedriver + 4841256
+18  chromedriver                        0x00000001046da0a7 chromedriver + 4841639
+19  chromedriver                        0x00000001046eb28f chromedriver + 4911759
+20  libsystem_pthread.dylib             0x00007ff818665259 _pthread_start + 125
+21  libsystem_pthread.dylib             0x00007ff818660c7b thread_start + 15
+
+ ▶️ Затраченное время на тестирование:  192.25 с
+.
+
+======================== 1 passed in 199.03s (0:03:19) =========================

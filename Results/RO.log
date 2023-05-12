@@ -1,0 +1,7 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/timurahtyamov/Documents/Project/Scriptsv0.7
+collected 7 items
+
+test_RO.py 
+✅ Авторизация:  1.95 с
