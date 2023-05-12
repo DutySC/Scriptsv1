@@ -1,4 +1,4 @@
-import PK.parametrize as prm
+import RO.parametrize as prm
 import time
 from BASE_PAGE import BasePage
 from selenium.webdriver.common.by import By

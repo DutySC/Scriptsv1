@@ -65,9 +65,12 @@ def get_text_messages(message):
     if message.text == 'Начать работу':
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True) #создание новых кнопок
         btn1 = types.KeyboardButton('Тест Приморья')
-        btn2 = types.KeyboardButton('Coming soon')
+        btn2 = types.KeyboardButton('Тест Новосибирска')
+        btn3 = types.KeyboardButton('Тест Курска')
+        btn4 = types.KeyboardButton('Тест Ростова')
+        btn5 = types.KeyboardButton('Coming soon')
         # btn3 = types.KeyboardButton('Coming soon')
-        markup.add(btn1, btn2)
+        markup.add(btn1, btn2, btn3, btn4, btn5)
         bot.send_message(message.chat.id, 'Выберите Регион', reply_markup=markup) #ответ бота
 
     elif message.text == 'Не, попозже':
@@ -87,7 +90,7 @@ def get_text_messages(message):
 
     elif message.text == 'Тест Новосибирска':
         bot.send_message(message.chat.id, '⚪️Начата проверка крит. модулей продуктивного стенда - НСО 🔽')
-        os.system('pytest -s test_NSO.py > Results/NSO_logs.txt')  # команда запуска скрипта test_PK.py и запись результата в файл logs.txt
+        os.system('pytest -s test_NSO.py > Results/NSO_logs.txt')  # команда запуска скрипта test_NSO.py и запись результата в файл logs.txt
         # os.system('py test_NSO.py > Results/NSO_logs.txt')
         with open('Results/NSO_logs.txt', 'r', -1, 'utf-8') as fi:
             #     # f = fi.read()[262:1031] # более полный отчет о тестировании

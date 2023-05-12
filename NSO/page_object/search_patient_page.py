@@ -159,7 +159,7 @@ class search_patient(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
         except TimeoutException:
-            time.sleep(60)
+            time.sleep(50)
         self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_1).click()  # открыть поиск по фильтрам
         search_string_9 = self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_2) # фамилия
         search_string_9.send_keys(prm.last_name) # написать фамилию
@@ -169,7 +169,10 @@ class search_patient(BasePage):
         search_string_11.send_keys(prm.surname) # написать отчество
         self.actionchains(search_patient_locators.LOCATOR_CATALOGS_1).perform()  # ПКМ по каталогу
         self.find_element(search_patient_locators.LOCATOR_CATALOGS_2).click()  # поиск по списку
-        self.find_element_pb()  # прогрессбар
+        try:
+            self.find_element_pb()  # прогрессбар
+        except TimeoutException:
+            time.sleep(10)
         self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION_2).perform() # ПКМ по имени созданного пациента
         self.find_element(search_patient_locators.LOCATOR_DELETE_USER_2).click() # кнопка "Удалить"
         self.driver.switch_to.alert.accept()  # принятие всплывающего окна

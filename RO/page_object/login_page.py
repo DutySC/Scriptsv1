@@ -27,7 +27,7 @@ class login(BasePage):
         if full_auth_1 <= 2: # условие
             print('\n✅ Авторизация: ', round(full_auth_1, 2), 'с')
         else:
-            print('\n🅾️ Авторизация: ', round(full_auth_1, 2), 'с')
+            print('\n🅾️ Авторизация: ', round(full_auth_1, 2), 'с', '(норма - менее 2 с)')
         time.sleep(1) # ожидание
         self.find_element(login_locators.LOCATOR_LPU_1).click() # открыть вкладку ЛПУ
         self.find_element(login_locators.LOCATOR_LPU_2).click() # выбор ЛПУ
@@ -40,6 +40,6 @@ class login(BasePage):
         if full_auth_2 <= 5: # условие
             print('✅ Выбор ЛПУ: ', round(full_auth_2, 2), 'с')
         else:
-            print('🅾️ Выбор ЛПУ: ', round(full_auth_2, 2), 'с')
+            print('🅾️ Выбор ЛПУ: ', round(full_auth_2, 2), 'с', '(норма - менее 5 с)')
         full_auth = full_auth_1 + full_auth_2 # полное время модуля авторизации
         print(' ▶️ Модуль - "Авторизация", выполнен за: ', round(full_auth, 2), 'с') # вывод полного времени модуля авторизации
