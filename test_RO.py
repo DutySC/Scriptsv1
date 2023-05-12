@@ -2,7 +2,7 @@ from RO.page_object.login_page import login
 from RO.page_object.doctors_diary_page import doctors_diary
 from RO.page_object.schedule_page import schedule
 from RO.page_object.hospitalization_page import hospitalization
-# from RO.page_object.search_patient_page import search_patient
+from RO.page_object.search_patient_page import search_patient
 # from conftest import browser_SNILS, browser_RO
 import time
 
@@ -86,10 +86,10 @@ class Test_RO:
         patient_hospitalization_test.patient_cancel_hospitalization()
         patient_hospitalization_test.patient_delete_hospitalization()
         print('STAGE_4: COMPLETE')
-    #
-    # def test_RO_search_patient(self, browser_RO):
-    #     self.test_RO_login(browser_RO)  # тест авторизации
-    #     search_patient_test = search_patient(browser_RO)
-    #     search_patient_test.create_patient()
-    #     search_patient_test.delete_patient()
-    #     print('STAGE_5: COMPLETE')
+
+    def test_RO_search_patient(self, browser_RO):
+        self.test_RO_login(browser_RO)  # тест авторизации
+        search_patient_test = search_patient(browser_RO)
+        search_patient_test.create_patient()
+        search_patient_test.delete_patient()
+        print('STAGE_5: COMPLETE')

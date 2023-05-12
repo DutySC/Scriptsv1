@@ -2,7 +2,7 @@ import NSO.parametrize as prm
 import time
 from BASE_PAGE import BasePage
 from selenium.webdriver.common.by import By
-from selenium.common import TimeoutException
+from selenium.common import TimeoutException, ElementNotInteractableException
 from conftest import browser_SNILS
 
 # снилс = 764-657-726 57
@@ -143,7 +143,11 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_3).click() # вкладка "Контрагенты"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_4).click() # вкладка "Карты пациентов"
         self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() # фильтр даты создания мед. карты
+        try:
+            self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() # фильтр даты создания мед. карты
+        except ElementNotInteractableException:
+            time.sleep(3)
+            self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click()  # фильтр даты создания мед. карты
         self.find_element_pb()  # прогрессбар
         self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() #  фильтр даты создания мед. карты
         self.find_element_pb()  # прогрессбар
@@ -156,8 +160,8 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_4).click() # вкладка "Контрагенты"
         try:
-            self.find_element_pb()  # прогрессбар
-            self.find_element_pb()  # прогрессбар
+            self.find_element_pb(time=40)  # прогрессбар
+            self.find_element_pb(time=40)  # прогрессбар
         except TimeoutException:
             time.sleep(50)
         self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_1).click()  # открыть поиск по фильтрам

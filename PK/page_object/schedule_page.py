@@ -40,7 +40,7 @@ class schedule(BasePage):
         if full_time_schedule <= 15: # условие
             print('✅ Формирование окна - Расписание: ', round(full_time_schedule, 2), 'с') # вывод затраченного времени
         else:
-            print('🅾️ Формирование окна - Расписание: ', round(full_time_schedule, 2), 'с', '(норма - менее 15 с)') # вывод затраченного времени
+            print('⚠️️ Формирование окна - Расписание: ', round(full_time_schedule, 2), 'с', '(норма - менее 15 с)') # вывод затраченного времени
         self.find_element(locators_schedule.LOCATOR_FILTER).click() # шторка вниз
         search_string_1 = self.find_element(locators_schedule.LOCATOR_FILTER_DEPARTMENT) # ввод отделения
         search_string_1.send_keys(prm.department) # указать отделение
