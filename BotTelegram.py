@@ -90,9 +90,9 @@ def get_text_messages(message):
 
     elif message.text == 'Тест Новосибирска':
         bot.send_message(message.chat.id, '⚪️Начата проверка крит. модулей продуктивного стенда - НСО 🔽')
-        os.system('pytest -s test_NSO.py > Results/NSO_logs.txt')  # команда запуска скрипта test_NSO.py и запись результата в файл logs.txt
+        os.system('pytest -s test_NSO.py > Results/NSO.logs')  # команда запуска скрипта test_NSO.py и запись результата в файл logs.txt
         # os.system('py test_NSO.py > Results/NSO_logs.txt')
-        with open('Results/NSO_logs.txt', 'r', -1, 'utf-8') as fi:
+        with open('Results/NSO.logs', 'r', -1, 'utf-8') as fi:
             #     # f = fi.read()[262:1031] # более полный отчет о тестировании
             f = fi.read()[185:936]  # отчет о тестировании
             opt_1 = re.sub(r'\s[.]', '\n', f)

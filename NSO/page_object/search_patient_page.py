@@ -5,9 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.common import TimeoutException, ElementNotInteractableException
 from conftest import browser_SNILS
 
-# снилс = 764-657-726 57
-# карта пациента = 11/142208
-
 class search_patient_locators:
     LOCATOR_SEARCH_PATIENT_1 = (By.XPATH, '//span[contains(text(), "Регистратура")]')
     LOCATOR_SEARCH_PATIENT_2 = (By.XPATH, '//tbody/tr[11]/td[2]/a[1]/span[1]')
@@ -160,10 +157,10 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_4).click() # вкладка "Контрагенты"
         try:
-            self.find_element_pb(time=50)  # прогрессбар
-            self.find_element_pb(time=50)  # прогрессбар
+            self.find_element_pb(time=60)  # прогрессбар
+            self.find_element_pb(time=60)  # прогрессбар
         except TimeoutException:
-            time.sleep(30)
+            time.sleep(40)
         self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_1).click()  # открыть поиск по фильтрам
         search_string_9 = self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_2) # фамилия
         search_string_9.send_keys(prm.last_name) # написать фамилию
