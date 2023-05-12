@@ -160,10 +160,10 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_4).click() # вкладка "Контрагенты"
         try:
-            self.find_element_pb(time=40)  # прогрессбар
-            self.find_element_pb(time=40)  # прогрессбар
+            self.find_element_pb(time=50)  # прогрессбар
+            self.find_element_pb(time=50)  # прогрессбар
         except TimeoutException:
-            time.sleep(50)
+            time.sleep(30)
         self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_1).click()  # открыть поиск по фильтрам
         search_string_9 = self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_2) # фамилия
         search_string_9.send_keys(prm.last_name) # написать фамилию
