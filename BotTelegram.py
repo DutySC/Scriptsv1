@@ -78,9 +78,9 @@ def get_text_messages(message):
 
     elif message.text == 'Тест Приморья':
         bot.send_message(message.chat.id, '⚪️Начата проверка крит. модулей продуктивного стенда - Приморья 🔽')
-        os.system('pytest -s test_PK.py > Results/PK_logs.txt')  # команда запуска скрипта test_PK.py и запись результата в файл logs.txt
+        os.system('pytest -s test_PK.py > Results/PK_log.txt')  # команда запуска скрипта test_PK.py и запись результата в файл logs.txt
         # os.system('py test_PK.py > Results/PK_logs.txt')
-        with open('Results/PK_logs.txt', 'r', -1, 'utf-8') as fi:
+        with open('Results/PK_log.txt', 'r', -1, 'utf-8') as fi:
             #     # f = fi.read()[262:1031] # более полный отчет о тестировании
             f = fi.read()[185:936]  # отчет о тестировании
             opt_1 = re.sub(r'\s[.]', '\n', f)
@@ -90,9 +90,9 @@ def get_text_messages(message):
 
     elif message.text == 'Тест Новосибирска':
         bot.send_message(message.chat.id, '⚪️Начата проверка крит. модулей продуктивного стенда - НСО 🔽')
-        os.system('pytest -s test_NSO.py > Results/NSO.logs')  # команда запуска скрипта test_NSO.py и запись результата в файл logs.txt
+        os.system('pytest -s test_NSO.py > Results/NSO.log')  # команда запуска скрипта test_NSO.py и запись результата в файл logs.txt
         # os.system('py test_NSO.py > Results/NSO_logs.txt')
-        with open('Results/NSO.logs', 'r', -1, 'utf-8') as fi:
+        with open('Results/NSO.log', 'r', -1, 'utf-8') as fi:
             #     # f = fi.read()[262:1031] # более полный отчет о тестировании
             f = fi.read()[185:936]  # отчет о тестировании
             opt_1 = re.sub(r'\s[.]', '\n', f)
@@ -102,9 +102,9 @@ def get_text_messages(message):
 
     elif message.text == 'Тест Курска':
         bot.send_message(message.chat.id, '⚪️Начата проверка крит. модулей продуктивного стенда - Курска 🔽')
-        os.system('pytest -s test_KURO.py > Results/KURO_logs.txt')  # команда запуска скрипта test_KURO.py и запись результата в файл logs.txt
+        os.system('pytest -s test_KURO.py > Results/KURO_log.txt')  # команда запуска скрипта test_KURO.py и запись результата в файл logs.txt
         # os.system('py test_KURO.py > Results/KURO_logs.txt')
-        with open('Results/KURO_logs.txt', 'r', -1, 'utf-8') as fi:
+        with open('Results/KURO_log.txt', 'r', -1, 'utf-8') as fi:
             #     # f = fi.read()[262:1031] # более полный отчет о тестировании
             f = fi.read()[185:936]  # отчет о тестировании
             opt_1 = re.sub(r'\s[.]', '\n', f)
@@ -114,9 +114,9 @@ def get_text_messages(message):
 
     elif message.text == 'Тест Ростова':
         bot.send_message(message.chat.id, '⚪️Начата проверка крит. модулей продуктивного стенда - Ростова 🔽')
-        os.system('pytest -s test_RO.py > Results/RO_logs.txt')  # команда запуска скрипта test_RO.py и запись результата в файл logs.txt
+        os.system('pytest -s test_RO.py > Results/RO_log.txt')  # команда запуска скрипта test_RO.py и запись результата в файл logs.txt
         # os.system('py test_RO.py > Results/RO_logs.txt')
-        with open('Results/RO_logs.txt', 'r', -1, 'utf-8') as fi:
+        with open('Results/RO_log.txt', 'r', -1, 'utf-8') as fi:
             #     # f = fi.read()[262:1031] # более полный отчет о тестировании
             f = fi.read()[185:936]  # отчет о тестировании
             opt_1 = re.sub(r'\s[.]', '\n', f)
