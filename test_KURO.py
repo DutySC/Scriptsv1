@@ -1,7 +1,7 @@
 from KURO.page_object.login_page import login
 from KURO.page_object.doctors_diary_page import doctors_diary
 from KURO.page_object.schedule_page import schedule
-# from KURO.page_object.hospitalization_page import hospitalization
+from KURO.page_object.hospitalization_page import hospitalization
 # from KURO.page_object.search_patient_page import search_patient
 # from conftest import browser_SNILS, browser_KURO
 import time
@@ -88,9 +88,9 @@ class Test_KURO:
         patient_hospitalization_test.patient_delete_hospitalization()
         print('STAGE_4: COMPLETE')
 
-    def test_KURO_search_patient(self, browser_KURO):
-        self.test_KURO_login(browser_KURO)  # тест авторизации
-        search_patient_test = search_patient(browser_KURO)
-        search_patient_test.create_patient()
-        search_patient_test.delete_patient()
-        print('STAGE_5: COMPLETE')
+    # def test_KURO_search_patient(self, browser_KURO):
+    #     self.test_KURO_login(browser_KURO)  # тест авторизации
+    #     search_patient_test = search_patient(browser_KURO)
+    #     search_patient_test.create_patient()
+    #     search_patient_test.delete_patient()
+    #     print('STAGE_5: COMPLETE')

@@ -72,8 +72,8 @@ class schedule(BasePage):
         self.find_element_pb()  # прогрессбар
         self.find_element(locators_schedule.LOCATOR_NEXT_PAGE).click()  # выбор следующей недели
         self.find_element_pb()  # прогрессбар
-        self.find_element(locators_schedule.LOCATOR_PATIENT).click()
-        self.find_element(locators_schedule.LOCATOR_DELETE_WRITE).click()
+        self.find_element(locators_schedule.LOCATOR_PATIENT).click() # выбрать тестового пациента
+        self.find_element(locators_schedule.LOCATOR_DELETE_WRITE).click() # удалить запись тестового пациента
         self.driver.switch_to.alert.accept()  # принятие всплывающего окна
         self.find_element_pb()  # прогрессбар
         self.find_element(locators_schedule.LOCATOR_ESC_2).click() # закрыть окно

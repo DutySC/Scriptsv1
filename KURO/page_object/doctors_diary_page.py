@@ -114,7 +114,7 @@ class doctors_diary(BasePage):
         self.find_clickable_elements(locators_doctors_diary.LOCATOR_CANCEL_SERVICE).click() # отмена оказания услуги
         self.find_element_pb()  # прогрессбар
         print('✅ Услуга отменена') # вывод
-        self.find_clickable_elements(locators_doctors_diary.LOCATOR_MARKER).click()  # клик по пустому слоту
+        # self.find_clickable_elements(locators_doctors_diary.LOCATOR_MARKER).click()  # клик по пустому слоту
         self.actionchains(locators_doctors_diary.LOCATOR_PATIENT_RCM).perform() # ПКМ по имени тестового пациента
         self.find_clickable_elements(locators_doctors_diary.LOCATOR_DELETE_PATIENT).click() # удаление тестовго пациента
         self.driver.switch_to.alert.accept() # принятие всплывающего окна
