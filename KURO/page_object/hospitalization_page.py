@@ -10,7 +10,7 @@ class locators_hospitalization:
     LOCATOR_HOSPITALIZATION_3 = (By.XPATH, '//span[contains(text(), "Журнал госпитализации")]')
     LOCATOR_PATIENT_REG_CONTAINER = (By.XPATH, '//tbody/tr[6]/td[1]/div[1]/div[3]/div[1]')
     LOCATOR_WINDOW_RCM_1 = (By.XPATH, '//body[1]/div[1]/div[1]//div[1]/div[1]//td[5]')
-    LOCATOR_WINDOW_RCM_2 = (By.XPATH, '//body[1]/div[2]/div[3]//td[2][contains(text(), "Добавить")]')
+    LOCATOR_WINDOW_RCM_2 = (By.XPATH, '//td[contains(text(), "Добавить")]')
     LOCATOR_SEARCH_PATIENT_1 = (By.XPATH, '//body[1]/div[7]//div[1]/div[1]/table[1]/tbody[1]/tr[1]//td[2]/img[1]')
     LOCATOR_SEARCH_PATIENT_2 = (By.XPATH, '//body[1]/div[8]//td[5]//input[1]')
     LOCATOR_SEARCH_PATIENT_3 = (By.XPATH, '//td[contains(text(), "Найти")]')
@@ -33,7 +33,7 @@ class locators_hospitalization:
     LOCATOR_HOSPITALIZATION_PATIENT_2 = (By.XPATH, '//td[contains(text(), "Далее")]')
     LOCATOR_HOSPITALIZATION_PATIENT_3 = (By.XPATH, '//body[1]/div[7]//td[contains(text(), "ОК")]')
     LOCATOR_CANCEL_HOSPITALIZATION = (By.XPATH, '//td[contains(text(), "Отменить госпитализацию")]')
-    LOCATOR_DELETE_HOSPITALIZATION = (By.XPATH, '//body[1]//div[3]//td[contains(text(), "Удалить")]')
+    LOCATOR_DELETE_HOSPITALIZATION = (By.XPATH, '//td[contains(text(), "Удалить")]')
 
 
 class hospitalization(BasePage):
@@ -53,10 +53,10 @@ class hospitalization(BasePage):
         self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_1).click() # открытие окна для выбора пациента
         self.find_element_pb()  # прогрессбар
         search_string_1 = self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_2)  # окно ввода
-        search_string_1.send_keys(prm.patient) # указать карту пользователя
+        search_string_1.send_keys(prm.patient_1) # указать карту пользователя
         self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_3).click()  # кнопка "Найти"
         self.find_element_pb()  # прогрессбар
-        self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_4).click()  # выбор пользователя "Тест Патч Пятнадцать"
+        self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_4).click()  # выбор пользователя "Тест Тест Тест"
         self.find_element_pb()  # прогрессбар
         self.find_element(locators_hospitalization.LOCATOR_JORNAL_1).click() # открытие выпадающего таблицы
         self.find_element(locators_hospitalization.LOCATOR_JORNAL_2).click() # выбор журнала
