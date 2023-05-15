@@ -32,6 +32,8 @@ class login(BasePage):
         self.find_element(login_locators.LOCATOR_LPU_1).click() # открыть вкладку ЛПУ
         self.find_element(login_locators.LOCATOR_LPU_2).click() # выбор ЛПУ
         self.find_element_pb()  # прогрессбар
+        self.find_element(login_locators.LOCATOR_LC_1).click() # выбор кабинета
+        self.find_element(login_locators.LOCATOR_LC_2).click() # кабинет Тестовый
         self.find_element(login_locators.LOCATOR_ENTERLPU).click() # продолжить
         start_auth_2 = time.time() # начало отсчета
         self.find_element_pb()  # прогрессбар
