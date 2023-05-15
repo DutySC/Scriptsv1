@@ -3,7 +3,7 @@ from RO.page_object.doctors_diary_page import doctors_diary
 from RO.page_object.schedule_page import schedule
 from RO.page_object.hospitalization_page import hospitalization
 from RO.page_object.search_patient_page import search_patient
-import time
+# import time
 
 
 def test_RO_login(browser_RO):
