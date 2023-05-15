@@ -35,7 +35,7 @@ class locators_doctors_diary:
     LOCATOR_PATIENT_RCM = (By.XPATH, f'//body[1]//a[contains(text(), "{prm.name_patient_1}")]')
     LOCATOR_CANCEL_SERVICE = (By.XPATH, '//td[contains(text(), "Отменить оказание")]')
     LOCATOR_MARKER = (By.XPATH, '//body[1]//div[3]/div[1]//tr[1]/td[5]')
-    LOCATOR_DELETE_PATIENT = (By.XPATH, '//body[1]/div[2]/div[15]/div[10]/table[1]/tbody[1]/tr[23]/td[2][contains(text(), "Удалить направление")]')
+    LOCATOR_DELETE_PATIENT = (By.XPATH, '//body[1]/div[2]/div[1]/div[10]/table[1]/tbody[1]/tr[23]/td[2][contains(text(), "Удалить направление")]')
 
 class doctors_diary(BasePage):
     def diary(self):
@@ -81,7 +81,7 @@ class doctors_diary(BasePage):
         self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
-        # time.sleep(5)  # ожидание
+        time.sleep(3)  # ожидание
         self.find_element(locators_doctors_diary.LOCATOR_BASIC_1).click() # указать цель посещения - по заболеванию
         self.find_element_pb()  # прогрессбар
         self.find_element(locators_doctors_diary.LOCATOR_BASIC_1_2_3).click()  # кнопка "Ок"
