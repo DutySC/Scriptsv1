@@ -12,13 +12,11 @@ class Test_NSO:
         start = time.time()  # начало отсчета
         try:
             full_test_NSO.test_NSO_login(browser_NSO)
-            # self.test_NSO_login(browser_NSO)  # тест "Авторизации"
         except Exception as error_1:
             print('Ошибка:', error_1)
         try:
             start_doctors_diary = time.time()
             full_test_NSO.test_NSO_doctors_diary(browser_NSO)
-            # self.test_NSO_doctors_diary(browser_NSO) # тест "Дневник врача"
             end_doctors_diary = time.time()
             full_doctors_diary = end_doctors_diary - start_doctors_diary
             print(' ▶️ Модуль - "Дневник врача", выполнен за: ', round(full_doctors_diary, 2), 'с')  # вывод полного времени тестирования
@@ -27,7 +25,6 @@ class Test_NSO:
         try:
             start_patient_schedule = time.time()
             full_test_NSO.test_NSO_schedule(browser_NSO)
-            # self.test_NSO_schedule(browser_NSO) # тест "Расписание"
             end_patient_schedule = time.time()
             full_patient_schedule = end_patient_schedule - start_patient_schedule
             print(' ▶️ Модуль - "Расписание", выполнен за: ', round(full_patient_schedule, 2), 'с')  # вывод полного времени тестирования
@@ -36,7 +33,6 @@ class Test_NSO:
         try:
             start_patient_hospitalization =time.time()
             full_test_NSO.test_NSO_hospitalization(browser_NSO)
-            # self.test_NSO_hospitalization(browser_NSO) # тест "Госпитализация"
             end_patient_hospitalization = time.time()
             full_patient_hospitalization = end_patient_hospitalization - start_patient_hospitalization
             print(' ▶️ Модуль - "Госпитализация", выполнен за: ', round(full_patient_hospitalization, 2), 'с')  # вывод полного времени тестирования
@@ -45,7 +41,6 @@ class Test_NSO:
         try:
             start_search_patient = time.time()
             full_test_NSO.test_NSO_search_patient(browser_NSO)
-            # self.test_NSO_search_patient(browser_NSO) # тест "Поиск пациентов"
             end_search_patient = time.time()
             full_search_patient = end_search_patient - start_search_patient
             print(' ▶️ Модуль - "Поиск пациентов", выполнен за: ', round(full_search_patient, 2), 'с')  # вывод полного времени тестирования
