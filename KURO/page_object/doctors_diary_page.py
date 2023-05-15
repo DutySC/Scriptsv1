@@ -34,7 +34,8 @@ class locators_doctors_diary:
     LOCATOR_SAVE_SERVICE = (By.XPATH, '//body[1]/div[7]//table[2]//td[2][contains(text(), "Сохранить")]')
     LOCATOR_PATIENT_RCM = (By.XPATH, f'//body[1]//a[contains(text(), "{prm.name_patient_1}")]')
     LOCATOR_CANCEL_SERVICE = (By.XPATH, '//td[contains(text(), "Отменить оказание")]')
-    LOCATOR_DELETE_PATIENT = (By.XPATH, '//body[1]//div[7]//tr[23]/td[2][contains(text(), "Удалить направление")]')
+    LOCATOR_MARKER = (By.XPATH, '//body[1]//div[3]/div[1]//tr[1]/td[5]')
+    LOCATOR_DELETE_PATIENT = (By.XPATH, '//body[1]/div[2]/div[15]/div[10]/table[1]/tbody[1]/tr[23]/td[2][contains(text(), "Удалить направление")]')
 
 class doctors_diary(BasePage):
     def diary(self):
@@ -43,7 +44,7 @@ class doctors_diary(BasePage):
         start_diary = time.time() # начало отчета времени формирования окна
         self.find_element_pb() # прогрессбар
         self.find_element_pb()  # прогрессбар
-        time.sleep(3)  # ожидание
+        # time.sleep(3)  # ожидание
         end_diary = time.time() # конец отчета времени формирования окна
         full_diary = end_diary - start_diary # суммарное время формирования окна "Дневник врача"
         if full_diary <= 10: # условие
@@ -56,7 +57,7 @@ class doctors_diary(BasePage):
             self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click()  # кнопка "Запись"
         self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
-        time.sleep(3) # ожидание
+        # time.sleep(3) # ожидание
         search_string_1 = self.find_element(locators_doctors_diary.LOCATOR_SEARCH_1) # поиск тестового пациента 11/003414
         search_string_1.send_keys(prm.patient_1) # ввод данных
         self.find_element(locators_doctors_diary.LOCATOR_SEARCH_2).click() # кнопка "Найти"
@@ -80,7 +81,7 @@ class doctors_diary(BasePage):
         self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
-        time.sleep(5)  # ожидание
+        # time.sleep(5)  # ожидание
         self.find_element(locators_doctors_diary.LOCATOR_BASIC_1).click() # указать цель посещения - по заболеванию
         self.find_element_pb()  # прогрессбар
         self.find_element(locators_doctors_diary.LOCATOR_BASIC_1_2_3).click()  # кнопка "Ок"
@@ -113,6 +114,7 @@ class doctors_diary(BasePage):
         self.find_clickable_elements(locators_doctors_diary.LOCATOR_CANCEL_SERVICE).click() # отмена оказания услуги
         self.find_element_pb()  # прогрессбар
         print('✅ Услуга отменена') # вывод
+        self.find_clickable_elements(locators_doctors_diary.LOCATOR_MARKER).click()  # клик по пустому слоту
         self.actionchains(locators_doctors_diary.LOCATOR_PATIENT_RCM).perform() # ПКМ по имени тестового пациента
         self.find_clickable_elements(locators_doctors_diary.LOCATOR_DELETE_PATIENT).click() # удаление тестовго пациента
         self.driver.switch_to.alert.accept() # принятие всплывающего окна
