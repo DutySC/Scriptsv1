@@ -18,13 +18,13 @@ def test_PK_doctors_diary(browser_PK):
     doctors_diary_test.diary_delite()
 
 def test_PK_schedule(browser_PK):
-    # test_PK_login(browser_PK) # тест авторизации
+    # test_PK_login(browser_PK)  # тест авторизации
     patient_schedule_test = schedule(browser_PK)
     patient_schedule_test.patient_schedule()
     patient_schedule_test.patient_schedule_delete()
 
 def test_PK_hospitalization(browser_PK):
-    # test_PK_login(browser_PK) # тест авторизации
+    # test_PK_login(browser_PK)  # тест авторизации
     patient_hospitalization_test = hospitalization(browser_PK)
     patient_hospitalization_test.register_patient()
     patient_hospitalization_test.patient_hospitalization()

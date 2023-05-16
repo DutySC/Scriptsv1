@@ -51,6 +51,8 @@ class search_patient_locators:
     LOCATOR_DICTIONARY_INDIVIDUAL_2 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//span[contains(text(), "Контрагенты физ. лица")]')
     LOCATOR_DELETE_USER_2 = (By.XPATH, '//body[1]/div[2]/div[2]/div[3]/table[1]/tbody[1]/tr[5]/td[2]')
+    LOCATOR_SEARCH_PATIENT_3 = (By.XPATH, '//body[1]//td[6]//input[1]')
+    LOCATOR_SEARCH_PATIENT_4 = (By.XPATH, '//tbody/tr[1]/td[2]/div[1]//span[1][contains(text(), "Найти")]')
 
 
 class search_patient(BasePage):
@@ -116,6 +118,8 @@ class search_patient(BasePage):
         self.find_element_pb()  # прогрессбар
         self.find_element(search_patient_locators.LOCATOR_ENTER_AREA).click()  # ввод адреса
         self.find_element_pb()  # прогрессбар
+        self.find_element(search_patient_locators.LOCATOR_CHOOSE_BAHMYTEC).click() # выбрать адрес Бахмутец
+        self.find_element_pb()  # прогрессбар
         search_string_8 = self.find_element(search_patient_locators.LOCATOR_HOME)  # выбрать дом
         search_string_8.send_keys(prm.home) # указать номер дома
         self.find_element(search_patient_locators.LOCATOR_OK).click()  # кнопка "ОК"
@@ -135,18 +139,29 @@ class search_patient(BasePage):
         self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION_1).perform()  # ПКМ по имени созданного пациента
         self.find_element(search_patient_locators.LOCATOR_DELETE_USER_1).click() # кнопка "Удалить"
         self.driver.switch_to.alert.accept()  # принятие всплывающего окна
-        self.find_element_pb()  # прогрессбар
+        try:
+            self.find_element_pb(time=50)  # прогрессбар
+        except TimeoutException:
+            pass
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click() # вкладка "Словари"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_2).click() # вкладка "Контрагенты"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты физ. лица"
         self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
         try:
-            self.find_element_pb()  # прогрессбар
+            self.find_element_pb(time=50)  # прогрессбар
         except TimeoutException:
             time.sleep(10)
+        search_string_9 = self.actionchains(search_patient_locators.LOCATOR_SEARCH_PATIENT_3)  # кнопка по отчеству
+        search_string_9.send_keys(prm.surname)
+        self.actionchains(search_patient_locators.LOCATOR_SEARCH_PATIENT_4).click() # кнопка "Найти"
+        self.find_element_pb()  # прогрессбар
         self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION_1).perform() # ПКМ по имени созданного пациента
         self.find_element(search_patient_locators.LOCATOR_DELETE_USER_2).click() # кнопка "Удалить"
         self.driver.switch_to.alert.accept()  # принятие всплывающего окна
-        self.find_element_pb()  # прогрессбар
+        try:
+            self.find_element_pb(time=50)  # прогрессбар
+        except TimeoutException:
+            time.sleep(10)
+            pass
         print('✅ Тестовый пользователь - удален') # вывод

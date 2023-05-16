@@ -12,7 +12,7 @@ def test_KURO_login(browser_KURO):
 
 
 def test_KURO_doctors_diary(browser_KURO):
-    test_KURO_login(browser_KURO)  # тест авторизации
+    # test_KURO_login(browser_KURO)  # тест авторизации
     doctors_diary_test = doctors_diary(browser_KURO)
     doctors_diary_test.diary()
     doctors_diary_test.diary_provide_service()
@@ -20,14 +20,14 @@ def test_KURO_doctors_diary(browser_KURO):
 
 
 def test_KURO_schedule(browser_KURO):
-    test_KURO_login(browser_KURO)  # тест авторизации
+    # test_KURO_login(browser_KURO)  # тест авторизации
     patient_schedule_test = schedule(browser_KURO)
     patient_schedule_test.patient_schedule()
     patient_schedule_test.patient_schedule_delete()
 
 
 def test_KURO_hospitalization(browser_KURO):
-    test_KURO_login(browser_KURO)  # тест авторизации
+    # test_KURO_login(browser_KURO)  # тест авторизации
     patient_hospitalization_test = hospitalization(browser_KURO)
     patient_hospitalization_test.register_patient()
     patient_hospitalization_test.patient_hospitalization()
@@ -36,7 +36,7 @@ def test_KURO_hospitalization(browser_KURO):
 
 
 def test_KURO_search_patient(browser_KURO):
-    test_KURO_login(browser_KURO)  # тест авторизации
+    # test_KURO_login(browser_KURO)  # тест авторизации
     search_patient_test = search_patient(browser_KURO)
     search_patient_test.create_patient()
     search_patient_test.delete_patient()
