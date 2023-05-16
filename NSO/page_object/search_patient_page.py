@@ -135,10 +135,11 @@ class search_patient(BasePage):
         print('✅ Тестовый пользователь - создан') # вывод
 
     def delete_patient(self):
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Еще"
+        # self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Еще"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_2).click() # вкладка "Словари"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_3).click() # вкладка "Контрагенты"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_4).click() # вкладка "Карты пациентов"
+        self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
         try:
             self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() # фильтр даты создания мед. карты
@@ -152,7 +153,7 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_DELETE_USER_1).click() # кнопка "Удалить"
         self.driver.switch_to.alert.accept()  # принятие всплывающего окна
         self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click()  # вкладка "Еще"
+        # self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click()  # вкладка "Еще"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_2).click() # вкладка "Словари"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_4).click() # вкладка "Контрагенты"
@@ -160,7 +161,7 @@ class search_patient(BasePage):
             self.find_element_pb(time=60)  # прогрессбар
             self.find_element_pb(time=60)  # прогрессбар
         except TimeoutException:
-            time.sleep(50)
+            time.sleep(40)
         self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_1).click()  # открыть поиск по фильтрам
         search_string_9 = self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_2) # фамилия
         search_string_9.send_keys(prm.last_name) # написать фамилию

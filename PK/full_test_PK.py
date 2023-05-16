@@ -9,7 +9,6 @@ from PK.page_object.search_patient_page import search_patient
 def test_PK_login(browser_PK):
     start_page = login(browser_PK)
     start_page.auth()
-    print('STAGE_1: COMPLETE')
 
 def test_PK_doctors_diary(browser_PK):
     # test_PK_login(browser_PK)  # тест авторизации
@@ -17,14 +16,12 @@ def test_PK_doctors_diary(browser_PK):
     doctors_diary_test.diary()
     doctors_diary_test.diary_provide_service()
     doctors_diary_test.diary_delite()
-    print('STAGE_2: COMPLETE')
 
 def test_PK_schedule(browser_PK):
     # test_PK_login(browser_PK) # тест авторизации
     patient_schedule_test = schedule(browser_PK)
     patient_schedule_test.patient_schedule()
     patient_schedule_test.patient_schedule_delete()
-    print('STAGE_3: COMPLETE')
 
 def test_PK_hospitalization(browser_PK):
     # test_PK_login(browser_PK) # тест авторизации
@@ -33,14 +30,12 @@ def test_PK_hospitalization(browser_PK):
     patient_hospitalization_test.patient_hospitalization()
     patient_hospitalization_test.patient_cancel_hospitalization()
     patient_hospitalization_test.patient_delete_hospitalization()
-    print('STAGE_4: COMPLETE')
 
 def test_PK_search_patient(browser_PK):
     # test_PK_login(browser_PK)  # тест авторизации
     search_patient_test = search_patient(browser_PK)
     search_patient_test.create_patient()
     search_patient_test.delete_patient()
-    print('STAGE_5: COMPLETE')
 
 # def test_PK_full(self, browser_PK):
 #     start = time.time()  # начало отсчета
