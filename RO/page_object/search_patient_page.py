@@ -44,13 +44,13 @@ class search_patient_locators:
     LOCATOR_DICTIONARY_PATIENT_CARD_2 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_3 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_4 = (By.XPATH, '//span[contains(text(), "Карты пациентов")]')
-    LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]/div[1]//td[7]//td[3]//img[1]')
+    LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]/div[1]//td[8]//td[3]//img[1]')
     LOCATOR_LAST_NAME_NEWVERSION_1 = (By.XPATH, '//span[contains(text(), "Новаяверсия")]')
-    LOCATOR_DELETE_USER_1 = (By.XPATH, '//body[1]/div[2]/div[2]/div[4]/table[1]/tbody[1]/tr[5]/td[2]')
+    LOCATOR_DELETE_USER_1 = (By.XPATH, '//body[1]/div[2]/div[2]/div[3]/table[1]/tbody[1]/tr[5]/td[2]')
     LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_2 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
-    LOCATOR_DICTIONARY_INDIVIDUAL_4 = (By.XPATH, '//body[1]//tr[3]//span[contains(text(), "Контрагенты")]')
+    LOCATOR_DICTIONARY_INDIVIDUAL_4 = (By.XPATH, '//body[1]/div[1]/div[2]//tr[1]//span[contains(text(), "Контрагенты")]')
     LOCATOR_HEAD = (By.XPATH, '//body//div[1]/div/div/div/div/div[3]/div[1]')
     LOCATOR_FILTER_CATALOGS_1 = (By.XPATH, '//body//div[1]/div[2]//span[contains(text(), "Показать фильтр")]')
     LOCATOR_FILTER_CATALOGS_2 = (By.XPATH, '//body[1]//div[3]/div[1]//td[4]//input[1]')
@@ -60,16 +60,6 @@ class search_patient_locators:
     LOCATOR_CATALOGS_2 = (By.XPATH, '//td[contains(text(), "Список")]')
     LOCATOR_LAST_NAME_NEWVERSION_2 = (By.XPATH, '//tbody/tr[1]/td[6]/span[1][contains(text(), "Новаяверсия")]')
     LOCATOR_DELETE_USER_2 = (By.XPATH, '//body[1]/div[2]/div[2]//td[2][contains(text(), "Удалить")]')
-    # LOCATOR_DICTIONARY_PATIENT_CARD_1 = (By.XPATH, '//span[contains(text(), "Словари")]')
-    # LOCATOR_DICTIONARY_PATIENT_CARD_2 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
-    # LOCATOR_DICTIONARY_PATIENT_CARD_3 = (By.XPATH, '//span[contains(text(), "Карты пациентов")]')
-    # LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]//td[8]//td[3]//img[1]')
-    # LOCATOR_LAST_NAME_NEWVERSION = (By.XPATH, '//span[contains(text(), "Новаяверсия")]')
-    # LOCATOR_DELETE_USER_1 = (By.XPATH, '//body[1]/div[2]/div[2]/div[4]/table[1]/tbody[1]/tr[5]/td[2]')
-    # LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Словари")]')
-    # LOCATOR_DICTIONARY_INDIVIDUAL_2 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
-    # LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//span[contains(text(), "Контрагенты физ. лица")]')
-    # LOCATOR_DELETE_USER_2 = (By.XPATH, '//body[1]/div[2]/div[2]/div[5]/table[1]/tbody[1]/tr[5]/td[2]')
 
 class search_patient(BasePage):
     def create_patient(self):
@@ -120,7 +110,8 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_TAB_DOCUMENTS).click()  # вкладка Документы/Адреса
         self.find_element(search_patient_locators.LOCATOR_TYPE_OF_DOCUMENTS).click()  # тип документа
         self.find_element(search_patient_locators.LOCATOR_CHOOSE_DOCUMENT).click()  # указать тип документа "Вид на жительство"
-        search_string_7 = self.find_element(search_patient_locators.LOCATOR_PUT_NUMBER).click() # номер документа
+        self.find_element(search_patient_locators.LOCATOR_PUT_NUMBER).click() # выбрать поле для указания номера
+        search_string_7 = self.find_element(search_patient_locators.LOCATOR_PUT_NUMBER) # номер документа
         search_string_7.send_keys(prm.rand_2) # написать номер документа
         self.find_element(search_patient_locators.LOCATOR_DATA_3).click()  # дата выдачи
         self.find_element(search_patient_locators.LOCATOR_DATA_4).click()  # указать дату выдачи
@@ -132,6 +123,7 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_AREA_OK).click()  # кнопка "Ок"
         self.find_element_pb()  # прогрессбар
         self.find_element(search_patient_locators.LOCATOR_ENTER_AREA).click()  # ввод адреса
+        self.find_element(search_patient_locators.LOCATOR_CHOOSE_ABAKANSKAYA).click()
         self.find_element_pb()  # прогрессбар
         search_string_9 = self.find_element(search_patient_locators.LOCATOR_HOME)  # выбрать дом
         search_string_9.send_keys(prm.home) # указать номер дома

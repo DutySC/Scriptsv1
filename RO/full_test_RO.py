@@ -32,7 +32,7 @@ def test_RO_hospitalization(browser_RO):
     patient_hospitalization_test.patient_delete_hospitalization()
 
 def test_RO_search_patient(browser_RO):
-    test_RO_login(browser_RO)  # тест авторизации
+    # test_RO_login(browser_RO)  # тест авторизации
     search_patient_test = search_patient(browser_RO)
     search_patient_test.create_patient()
     search_patient_test.delete_patient()
