@@ -6,6 +6,7 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /app
 COPY . app
 WORKDIR app
+VOLUME app/Results
 RUN pip install -r requirements.txt
 CMD ["python3", "BotTelegram.py"]
 #docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest

@@ -7,8 +7,8 @@ from selenium.webdriver.common.by import By
 class locators_doctors_diary:
     LOCATOR_DIARY_1 = (By.XPATH, '//span[contains(text(), "Рабочие места")]')
     LOCATOR_DIARY_2 = (By.XPATH, '//body[1]//tr[1]//span[1][contains(text(), "Дневник")]')
-    LOCATOR_REGISTER_1 = (By.XPATH, '//body[1]//table[5]//td[2]')
-    LOCATOR_SEARCH_1 = (By.XPATH, '//div[@name="search_patient_form"]//table[@name="fullSearchRegimContainer"]//td[5]//input[@type="text"]')
+    LOCATOR_REGISTER_1 = (By.XPATH, '//body[1]//table[5]//td[2][contains(text(), "Записать")]')
+    LOCATOR_SEARCH_1 = (By.XPATH, '//body[1]/div[7]//div[11]//td[5]//input[1]')
     LOCATOR_SEARCH_2 = (By.XPATH, '//td[contains(text(),"Найти")]')
     LOCATOR_CHOICE_PATIENT = (By.XPATH, f'//body[1]//tr[1]//tr[1]//a[contains(text(), "{prm.name_patient_1}")]')
     LOCATOR_SERVICES = (By.XPATH, '//div[@name="makeReg"]//tr[@name="TR_SERVICES"]//input')
@@ -51,8 +51,9 @@ class doctors_diary(BasePage):
             print('✅ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек')
         else:
             print('⚠️️ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек')
+        time.sleep(3)  # ожидание
         try:
-            self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click() #кнопка "Запись"
+            self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click() # кнопка "Запись"
         except ElementClickInterceptedException:
             self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click()  # кнопка "Запись"
         self.find_element_pb()  # прогрессбар

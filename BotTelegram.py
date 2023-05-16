@@ -130,4 +130,6 @@ def get_text_messages(message):
     # elif message.text == 'Будущие стенды':
     #     bot.send_message(message.from_user.id, 'Будущие стенды', parse_mode='Markdown')
 
-bot.polling(none_stop=True, interval=0)
+# bot.polling(none_stop=True, interval=0)
+# bot.infinity_polling(none_stop=True)
+bot.polling(none_stop=True, timeout=123)

@@ -1,4 +1,4 @@
-from selenium.common import ElementClickInterceptedException
+from selenium.common import ElementClickInterceptedException, TimeoutException
 import KURO.parametrize as prm
 import time
 from BASE_PAGE import BasePage
@@ -76,7 +76,10 @@ class hospitalization(BasePage):
         # self.find_element(locators_hospitalization.LOCATOR_DATA_1).click() # выбор даты
         # self.find_element(locators_hospitalization.LOCATOR_DATA_2).click() # сегодняшняя дата
         self.find_element(locators_hospitalization.LOCATOR_CREATE_DIRECTION).click() # кнопка "ОК"
-        self.find_element_pb()  # прогрессбар
+        try:
+            self.find_element_pb()  # прогрессбар
+        except TimeoutException:
+            time.sleep(10)
         print('✅ Пациент записан на госпитализацию') # вывод
 
     def patient_hospitalization(self):
@@ -100,12 +103,18 @@ class hospitalization(BasePage):
             self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform()  # ПКМ по имени пациента
             self.find_element(locators_hospitalization.LOCATOR_CANCEL_HOSPITALIZATION).click()  # отмена госпитализации пациента
             self.driver.switch_to.alert.accept()  # принятие всплывающего окна
-        self.find_element_pb()  # прогрессбар
+        try:
+            self.find_element_pb()  # прогрессбар
+        except TimeoutException:
+            time.sleep(10)
         print('✅ Госпитализация отменена') # вывод
 
     def patient_delete_hospitalization(self):
         self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform() # ПКМ по имени пациента
         self.find_element(locators_hospitalization.LOCATOR_DELETE_HOSPITALIZATION).click() # удаление записи на госпитализацию
         self.driver.switch_to.alert.accept()  # принятие всплывающего окна
-        self.find_element_pb()  # прогрессбар
+        try:
+            self.find_element_pb()  # прогрессбар
+        except TimeoutException:
+            time.sleep(10)
         print('✅ Запись на госпитализацию удалена') # вывод

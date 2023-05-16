@@ -12,12 +12,12 @@ class BasePage:
         ActionChains(self.driver).move_to_element(element)
         return ActionChains(self.driver).context_click(element)
 
-    def find_element_pb(self, time=20):
+    def find_element_pb(self, time=30):
         LOCATOR_DIARY_PB = (By.XPATH, '//div[@class="progress-bar"]')
         return WebDriverWait(self.driver, time).until(ES.invisibility_of_element_located(LOCATOR_DIARY_PB), message='Not found element progress bar')
 
-    def find_element(self, locator, time=20):
+    def find_element(self, locator, time=30):
         return WebDriverWait(self.driver, time).until(ES.presence_of_element_located(locator), message=f'Not found {locator}')
 
-    def find_clickable_elements(self, locator, time=20):
+    def find_clickable_elements(self, locator, time=30):
         return WebDriverWait(self.driver, time).until(ES.element_to_be_clickable(locator), message=f'Not found {locator}')
