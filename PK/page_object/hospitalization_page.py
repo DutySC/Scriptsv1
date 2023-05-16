@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 
 class locators_hospitalization:
     LOCATOR_HOSPITALIZATION_1 = (By.XPATH, '//span[contains(text(), "Регистратура")]')
+    LOCATOR_HOSPITALIZATION_2 = (By.XPATH, '//span[contains(text(), "Приемный покой")]')
     LOCATOR_HOSPITALIZATION_3 = (By.XPATH, '//span[contains(text(),"Журнал госпитализации")]')
     LOCATOR_PATIENT_REG_CONTAINER = (By.XPATH, '//tbody/tr[6]/td[1]/div[1]/div[3]/div[1]')
     LOCATOR_WINDOW_RCM_1 = (By.XPATH, '//body[1]/div[1]/div[1]//div[1]/div[1]//td[5]')
@@ -32,6 +33,7 @@ class locators_hospitalization:
 class hospitalization(BasePage):
     def register_patient(self):
         self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_1).click() # вкладка "Регистратура"
+        self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_2).click() # вкладка "Приемный покой"
         self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_3).click() # вкладка "Журнал госпитализации"
         self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
