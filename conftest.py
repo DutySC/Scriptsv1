@@ -35,12 +35,13 @@ def browser_PK():
     # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'https://192.168.233.171:25443/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
-    # r = requests.get(link_1)
-    # res = r.status_code
-    # if res == 200:
-    #     pass
-    # else:
-    #     print('Страница недоступна, код страницы:', res)
+    r = requests.get(link_1)
+    res = r.status_code
+    if res == 200:
+        pass
+    else:
+        print('Код страницы:', res)
+        pass
     yield driver # возврат из функции с сохранением состояния ее переменных
     driver.quit() # выход из браузера
 
