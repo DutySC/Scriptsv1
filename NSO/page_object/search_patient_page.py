@@ -135,7 +135,7 @@ class search_patient(BasePage):
         print('✅ Тестовый пользователь - создан') # вывод
 
     def delete_patient(self):
-        # self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Еще"
+        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Еще"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_2).click() # вкладка "Словари"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_3).click() # вкладка "Контрагенты"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_4).click() # вкладка "Карты пациентов"
@@ -153,7 +153,7 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_DELETE_USER_1).click() # кнопка "Удалить"
         self.driver.switch_to.alert.accept()  # принятие всплывающего окна
         self.find_element_pb()  # прогрессбар
-        # self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click()  # вкладка "Еще"
+        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click()  # вкладка "Еще"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_2).click() # вкладка "Словари"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты"
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_4).click() # вкладка "Контрагенты"
