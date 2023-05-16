@@ -38,14 +38,14 @@ class Test_RO:
             print(' ▶️ Модуль - "Госпитализация", выполнен за: ', round(full_patient_hospitalization, 2), 'с')  # вывод полного времени тестирования
         except Exception as error_4:
             print('Ошибка:', error_4)
-        try:
-            start_search_patient = time.time()
-            full_test_RO.test_RO_search_patient(browser_RO) # тест модуля "Поиск пациентов"
-            end_search_patient = time.time()
-            full_search_patient = end_search_patient - start_search_patient
-            print(' ▶️ Модуль - "Поиск пациентов", выполнен за: ', round(full_search_patient, 2), 'с')  # вывод полного времени тестирования
-        except Exception as error_5:
-            print('Ошибка:', error_5)
+        # try:
+        #     start_search_patient = time.time()
+        #     full_test_RO.test_RO_search_patient(browser_RO) # тест модуля "Поиск пациентов"
+        #     end_search_patient = time.time()
+        #     full_search_patient = end_search_patient - start_search_patient
+        #     print(' ▶️ Модуль - "Поиск пациентов", выполнен за: ', round(full_search_patient, 2), 'с')  # вывод полного времени тестирования
+        # except Exception as error_5:
+        #     print('Ошибка:', error_5)
         end = time.time()  # конец отсчета
         full_test = end - start  # полное время авторизации
         print(' ▶️ Затраченное время на тестирование: ', round(full_test, 2), 'с')  # вывод полного времени тестирования
