@@ -3,7 +3,7 @@ import time
 from BASE_PAGE import BasePage
 from selenium.webdriver.common.by import By
 from selenium.common import TimeoutException, ElementNotInteractableException
-from conftest import browser_SNILS
+# from conftest import browser_SNILS
 
 class search_patient_locators:
     LOCATOR_SEARCH_PATIENT_1 = (By.XPATH, '//span[contains(text(), "Регистратура")]')
