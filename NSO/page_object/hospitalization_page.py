@@ -28,8 +28,8 @@ class locators_hospitalization:
     LOCATOR_HOSPITALIZATION_PATIENT_1 = (By.XPATH, '//body[1]//tr[14]/td[contains(text(), "Госпитализировать")]')
     LOCATOR_HOSPITALIZATION_PATIENT_2 = (By.XPATH, '//td[contains(text(), "Далее")]')
     LOCATOR_HOSPITALIZATION_PATIENT_3 = (By.XPATH, '//td[contains(text(), "ОК")]')
-    LOCATOR_CANCEL_HOSPITALIZATION = (By.XPATH, '//td[contains(text(), "Отменить госпитализацию")]')
-    LOCATOR_DELETE_HOSPITALIZATION = (By.XPATH, '//td[contains(text(), "Удалить")]')
+    LOCATOR_CANCEL_HOSPITALIZATION = (By.XPATH, '//td[2][contains(text(), "Отменить госпитализацию")]')
+    LOCATOR_DELETE_HOSPITALIZATION = (By.XPATH, '//*[@id="PopUp_Menu_P_HPK_PLAN"]/div[17]/table/tbody[1]/tr[8]/td[2]')
 
 
 class hospitalization(BasePage):
@@ -86,12 +86,11 @@ class hospitalization(BasePage):
         try:
             self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform() # ПКМ по имени пациента
             self.find_element(locators_hospitalization.LOCATOR_CANCEL_HOSPITALIZATION).click() # отмена госпитализации пациента
-            self.driver.switch_to.alert.accept()  # принятие всплывающего окна
         except ElementClickInterceptedException:
             self.actionchains(locators_hospitalization.LOCATOR_WINDOW_RCM_1).click() # ЛКМ по области окна
             self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform()  # ПКМ по имени пациента
             self.find_element(locators_hospitalization.LOCATOR_CANCEL_HOSPITALIZATION).click()  # отмена госпитализации пациента
-            self.driver.switch_to.alert.accept()  # принятие всплывающего окна
+        self.driver.switch_to.alert.accept()  # принятие всплывающего окна
         self.find_element_pb()  # прогрессбар
         print('✅ Госпитализация отменена') # вывод
 

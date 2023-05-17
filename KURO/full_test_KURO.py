@@ -36,7 +36,7 @@ def test_KURO_hospitalization(browser_KURO):
 
 
 def test_KURO_search_patient(browser_KURO):
-    test_KURO_login(browser_KURO)  # тест авторизации
+    # test_KURO_login(browser_KURO)  # тест авторизации
     search_patient_test = search_patient(browser_KURO)
     search_patient_test.create_patient()
     search_patient_test.delete_patient()
