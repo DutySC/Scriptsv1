@@ -21,3 +21,6 @@ class BasePage:
 
     def find_clickable_elements(self, locator, time=30):
         return WebDriverWait(self.driver, time).until(ES.element_to_be_clickable(locator), message=f'Not found {locator}')
+
+    def get_screenshots(self, name):
+        return self.driver.save_screenshot(name)
