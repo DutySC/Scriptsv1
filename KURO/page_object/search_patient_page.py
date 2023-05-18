@@ -41,17 +41,24 @@ class search_patient_locators:
     LOCATOR_HOME = (By.XPATH, '//body[1]/div[7]//tbody[1]//tbody[1]//tbody[1]/tr[2]//tr[2]/td[1]/div[1]//tr[4]/td[2]//input[1]')
     LOCATOR_FULL_WINDOW = (By.XPATH, '//tbody/tr[2]/td[2]/div[1]/div[2]/div[4]')
     LOCATOR_OK = (By.XPATH, '//td[contains(text(), "ОК")]')
-    LOCATOR_DICTIONARY_PATIENT_CARD_1 = (By.XPATH, '//span[contains(text(), "Словари")]')
-    LOCATOR_DICTIONARY_PATIENT_CARD_2 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
-    LOCATOR_DICTIONARY_PATIENT_CARD_3 = (By.XPATH, '//span[contains(text(), "Карты пациентов")]')
-    LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]/div[1]//td[7]//td[3]//img[1]')
+    LOCATOR_DICTIONARY_PATIENT_CARD_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
+    LOCATOR_DICTIONARY_PATIENT_CARD_2 = (By.XPATH, '//span[contains(text(), "Словари")]')
+    LOCATOR_DICTIONARY_PATIENT_CARD_3 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
+    LOCATOR_DICTIONARY_PATIENT_CARD_4 = (By.XPATH, '//span[contains(text(), "Карты пациентов")]')
+    LOCATOR_FILTER_1 = (By.XPATH, '//td[2]/div[1]//span[contains(text(), "Показать фильтр")]')
+    LOCATOR_FILTER_2 = (By.XPATH, '//td[2]//td[2]//input[1]')
+    LOCATOR_FILTER_3 = (By.XPATH, '//td[2]//td[3]//input[1]')
+    LOCATOR_FILTER_4 = (By.XPATH, '//td[2]//td[4]//input[1]')
+    LOCATOR_FILTER_5 = (By.XPATH, '//td[2]/div[1]//span[contains(text(), "Найти")]')
+    # LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]/div[1]//td[7]//td[3]//img[1]')
     LOCATOR_LAST_NAME_NEWVERSION_1 = (By.XPATH, '//span[contains(text(), "Новаяверсия")]')
     LOCATOR_DELETE_USER_1 = (By.XPATH, '//body[1]/div[2]/div[2]/div[3]/table[1]/tbody[1]/tr[5]/td[2]')
-    LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Словари")]')
-    LOCATOR_DICTIONARY_INDIVIDUAL_2 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
-    LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//span[contains(text(), "Контрагенты физ. лица")]')
+    LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
+    LOCATOR_DICTIONARY_INDIVIDUAL_2 = (By.XPATH, '//span[contains(text(), "Словари")]')
+    LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
+    LOCATOR_DICTIONARY_INDIVIDUAL_4 = (By.XPATH, '//span[contains(text(), "Контрагенты физ. лица")]')
     LOCATOR_DELETE_USER_2 = (By.XPATH, '//body[1]/div[2]/div[2]/div[3]/table[1]/tbody[1]/tr[5]/td[2]')
-    LOCATOR_LAST_NAME_NEWVERSION_2 = (By.XPATH, '//tbody/tr[1]/td[6]/span[1][contains(text(), "Новаяверсия")]')
+    LOCATOR_LAST_NAME_NEWVERSION_2 = (By.XPATH, '//tbody/tr[1]/td[4]/span[1][contains(text(), "Тестирование")]')
     LOCATOR_SEARCH_WINDOW = (By.XPATH, '//tbody//td[2]/div[1]//div[3]/div[1]')
     LOCATOR_SEARCH_PATIENT_5 = (By.XPATH, '//tbody/tr[1]/td[2]/div[1]//span[contains(text(), "Найти")]')
 
@@ -67,7 +74,7 @@ class search_patient(BasePage):
         self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
         time.sleep(5) # ожидание
-        self.find_element(search_patient_locators.LOCATOR_FULL_WINDOW).click() # полноэкранный режим
+        # self.find_element(search_patient_locators.LOCATOR_FULL_WINDOW).click() # полноэкранный режим
         search_string_1 = self.find_element(search_patient_locators.LOCATOR_LAST_NAME)  # ввод фамилии
         search_string_1.send_keys(prm.last_name)  # указывается фамилия
         search_string_2 = self.find_element(search_patient_locators.LOCATOR_FIRST_NAME)  # ввод имени
@@ -130,28 +137,38 @@ class search_patient(BasePage):
 
 
     def delete_patient(self):
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Словари"
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_2).click() # вкладка "Контрагенты"
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_3).click() # вкладка "Карты пациентов"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() # фильтр даты создания мед. карты
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() #  фильтр даты создания мед. карты
-        self.find_element_pb()  # прогрессбар
+        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Еще"
+        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_2).click() # вкладка "Словари"
+        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_3).click() # вкладка "Контрагенты"
+        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_4).click()  # вкладка "Карты пациентов"
+        self.find_element_pb(time=60)  # прогрессбар
+        self.find_element(search_patient_locators.LOCATOR_FILTER_1).click()
+        search_string_8 = self.find_element(search_patient_locators.LOCATOR_FILTER_2)
+        search_string_8.send_keys(prm.last_name)
+        search_string_9 = self.find_element(search_patient_locators.LOCATOR_FILTER_3)
+        search_string_9.send_keys(prm.first_name)
+        search_string_10 = self.find_element(search_patient_locators.LOCATOR_FILTER_4)
+        search_string_10.send_keys(prm.surname)
+        self.find_element(search_patient_locators.LOCATOR_FILTER_5).click()
+        # self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() # фильтр даты создания мед. карты
+        # self.find_element_pb(time=60)  # прогрессбар
+        # self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() #  фильтр даты создания мед. карты
+        self.find_element_pb(time=60)  # прогрессбар
         self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION_1).perform()  # ПКМ по имени созданного пациента
         self.find_element(search_patient_locators.LOCATOR_DELETE_USER_1).click() # кнопка "Удалить"
         self.driver.switch_to.alert.accept()  # принятие всплывающего окна
         try:
-            self.find_element_pb(time=50)  # прогрессбар
+            self.find_element_pb(time=60)  # прогрессбар
         except TimeoutException:
             pass
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click() # вкладка "Словари"
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_2).click() # вкладка "Контрагенты"
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты физ. лица"
+        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click()  # вкладка "Еще"
+        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_2).click() # вкладка "Словари"
+        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты"
+        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_4).click() # вкладка "Контрагенты физ. лица"
         self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
         try:
-            self.find_element_pb(time=50)  # прогрессбар
+            self.find_element_pb(time=80)  # прогрессбар
         except TimeoutException:
             time.sleep(10) # ожидание
         self.actionchains(search_patient_locators.LOCATOR_SEARCH_WINDOW) # формирования окна
@@ -159,7 +176,7 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_DELETE_USER_2).click() # кнопка "Удалить"
         self.driver.switch_to.alert.accept()  # принятие всплывающего окна
         try:
-            self.find_element_pb(time=50)  # прогрессбар
+            self.find_element_pb(time=60)  # прогрессбар
         except TimeoutException:
             time.sleep(10) # ожидание
             pass

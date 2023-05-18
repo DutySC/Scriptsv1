@@ -136,7 +136,7 @@ class search_patient(BasePage):
         search_string_8.send_keys(prm.home) # указать номер дома
         self.find_element(search_patient_locators.LOCATOR_OK).click()  # кнопка "ОК"
         self.find_element_pb()  # прогрессбар
-        print('Тестовый пользователь - создан') # вывод
+        print('✅ Тестовый пользователь - создан') # вывод
 
     def delete_patient(self):
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Еще"
@@ -184,4 +184,4 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_DELETE_USER_2).click() # кнопка "Удалить"
         self.driver.switch_to.alert.accept()  # принятие всплывающего окна
         self.find_element_pb()  # прогрессбар
-        print('Тестовый пользователь - удален') # вывод
+        print('✅ Тестовый пользователь - удален') # вывод
