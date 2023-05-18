@@ -2,7 +2,7 @@ import NSO.parametrize as prm
 import time
 from BASE_PAGE import BasePage
 from selenium.webdriver.common.by import By
-from selenium.common import TimeoutException, ElementNotInteractableException
+from selenium.common import TimeoutException
 # from conftest import browser_SNILS
 
 class search_patient_locators:
@@ -45,7 +45,11 @@ class search_patient_locators:
     LOCATOR_DICTIONARY_PATIENT_CARD_2 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_3 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_4 = (By.XPATH, '//span[contains(text(), "Карты пациентов")]')
-    LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]/div[1]//td[7]//td[3]//img[1]')
+    LOCATOR_FILTER_1 = (By.XPATH, '//tbody//td[2]/div[1]//span[contains(text(), "Показать фильтр")]')
+    LOCATOR_FILTER_2 = (By.XPATH, '//div[3]/div[1]//td[2]//input[1]')
+    LOCATOR_FILTER_3 = (By.XPATH, '//div[3]/div[1]//td[3]//input[1]')
+    LOCATOR_FILTER_4 = (By.XPATH, '//div[3]/div[1]//td[4]//input[1]')
+    LOCATOR_FILTER_5 = (By.XPATH, '//td[2]/div[1]//span[contains(text(), "Найти")]')
     LOCATOR_LAST_NAME_NEWVERSION_1 = (By.XPATH, '//span[contains(text(), "Новаяверсия")]')
     LOCATOR_DELETE_USER_1 = (By.XPATH, '//body[1]/div[2]/div[2]/div[4]/table[1]/tbody[1]/tr[5]/td[2]')
     LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
@@ -132,7 +136,7 @@ class search_patient(BasePage):
         search_string_8.send_keys(prm.home) # указать номер дома
         self.find_element(search_patient_locators.LOCATOR_OK).click()  # кнопка "ОК"
         self.find_element_pb()  # прогрессбар
-        print('✅ Тестовый пользователь - создан') # вывод
+        print('Тестовый пользователь - создан') # вывод
 
     def delete_patient(self):
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Еще"
@@ -141,13 +145,14 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_4).click() # вкладка "Карты пациентов"
         self.find_element_pb()  # прогрессбар
         self.find_element_pb()  # прогрессбар
-        try:
-            self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() # фильтр даты создания мед. карты
-        except ElementNotInteractableException:
-            time.sleep(3)
-            self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click()  # фильтр даты создания мед. карты
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() #  фильтр даты создания мед. карты
+        self.find_element(search_patient_locators.LOCATOR_FILTER_1).click()
+        search_string_9 = self.find_element(search_patient_locators.LOCATOR_FILTER_2)
+        search_string_9.send_keys(prm.last_name)
+        search_string_10 = self.find_element(search_patient_locators.LOCATOR_FILTER_3)
+        search_string_10.send_keys(prm.first_name)
+        search_string_11 = self.find_element(search_patient_locators.LOCATOR_FILTER_4)
+        search_string_11.send_keys(prm.surname)
+        self.find_element(search_patient_locators.LOCATOR_FILTER_5).click()
         self.find_element_pb()  # прогрессбар
         self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION_1).perform()  # ПКМ по имени созданного пациента
         self.find_element(search_patient_locators.LOCATOR_DELETE_USER_1).click() # кнопка "Удалить"
@@ -179,4 +184,4 @@ class search_patient(BasePage):
         self.find_element(search_patient_locators.LOCATOR_DELETE_USER_2).click() # кнопка "Удалить"
         self.driver.switch_to.alert.accept()  # принятие всплывающего окна
         self.find_element_pb()  # прогрессбар
-        print('✅ Тестовый пользователь - удален') # вывод
+        print('Тестовый пользователь - удален') # вывод

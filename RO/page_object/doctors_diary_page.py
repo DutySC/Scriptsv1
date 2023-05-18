@@ -49,7 +49,7 @@ class doctors_diary(BasePage):
         if full_diary <= 10: # условие
             print('✅ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек')
         else:
-            print('⚠️️ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек', '(норма - менее 10 с)')
+            print('⚠️ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек', '(норма - менее 10 с)')
         try:
             self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click() #кнопка "Запись"
         except ElementClickInterceptedException:
@@ -75,9 +75,10 @@ class doctors_diary(BasePage):
 
     def diary_provide_service(self):
         self.find_element(locators_doctors_diary.LOCATOR_PROVIDE_SERVICE).click() # оказать услугу
-        self.find_element_pb()  # прогрессбар
-        self.find_element_pb()  # прогрессбар
-        time.sleep(3)  # ожидание
+        self.find_element_pb(time=50)  # прогрессбар
+        self.find_element_pb(time=50)  # прогрессбар
+        self.find_element_pb(time=50)  # прогрессбар
+        time.sleep(5)  # ожидание
         self.find_element(locators_doctors_diary.LOCATOR_STATISTICAL_DESIGN).click() # выбор вкладки "Статический оформление обращения (посещения)"
         self.find_element(locators_doctors_diary.LOCATOR_FULLSCREEN_WINDOW).click() # открыть окно в полный экран
         self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_1).click()  # выбор "Результат визита"
