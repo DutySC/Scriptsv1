@@ -43,8 +43,8 @@ class hospitalization(BasePage):
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_1).click() # вкладка "Регистратура"
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_2).click() # вкладка "Приемный покой"
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_3).click() # вкладка "Журнал госпитализации"
-            self.find_element_pb()  # прогрессбар
-            self.find_element_pb()  # прогрессбар
+            self.find_element_pb(time=60)  # прогрессбар
+            self.find_element_pb(time=60)  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_PATIENT_REG_CONTAINER) # полная прогрузка элементов страницы
             time.sleep(3)  # ожидание
             self.actionchains(locators_hospitalization.LOCATOR_WINDOW_RCM_1).perform() # ПКМ по области окна

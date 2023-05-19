@@ -14,28 +14,21 @@ def test_RO_doctors_diary(browser_RO):
     # test_RO_login(browser_RO)  # тест авторизации
     doctors_diary_test = doctors_diary(browser_RO)
     doctors_diary_test.diary()
-    doctors_diary_test.diary_provide_service()
-    doctors_diary_test.diary_delite()
 
 def test_RO_schedule(browser_RO):
     # test_RO_login(browser_RO)  # тест авторизации
     patient_schedule_test = schedule(browser_RO)
     patient_schedule_test.patient_schedule()
-    patient_schedule_test.patient_schedule_delete()
 
 def test_RO_hospitalization(browser_RO):
     # test_RO_login(browser_RO)  # тест авторизации
     patient_hospitalization_test = hospitalization(browser_RO)
     patient_hospitalization_test.register_patient()
-    patient_hospitalization_test.patient_hospitalization()
-    patient_hospitalization_test.patient_cancel_hospitalization()
-    patient_hospitalization_test.patient_delete_hospitalization()
 
 def test_RO_search_patient(browser_RO):
     # test_RO_login(browser_RO)  # тест авторизации
     search_patient_test = search_patient(browser_RO)
     search_patient_test.create_patient()
-    search_patient_test.delete_patient()
 
 # def test_RO_full(self, browser_RO):
 #     start = time.time()  # начало отсчета
