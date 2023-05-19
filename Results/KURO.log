@@ -1,32 +1,55 @@
 ============================= test session starts ==============================
 platform darwin -- Python 3.11.3, pytest-7.2.2, pluggy-1.0.0
-rootdir: /Users/timurahtyamov/Documents/Project/Scriptsv0.7
-collected 7 items
+rootdir: /Users/timurahtyamov/PycharmProjects/Scriptsv0.7
+collected 1 item
 
 test_KURO.py 
-✅ Авторизация:  1.37 с
-✅ Выбор ЛПУ:  3.01 с
- ▶️ Модуль - "Авторизация", выполнен за:  4.38 с
-F
+✅ Авторизация:  1.99 с
+✅ Выбор ЛПУ:  3.69 с
+   🔼 Модуль - "Авторизация", выполнен за:  5.68 с
+✅ Формирования окна - Дневник врача:  1.66 сек
+✅ Пациент записан на услугу
+✅ Услуга оказана
+✅ Услуга отменена
+✅ Запись удалена
+   🔼 Модуль - "Дневник врача", выполнен за:  95.49 с
+✅ Формирование окна - Расписание:  7.59 с
+✅ Пациент записан к врачу
+✅ Запись удалена
+   🔼 Модуль - "Расписание", выполнен за:  46.68 с
+✅ Пациент записан на госпитализацию
+✅ Пациент госпитализирован
+✅ Госпитализация отменена
+✅ Запись на госпитализацию удалена
+   🔼 Модуль - "Госпитализация", выполнен за:  100.19 с
+✅ Тестовый пользователь - создан
+❗️ Ошибка: Message: element not interactable
+  (Session info: chrome=113.0.5672.92)
+Stacktrace:
+0   chromedriver                        0x0000000104e5f598 chromedriver + 4973976
+1   chromedriver                        0x0000000104e56913 chromedriver + 4938003
+2   chromedriver                        0x0000000104a13b50 chromedriver + 469840
+3   chromedriver                        0x0000000104a58ea6 chromedriver + 753318
+4   chromedriver                        0x0000000104a4b671 chromedriver + 697969
+5   chromedriver                        0x0000000104a7b9c2 chromedriver + 895426
+6   chromedriver                        0x0000000104a4ae51 chromedriver + 695889
+7   chromedriver                        0x0000000104a7bb7e chromedriver + 895870
+8   chromedriver                        0x0000000104a96856 chromedriver + 1005654
+9   chromedriver                        0x0000000104a7b793 chromedriver + 894867
+10  chromedriver                        0x0000000104a4921f chromedriver + 688671
+11  chromedriver                        0x0000000104a4a56e chromedriver + 693614
+12  chromedriver                        0x0000000104e19bb7 chromedriver + 4688823
+13  chromedriver                        0x0000000104e1ea51 chromedriver + 4708945
+14  chromedriver                        0x0000000104e2540f chromedriver + 4736015
+15  chromedriver                        0x0000000104e1f91a chromedriver + 4712730
+16  chromedriver                        0x0000000104df287c chromedriver + 4528252
+17  chromedriver                        0x0000000104e3ef28 chromedriver + 4841256
+18  chromedriver                        0x0000000104e3f0a7 chromedriver + 4841639
+19  chromedriver                        0x0000000104e5028f chromedriver + 4911759
+20  libsystem_pthread.dylib             0x00007ff81cb51259 _pthread_start + 125
+21  libsystem_pthread.dylib             0x00007ff81cb4cc7b thread_start + 15
 
-=================================== FAILURES ===================================
-___________________________ Test_KURO.test_KURO_full ___________________________
+🏁 Затраченное время на тестирование:  310.58 с
+.
 
-self = <test_KURO.Test_KURO object at 0x103e21690>
-browser_KURO = <selenium.webdriver.chrome.webdriver.WebDriver (session="ba491b31358a9973fea8aa10071e5953")>
-
-    def test_KURO_full(self, browser_KURO):
-        start = time.time()  # начало отсчета
-        start_page = login(browser_KURO)  # тест модуля авторизации
-        start_page.auth()
-        start_doctors_diary = time.time()
->       doctors_diary_test = doctors_diary(browser_KURO)  # тест модуля "Дневник врача"
-E       NameError: name 'doctors_diary' is not defined
-
-test_KURO.py:19: NameError
-=========================== short test summary info ============================
-FAILED test_KURO.py::Test_KURO::test_KURO_full - NameError: name 'doctors_dia...
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KeyboardInterrupt !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/socket.py:706: KeyboardInterrupt
-(to show a full traceback on KeyboardInterrupt use --full-trace)
-============================== 1 failed in 15.72s ==============================
+======================== 1 passed in 317.28s (0:05:17) =========================
