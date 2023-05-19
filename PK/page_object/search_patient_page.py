@@ -53,93 +53,101 @@ class search_patient_locators:
 
 class search_patient(BasePage):
     def create_patient(self):
-        self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_1).click()  # вкладка "Регистратура"
-        self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_2).click()  # вкладка "Поиск пациентов"
-        self.find_element_pb()  # прогрессбар
-        time.sleep(3)  # ожидание
-        self.find_element(search_patient_locators.LOCATOR_NEW_PATIENT).click()  # создание нового пациента
-        self.find_element_pb()  # прогрессбар
-        self.find_element_pb()  # прогрессбар
-        time.sleep(5) # ожидание
-        search_string_1 = self.find_element(search_patient_locators.LOCATOR_LAST_NAME)  # ввод фамилии
-        search_string_1.send_keys(prm.last_name)  # указывается фамилия
-        search_string_2 = self.find_element(search_patient_locators.LOCATOR_FIRST_NAME)  # ввод имени
-        search_string_2.send_keys(prm.first_name)  # указывается имя
-        search_string_3 = self.find_element(search_patient_locators.LOCATOR_SURNAME)  # ввод отчетсва
-        search_string_3.send_keys(prm.surname)  # указывается отчетсво
-        self.find_element(search_patient_locators.LOCATOR_BIRTHDAY).click() # дата рождения
-        search_string_4 = self.find_element(search_patient_locators.LOCATOR_BIRTHDAY)  # дата рождения
-        search_string_4.send_keys(prm.data) # указывается дата рождения
-        self.find_element(search_patient_locators.LOCATOR_CARD_NUMBER).click()  # кнопка для выдачи номера карты
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_SNILS).click()  # ввод СНИЛС
-        search_string_5 = self.find_element(search_patient_locators.LOCATOR_SNILS)  # ввод СНИЛС
-        search_string_5.send_keys(prm.snils) # указывается СНИЛС
-        search_string_6 = self.find_element(search_patient_locators.LOCATOR_ENTER_POLIS)  # ввод номера полиса
-        search_string_6.send_keys(prm.rand)  # указывается номер полиса
-        self.find_element(search_patient_locators.LOCATOR_INSURANCE_COMPANY).click()  # окно для указания страховой компании
-        self.find_element_pb()  # прогрессбар
-        self.find_element_pb()  # прогрессбар
-        time.sleep(2)  # ожидание
-        self.find_element(search_patient_locators.LOCATOR_OBLASTI).click()  # выкидное окно для указания областей
-        self.find_element(search_patient_locators.LOCATOR_OBLAST).click()  # выбор всех областей
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_OBLAST_OK).click()  # кнопка "Ок"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_TYPE_OF_POLIS).click()  # выбор вида полиса
-        self.find_element(search_patient_locators.LOCATOR_TYPE_OF_POLIS).click()  # выбор вида полиса
-        self.find_element(search_patient_locators.LOCATOR_CHOOSE_POLIS).click()  # указать временное свидетельство
-        self.find_element(search_patient_locators.LOCATOR_DATA_1).click()  # дата выдачи
-        self.find_element(search_patient_locators.LOCATOR_DATA_2).click()  # указать дату выдачи
-        self.find_element(search_patient_locators.LOCATOR_TAB_STATUS).click() # вкладка Соц. статус
-        self.find_element(search_patient_locators.LOCATOR_STATUS_OPEN).click() # окно выбора соц. статуса
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_STATUS_OK).click()  # подтверждения соц. статуса
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_TAB_DOCUMENTS).click()  # вкладка Документы/Адреса
-        self.find_element(search_patient_locators.LOCATOR_TAB_DOCUMENTS).click()  # вкладка Документы/Адреса
-        self.find_element(search_patient_locators.LOCATOR_TYPE_OF_DOCUMENTS).click()  # тип документа
-        self.find_element(search_patient_locators.LOCATOR_CHOOSE_DOCUMENT).click()  # указать тип документа "Вид на жительство"
-        self.find_element(search_patient_locators.LOCATOR_DATA_3).click()  # дата выдачи
-        self.find_element(search_patient_locators.LOCATOR_DATA_4).click()  # указать дату выдачи
-        search_string_7 = self.find_element(search_patient_locators.LOCATOR_WHO_GAVE)  # кем выдан
-        search_string_7.send_keys(prm.mvd) # указать кем выдан - "МВД"
-        self.find_element(search_patient_locators.LOCATOR_TAB_AREAS).click()  # подвкладка "Адреса"
-        self.find_element(search_patient_locators.LOCATOR_AREA).click()  # ввод района
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_AREA_OK).click()  # кнопка "Ок"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_ENTER_AREA).click()  # ввод адреса
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_CHOOSE_ANYCHINSKIY).click()  # выбрать Анучинский
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_CHOOSE_ABRICOSOVOE).click()  # выбрать Абрикосовое
-        self.find_element_pb()  # прогрессбар
-        search_string_8 = self.find_element(search_patient_locators.LOCATOR_HOME)  # выбрать дом
-        search_string_8.send_keys(prm.home) # указать номер дома
-        self.find_element(search_patient_locators.LOCATOR_OK).click()  # кнопка "ОК"
-        self.find_element_pb()  # прогрессбар
-        print('✅ Тестовый пользователь - создан') # вывод
-
-    def delete_patient(self):
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Словари"
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_2).click() # вкладка "Контрагенты"
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_3).click() # вкладка "Карты пациентов"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() # фильтр даты создания мед. карты
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() #  фильтр даты создания мед. карты
-        self.find_element_pb()  # прогрессбар
-        self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION).perform()  # ПКМ по имени созданного пациента
-        self.find_element(search_patient_locators.LOCATOR_DELETE_USER_1).click() # кнопка "Удалить"
-        self.driver.switch_to.alert.accept()  # принятие всплывающего окна
-        self.find_element_pb()  # прогрессбар
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click() # вкладка "Словари"
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_2).click() # вкладка "Контрагенты"
-        self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты физ. лица"
-        self.find_element_pb()  # прогрессбар
-        self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION).perform()  # ПКМ по имени созданного пациента
-        self.find_element(search_patient_locators.LOCATOR_DELETE_USER_2).click() # кнопка "Удалить"
-        self.driver.switch_to.alert.accept()  # принятие всплывающего окна
-        self.find_element_pb()  # прогрессбар
-        print('✅ Тестовый пользователь - удален') # вывод
+        try:
+            start_search_patient = time.time()
+            self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_1).click()  # вкладка "Регистратура"
+            self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_2).click()  # вкладка "Поиск пациентов"
+            self.find_element_pb()  # прогрессбар
+            time.sleep(3)  # ожидание
+            self.find_element(search_patient_locators.LOCATOR_NEW_PATIENT).click()  # создание нового пациента
+            self.find_element_pb()  # прогрессбар
+            self.find_element_pb()  # прогрессбар
+            time.sleep(5) # ожидание
+            search_string_1 = self.find_element(search_patient_locators.LOCATOR_LAST_NAME)  # ввод фамилии
+            search_string_1.send_keys(prm.last_name)  # указывается фамилия
+            search_string_2 = self.find_element(search_patient_locators.LOCATOR_FIRST_NAME)  # ввод имени
+            search_string_2.send_keys(prm.first_name)  # указывается имя
+            search_string_3 = self.find_element(search_patient_locators.LOCATOR_SURNAME)  # ввод отчетсва
+            search_string_3.send_keys(prm.surname)  # указывается отчетсво
+            self.find_element(search_patient_locators.LOCATOR_BIRTHDAY).click() # дата рождения
+            search_string_4 = self.find_element(search_patient_locators.LOCATOR_BIRTHDAY)  # дата рождения
+            search_string_4.send_keys(prm.data) # указывается дата рождения
+            self.find_element(search_patient_locators.LOCATOR_CARD_NUMBER).click()  # кнопка для выдачи номера карты
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_SNILS).click()  # ввод СНИЛС
+            search_string_5 = self.find_element(search_patient_locators.LOCATOR_SNILS)  # ввод СНИЛС
+            search_string_5.send_keys(prm.snils) # указывается СНИЛС
+            search_string_6 = self.find_element(search_patient_locators.LOCATOR_ENTER_POLIS)  # ввод номера полиса
+            search_string_6.send_keys(prm.rand)  # указывается номер полиса
+            self.find_element(search_patient_locators.LOCATOR_INSURANCE_COMPANY).click()  # окно для указания страховой компании
+            self.find_element_pb()  # прогрессбар
+            self.find_element_pb()  # прогрессбар
+            time.sleep(2)  # ожидание
+            self.find_element(search_patient_locators.LOCATOR_OBLASTI).click()  # выкидное окно для указания областей
+            self.find_element(search_patient_locators.LOCATOR_OBLAST).click()  # выбор всех областей
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_OBLAST_OK).click()  # кнопка "Ок"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_TYPE_OF_POLIS).click()  # выбор вида полиса
+            self.find_element(search_patient_locators.LOCATOR_TYPE_OF_POLIS).click()  # выбор вида полиса
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_POLIS).click()  # указать временное свидетельство
+            self.find_element(search_patient_locators.LOCATOR_DATA_1).click()  # дата выдачи
+            self.find_element(search_patient_locators.LOCATOR_DATA_2).click()  # указать дату выдачи
+            self.find_element(search_patient_locators.LOCATOR_TAB_STATUS).click() # вкладка Соц. статус
+            self.find_element(search_patient_locators.LOCATOR_STATUS_OPEN).click() # окно выбора соц. статуса
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_STATUS_OK).click()  # подтверждения соц. статуса
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_TAB_DOCUMENTS).click()  # вкладка Документы/Адреса
+            self.find_element(search_patient_locators.LOCATOR_TAB_DOCUMENTS).click()  # вкладка Документы/Адреса
+            self.find_element(search_patient_locators.LOCATOR_TYPE_OF_DOCUMENTS).click()  # тип документа
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_DOCUMENT).click()  # указать тип документа "Вид на жительство"
+            self.find_element(search_patient_locators.LOCATOR_DATA_3).click()  # дата выдачи
+            self.find_element(search_patient_locators.LOCATOR_DATA_4).click()  # указать дату выдачи
+            search_string_7 = self.find_element(search_patient_locators.LOCATOR_WHO_GAVE)  # кем выдан
+            search_string_7.send_keys(prm.mvd) # указать кем выдан - "МВД"
+            self.find_element(search_patient_locators.LOCATOR_TAB_AREAS).click()  # подвкладка "Адреса"
+            self.find_element(search_patient_locators.LOCATOR_AREA).click()  # ввод района
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_AREA_OK).click()  # кнопка "Ок"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_ENTER_AREA).click()  # ввод адреса
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ANYCHINSKIY).click()  # выбрать Анучинский
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ABRICOSOVOE).click()  # выбрать Абрикосовое
+            self.find_element_pb()  # прогрессбар
+            search_string_8 = self.find_element(search_patient_locators.LOCATOR_HOME)  # выбрать дом
+            search_string_8.send_keys(prm.home) # указать номер дома
+            self.find_element(search_patient_locators.LOCATOR_OK).click()  # кнопка "ОК"
+            self.find_element_pb()  # прогрессбар
+            print('✅ Тестовый пользователь - создан') # вывод
+            ###########след.этап########################################################################################
+            self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Словари"
+            self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_2).click() # вкладка "Контрагенты"
+            self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_3).click() # вкладка "Карты пациентов"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() # фильтр даты создания мед. карты
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() #  фильтр даты создания мед. карты
+            self.find_element_pb()  # прогрессбар
+            self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION).perform()  # ПКМ по имени созданного пациента
+            self.find_element(search_patient_locators.LOCATOR_DELETE_USER_1).click() # кнопка "Удалить"
+            self.driver.switch_to.alert.accept()  # принятие всплывающего окна
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click() # вкладка "Словари"
+            self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_2).click() # вкладка "Контрагенты"
+            self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты физ. лица"
+            self.find_element_pb()  # прогрессбар
+            self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION).perform()  # ПКМ по имени созданного пациента
+            self.find_element(search_patient_locators.LOCATOR_DELETE_USER_2).click() # кнопка "Удалить"
+            self.driver.switch_to.alert.accept()  # принятие всплывающего окна
+            self.find_element_pb()  # прогрессбар
+            print('✅ Тестовый пользователь - удален') # вывод
+            end_search_patient = time.time()
+            full_search_patient = end_search_patient - start_search_patient
+            print('   🔼 Модуль - "Поиск пациентов", выполнен за: ', round(full_search_patient, 2), 'с')
+        except Exception as error:
+            self.get_screenshots('Results/PK_sc/Поиск.png')
+            print('❗️ Ошибка:', error)
+            self.driver.quit()

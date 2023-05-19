@@ -1,8 +1,35 @@
-import telebot, requests, os, re
+import telebot, requests, os, re, glob
 from telebot import types
 
 bot = telebot.TeleBot('6149957194:AAHvsUnLJPLMWzxHPUQik6dhqxRSZziuV0w')
 requests.get('https://t.me/@TestMapInChatBot')
+
+def send_pic(message, name):
+    try:
+        a = open('./Results/'+name+'/Авторизация.png', 'rb')
+        bot.send_photo(message.chat.id, a)
+    except Exception:
+        pass
+    try:
+        b = open('./Results/'+name+'/Дневник.png', 'rb')
+        bot.send_photo(message.chat.id, b)
+    except Exception:
+        pass
+    try:
+        c = open('./Results/'+name+'/Расписание.png', 'rb')
+        bot.send_photo(message.chat.id, c)
+    except Exception:
+        pass
+    try:
+        d = open('./Results/'+name+'/Госпитализация.png', 'rb')
+        bot.send_photo(message.chat.id, d)
+    except Exception:
+        pass
+    try:
+        i = open('./Results/'+name+'/Поиск.png', 'rb')
+        bot.send_photo(message.chat.id, i)
+    except Exception:
+        pass
 
 # #Тестирование InLine кнопок
 # @bot.message_handler(content_types=["text"])
@@ -78,24 +105,17 @@ def get_text_messages(message):
 ##################################################################################################################
     elif message.text == 'Тест Приморья':
         try:
-            os.remove('./Results/PK_sc/')
+            os.remove("".join(glob.glob("./Results/PK_sc/*")))
         except Exception:
             pass
-        bot.send_message(message.chat.id, '⚪️Начата проверка крит. модулей продуктивного стенда - Приморья 🔽')
+        bot.send_message(message.chat.id, '🔴Начата проверка крит. модулей продуктивного стенда - Приморья 🔽')
         os.system('pytest -s test_PK.py > Results/PK.log')  # команда запуска скрипта test_PK.py и запись результата в файл logs.txt
-        # os.system('py test_PK.py > Results/PK.log')
         with open('Results/PK.log', 'r', -1, 'utf-8') as fi:
-            #     # f = fi.read()[262:1031] # более полный отчет о тестировании
-            f = fi.read()[185:940]  # отчет о тестировании
-            opt_1 = re.sub(r'\s[.]', '\n', f)
-            # opt_2 =  re.sub(r'\D[=]', ' ', opt_1) #редактирование последней строчки
-        bot.send_message(message.chat.id, opt_1)  # ответ бота с выводом результата тестирования
-        try:
-            p = open('./Results/PK_sc/Авторизация.png', 'rb') and open('./Results/PK_sc/Авторизация.png', 'rb')
-            bot.send_photo(message.chat.id, p)
-        except Exception:
-            pass
-        bot.send_message(message.chat.id, '🟢Закончена проверка крит. модулей продуктивного стенда - Приморья')
+            f = fi.read()[230:1800]  # отчет о тестировании
+            opt_1 = re.sub(r'\D[=]', '', f) #редактирование последней строчки
+            opt_2 = re.sub(r'\s[.]', '\n', opt_1) #удаление точек в логах
+        bot.send_message(message.chat.id, opt_2)  # ответ бота с выводом результата тестирования
+        send_pic(message, 'PK_sc')
 ##################################################################################################################
     elif message.text == 'Тест Новосибирска':
         bot.send_message(message.chat.id, '⚪️Начата проверка крит. модулей продуктивного стенда - НСО 🔽')
