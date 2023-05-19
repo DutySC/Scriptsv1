@@ -41,7 +41,7 @@ class search_patient_locators:
     LOCATOR_HOME = (By.XPATH, '//body[1]/div[7]//tbody[1]//tbody[1]//tbody[1]/tr[2]//tr[2]/td[1]/div[1]//tr[4]/td[2]//input[1]')
     LOCATOR_FULL_WINDOW = (By.XPATH, '//tbody/tr[2]/td[2]/div[1]/div[2]/div[4]')
     LOCATOR_OK = (By.XPATH, '//td[contains(text(), "ОК")]')
-    LOCATOR_DICTIONARY_PATIENT_CARD_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
+    # LOCATOR_DICTIONARY_PATIENT_CARD_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_2 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_3 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_4 = (By.XPATH, '//span[contains(text(), "Карты пациентов")]')
@@ -53,7 +53,7 @@ class search_patient_locators:
     # LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]/div[1]//td[7]//td[3]//img[1]')
     LOCATOR_LAST_NAME_NEWVERSION_1 = (By.XPATH, '//span[contains(text(), "Новаяверсия")]')
     LOCATOR_DELETE_USER_1 = (By.XPATH, '//body[1]/div[2]/div[2]/div[3]/table[1]/tbody[1]/tr[5]/td[2]')
-    LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
+    # LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_2 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_4 = (By.XPATH, '//span[contains(text(), "Контрагенты физ. лица")]')
@@ -137,7 +137,7 @@ class search_patient(BasePage):
             self.find_element_pb()  # прогрессбар
             print('✅ Тестовый пользователь - создан') # вывод
             ###########след.этап########################################################################################
-            self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Еще"
+            # self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Еще"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_2).click() # вкладка "Словари"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_3).click() # вкладка "Контрагенты"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_4).click()  # вкладка "Карты пациентов"
@@ -161,7 +161,7 @@ class search_patient(BasePage):
                 self.find_element_pb(time=60)  # прогрессбар
             except TimeoutException:
                 pass
-            self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click()  # вкладка "Еще"
+            # self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click()  # вкладка "Еще"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_2).click() # вкладка "Словари"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_4).click() # вкладка "Контрагенты физ. лица"
