@@ -36,79 +36,84 @@ class locators_doctors_diary:
 
 class doctors_diary(BasePage):
     def diary(self):
-        self.find_element(locators_doctors_diary.LOCATOR_DIARY_1).click() # вкладка "Рабочие места"
-        self.find_element(locators_doctors_diary.LOCATOR_DIARY_2).click() # вкладка "Дневник врача"
-        start_diary = time.time() # начало отчета времени формирования окна
-        self.find_element_pb() # прогрессбар
-        self.find_element_pb()  # прогрессбар
-        time.sleep(3)  # ожидание
-        end_diary = time.time() # конец отчета времени формирования окна
-        full_diary = end_diary - start_diary # суммарное время формирования окна "Дневник врача"
-        if full_diary <= 10: # условие
-            print('✅ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек')
-        else:
-            print('⚠️ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек', '(норма - менее 10 с)')
         try:
-            self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click() #кнопка "Запись"
-        except ElementClickInterceptedException:
-            self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click()  # кнопка "Запись"
-        self.find_element_pb()  # прогрессбар
-        self.find_element_pb()  # прогрессбар
-        time.sleep(3) # ожидание
-        search_string_1 = self.find_element(locators_doctors_diary.LOCATOR_SEARCH_1) # поиск тестового пациента 11/003414
-        search_string_1.send_keys(prm.patient_1) # ввод данных
-        self.find_element(locators_doctors_diary.LOCATOR_SEARCH_2).click() # кнопка "Найти"
-        self.find_element_pb() # прогрессбар
-        self.find_element(locators_doctors_diary.LOCATOR_CHOICE_PATIENT).click() # выбор тестового пациента 11/003414
-        self.find_element_pb() # прогрессбар
-        self.find_element(locators_doctors_diary.LOCATOR_SERVICES).click() # выпадающее окно услуг
-        self.find_element(locators_doctors_diary.LOCATOR_SERVICE).click() # выбор услуги
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_doctors_diary.LOCATOR_REGISTER_2).click() #кнопка "Записать"
-        self.find_element_pb()  # прогрессбар
-        self.find_element_pb() # прогрессбар
-        self.find_element(locators_doctors_diary.LOCATOR_CLOSE_1).click() # закрыть окно
-        self.find_element_pb()  # прогрессбар
-        print('✅ Пациент записан на услугу') # вывод
-
-    def diary_provide_service(self):
-        self.find_element(locators_doctors_diary.LOCATOR_PROVIDE_SERVICE).click() # оказать услугу
-        self.find_element_pb()  # прогрессбар
-        self.find_element_pb()  # прогрессбар
-        time.sleep(3)  # ожидание
-        self.find_element(locators_doctors_diary.LOCATOR_DIAGNOSIS).click() # выбор вкладки "Диагноз"
-        self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_1).click()  # окно "Результат обращений"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_2).click()  # выбор обращения
-        self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_3).click()  # кнопка "Ок"
-        self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_1).click()  # окно "Исход обращения"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_2).click()  # выбор обращения
-        self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_3).click()  # кнопка "Ок"
-        self.find_element(locators_doctors_diary.LOCATOR_CIRCULATION_PERIOD_1).click()  # выбор периода обращения
-        self.find_element(locators_doctors_diary.LOCATOR_CIRCULATION_PERIOD_2).click()  # повторный период
-        self.find_element(locators_doctors_diary.LOCATOR_MKB).click() # окно заболеваний
-        self.find_element_pb()  # прогрессбар
-        search_string_2 = self.find_element(locators_doctors_diary.LOCATOR_MKB_SEARCH_1) # поиск заболевания "Z00.0"
-        search_string_2.send_keys(prm.disease)  # ввод данных
-        self.find_element(locators_doctors_diary.LOCATOR_MKB_SEARCH_2).click() # кнопка "Поиск"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_doctors_diary.LOCATOR_MKB_CHOICE).click() # выбор заболевания "Z00.0"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_doctors_diary.LOCATOR_SAVE_SERVICE).click() # сохранение визита с характером заболевания "Z00.0"
-        self.find_element_pb()  # прогрессбар
-        print('✅ Услуга оказана') # вывод
-
-    def diary_delite(self):
-        self.actionchains(locators_doctors_diary.LOCATOR_PATIENT_RCM).perform() # ПКМ по имени тестового пациента
-        self.find_clickable_elements(locators_doctors_diary.LOCATOR_CANCEL_SERVICE).click() # отмена оказания услуги
-        self.find_element_pb()  # прогрессбар
-        print('✅ Услуга отменена') # вывод
-        self.actionchains(locators_doctors_diary.LOCATOR_PATIENT_RCM).perform() # ПКМ по имени тестового пациента
-        self.find_clickable_elements(locators_doctors_diary.LOCATOR_DELETE_PATIENT).click() # удаление тестовго пациента
-        self.driver.switch_to.alert.accept() # принятие всплывающего окна
-        self.find_element_pb()  # прогрессбар
-        print('✅ Запись удалена') # вывод
-        time.sleep(3) # ожидание
-
-
+            start_doctors_diary = time.time()
+            self.find_element(locators_doctors_diary.LOCATOR_DIARY_1).click() # вкладка "Рабочие места"
+            self.find_element(locators_doctors_diary.LOCATOR_DIARY_2).click() # вкладка "Дневник врача"
+            start_diary = time.time() # начало отчета времени формирования окна
+            self.find_element_pb() # прогрессбар
+            self.find_element_pb()  # прогрессбар
+            time.sleep(3)  # ожидание
+            end_diary = time.time() # конец отчета времени формирования окна
+            full_diary = end_diary - start_diary # суммарное время формирования окна "Дневник врача"
+            if full_diary <= 10: # условие
+                print('✅ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек')
+            else:
+                print('⚠️ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек', '(норма - менее 10 с)')
+            try:
+                self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click() #кнопка "Запись"
+            except ElementClickInterceptedException:
+                self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click()  # кнопка "Запись"
+            self.find_element_pb()  # прогрессбар
+            self.find_element_pb()  # прогрессбар
+            time.sleep(3) # ожидание
+            search_string_1 = self.find_element(locators_doctors_diary.LOCATOR_SEARCH_1) # поиск тестового пациента 11/003414
+            search_string_1.send_keys(prm.patient_1) # ввод данных
+            self.find_element(locators_doctors_diary.LOCATOR_SEARCH_2).click() # кнопка "Найти"
+            self.find_element_pb() # прогрессбар
+            self.find_element(locators_doctors_diary.LOCATOR_CHOICE_PATIENT).click() # выбор тестового пациента 11/003414
+            self.find_element_pb() # прогрессбар
+            self.find_element(locators_doctors_diary.LOCATOR_SERVICES).click() # выпадающее окно услуг
+            self.find_element(locators_doctors_diary.LOCATOR_SERVICE).click() # выбор услуги
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_doctors_diary.LOCATOR_REGISTER_2).click() #кнопка "Записать"
+            self.find_element_pb()  # прогрессбар
+            self.find_element_pb() # прогрессбар
+            self.find_element(locators_doctors_diary.LOCATOR_CLOSE_1).click() # закрыть окно
+            self.find_element_pb()  # прогрессбар
+            print('✅ Пациент записан на услугу') # вывод
+            ###########след.этап########################################################################################
+            self.find_element(locators_doctors_diary.LOCATOR_PROVIDE_SERVICE).click() # оказать услугу
+            self.find_element_pb()  # прогрессбар
+            self.find_element_pb()  # прогрессбар
+            time.sleep(3)  # ожидание
+            self.find_element(locators_doctors_diary.LOCATOR_DIAGNOSIS).click() # выбор вкладки "Диагноз"
+            self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_1).click()  # окно "Результат обращений"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_2).click()  # выбор обращения
+            self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_3).click()  # кнопка "Ок"
+            self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_1).click()  # окно "Исход обращения"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_2).click()  # выбор обращения
+            self.find_element(locators_doctors_diary.LOCATOR_EXODUS_APPEAL_3).click()  # кнопка "Ок"
+            self.find_element(locators_doctors_diary.LOCATOR_CIRCULATION_PERIOD_1).click()  # выбор периода обращения
+            self.find_element(locators_doctors_diary.LOCATOR_CIRCULATION_PERIOD_2).click()  # повторный период
+            self.find_element(locators_doctors_diary.LOCATOR_MKB).click() # окно заболеваний
+            self.find_element_pb()  # прогрессбар
+            search_string_2 = self.find_element(locators_doctors_diary.LOCATOR_MKB_SEARCH_1) # поиск заболевания "Z00.0"
+            search_string_2.send_keys(prm.disease)  # ввод данных
+            self.find_element(locators_doctors_diary.LOCATOR_MKB_SEARCH_2).click() # кнопка "Поиск"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_doctors_diary.LOCATOR_MKB_CHOICE).click() # выбор заболевания "Z00.0"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_doctors_diary.LOCATOR_SAVE_SERVICE).click() # сохранение визита с характером заболевания "Z00.0"
+            self.find_element_pb()  # прогрессбар
+            print('✅ Услуга оказана') # вывод
+            ###########след.этап########################################################################################
+            self.actionchains(locators_doctors_diary.LOCATOR_PATIENT_RCM).perform() # ПКМ по имени тестового пациента
+            self.find_clickable_elements(locators_doctors_diary.LOCATOR_CANCEL_SERVICE).click() # отмена оказания услуги
+            self.find_element_pb()  # прогрессбар
+            print('✅ Услуга отменена') # вывод
+            self.actionchains(locators_doctors_diary.LOCATOR_PATIENT_RCM).perform() # ПКМ по имени тестового пациента
+            self.find_clickable_elements(locators_doctors_diary.LOCATOR_DELETE_PATIENT).click() # удаление тестовго пациента
+            self.driver.switch_to.alert.accept() # принятие всплывающего окна
+            self.find_element_pb()  # прогрессбар
+            print('✅ Запись удалена') # вывод
+            time.sleep(3) # ожидание
+            end_doctors_diary = time.time()
+            full_doctors_diary = end_doctors_diary - start_doctors_diary
+            print('   🔼 Модуль - "Дневник врача", выполнен за: ', round(full_doctors_diary, 2), 'с')
+        except Exception as error:
+            self.get_screenshots('Results/NSO_sc/Дневник.png')
+            print('❗️ Ошибка:', error)
+            self.driver.quit()

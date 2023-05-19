@@ -34,69 +34,75 @@ class locators_hospitalization:
 
 class hospitalization(BasePage):
     def register_patient(self):
-        self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_1).click() # вкладка "Регистратура"
-        self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_2).click() # вкладка "Приемный покой"
-        self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_3).click() # вкладка "Журнал госпитализации"
-        self.find_element_pb()  # прогрессбар
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_hospitalization.LOCATOR_PATIENT_REG_CONTAINER) # полная прогрузка элементов страницы
-        time.sleep(3)  # ожидание
-        self.actionchains(locators_hospitalization.LOCATOR_WINDOW_RCM_1).perform() # ПКМ по области окна
-        self.find_element(locators_hospitalization.LOCATOR_WINDOW_RCM_2).click() # добавить пациента для создания направления
-        self.find_element_pb()  # прогрессбар
-        self.find_element_pb()  # прогрессбар
-        time.sleep(2)
-        self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_1).click() # открытие окна для выбора пациента
-        self.find_element_pb()  # прогрессбар
-        search_string_1 = self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_2)  # окно ввода
-        search_string_1.send_keys(prm.patient_2) # указать карту пользователя
-        self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_3).click()  # кнопка "Найти"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_4).click()  # выбор пользователя "Тест Берем Карта"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_hospitalization.LOCATOR_JORNAL_1).click() # открытие выпадающего таблицы
-        self.find_element(locators_hospitalization.LOCATOR_JORNAL_2).click() # выбор журнала
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_hospitalization.LOCATOR_PALLET_1).click()  #
-        self.find_element(locators_hospitalization.LOCATOR_PALLET_2).click()  #
-        self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_1).click() # окно выбора диагноза
-        self.find_element_pb()  # прогрессбар
-        search_string_2 = self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_2) # поиск диагноза Z00.0
-        search_string_2.send_keys(prm.g_disease) # ввод диагноза Z00.0
-        self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_3).click() # кнопка "Поиск"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_4).click() # кнопка "ОК"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_hospitalization.LOCATOR_CREATE_DIRECTION).click() # кнопка "ОК"
-        self.find_element_pb()  # прогрессбар
-        print('✅ Пациент записан на госпитализацию') # вывод
-
-    def patient_hospitalization(self):
-        self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform() # ПКМ по имени пациента
-        self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_1).click() # госпитализация пациента
-        self.find_element_pb()  # прогрессбар
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_2).click() # кнопка "Далее"
-        self.find_element_pb()  # прогрессбар
-        self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_3).click() # кнопка "ОК"
-        self.find_element_pb()  # прогрессбар
-        print('✅ Пациент госпитализирован') # вывод
-
-    def patient_cancel_hospitalization(self):
         try:
+            start_patient_hospitalization = time.time()
+            self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_1).click() # вкладка "Регистратура"
+            self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_2).click() # вкладка "Приемный покой"
+            self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_3).click() # вкладка "Журнал госпитализации"
+            self.find_element_pb()  # прогрессбар
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_PATIENT_REG_CONTAINER) # полная прогрузка элементов страницы
+            time.sleep(3)  # ожидание
+            self.actionchains(locators_hospitalization.LOCATOR_WINDOW_RCM_1).perform() # ПКМ по области окна
+            self.find_element(locators_hospitalization.LOCATOR_WINDOW_RCM_2).click() # добавить пациента для создания направления
+            self.find_element_pb()  # прогрессбар
+            self.find_element_pb()  # прогрессбар
+            time.sleep(2)
+            self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_1).click() # открытие окна для выбора пациента
+            self.find_element_pb()  # прогрессбар
+            search_string_1 = self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_2)  # окно ввода
+            search_string_1.send_keys(prm.patient_2) # указать карту пользователя
+            self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_3).click()  # кнопка "Найти"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_4).click()  # выбор пользователя "Тест Берем Карта"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_JORNAL_1).click() # открытие выпадающего таблицы
+            self.find_element(locators_hospitalization.LOCATOR_JORNAL_2).click() # выбор журнала
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_PALLET_1).click()  #
+            self.find_element(locators_hospitalization.LOCATOR_PALLET_2).click()  #
+            self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_1).click() # окно выбора диагноза
+            self.find_element_pb()  # прогрессбар
+            search_string_2 = self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_2) # поиск диагноза Z00.0
+            search_string_2.send_keys(prm.g_disease) # ввод диагноза Z00.0
+            self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_3).click() # кнопка "Поиск"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_4).click() # кнопка "ОК"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_CREATE_DIRECTION).click() # кнопка "ОК"
+            self.find_element_pb()  # прогрессбар
+            print('✅ Пациент записан на госпитализацию') # вывод
+        ###########след.этап########################################################################################
             self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform() # ПКМ по имени пациента
-            self.find_element(locators_hospitalization.LOCATOR_CANCEL_HOSPITALIZATION).click() # отмена госпитализации пациента
-        except ElementClickInterceptedException:
-            self.actionchains(locators_hospitalization.LOCATOR_WINDOW_RCM_1).click() # ЛКМ по области окна
-            self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform()  # ПКМ по имени пациента
-            self.find_element(locators_hospitalization.LOCATOR_CANCEL_HOSPITALIZATION).click()  # отмена госпитализации пациента
-        self.driver.switch_to.alert.accept()  # принятие всплывающего окна
-        self.find_element_pb()  # прогрессбар
-        print('✅ Госпитализация отменена') # вывод
-
-    def patient_delete_hospitalization(self):
-        self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform() # ПКМ по имени пациента
-        self.find_element(locators_hospitalization.LOCATOR_DELETE_HOSPITALIZATION).click() # удаление записи на госпитализацию
-        self.driver.switch_to.alert.accept()  # принятие всплывающего окна
-        self.find_element_pb()  # прогрессбар
-        print('✅ Запись на госпитализацию удалена') # вывод
+            self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_1).click() # госпитализация пациента
+            self.find_element_pb()  # прогрессбар
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_2).click() # кнопка "Далее"
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_3).click() # кнопка "ОК"
+            self.find_element_pb()  # прогрессбар
+            print('✅ Пациент госпитализирован') # вывод
+            ###########след.этап########################################################################################
+            try:
+                self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform() # ПКМ по имени пациента
+                self.find_element(locators_hospitalization.LOCATOR_CANCEL_HOSPITALIZATION).click() # отмена госпитализации пациента
+            except ElementClickInterceptedException:
+                self.actionchains(locators_hospitalization.LOCATOR_WINDOW_RCM_1).click() # ЛКМ по области окна
+                self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform()  # ПКМ по имени пациента
+                self.find_element(locators_hospitalization.LOCATOR_CANCEL_HOSPITALIZATION).click()  # отмена госпитализации пациента
+            self.driver.switch_to.alert.accept()  # принятие всплывающего окна
+            self.find_element_pb()  # прогрессбар
+            print('✅ Госпитализация отменена') # вывод
+            ###########след.этап########################################################################################
+            self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform() # ПКМ по имени пациента
+            self.find_element(locators_hospitalization.LOCATOR_DELETE_HOSPITALIZATION).click() # удаление записи на госпитализацию
+            self.driver.switch_to.alert.accept()  # принятие всплывающего окна
+            self.find_element_pb()  # прогрессбар
+            print('✅ Запись на госпитализацию удалена') # вывод
+            end_patient_hospitalization = time.time()
+            full_patient_hospitalization = end_patient_hospitalization - start_patient_hospitalization
+            print('   🔼 Модуль - "Госпитализация", выполнен за: ', round(full_patient_hospitalization, 2), 'с')
+        except Exception as error:
+            self.get_screenshots('Results/NSO_sc/Госпитализация.png')
+            print('❗️ Ошибка:', error)
+            self.driver.quit()

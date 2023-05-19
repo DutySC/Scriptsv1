@@ -13,28 +13,21 @@ def test_NSO_doctors_diary(browser_NSO):
     # test_NSO_login(browser_NSO)  # тест авторизации
     doctors_diary_test = doctors_diary(browser_NSO)
     doctors_diary_test.diary()
-    doctors_diary_test.diary_provide_service()
-    doctors_diary_test.diary_delite()
 
 def test_NSO_schedule(browser_NSO):
     # test_NSO_login(browser_NSO)  # тест авторизации
     patient_schedule_test = schedule(browser_NSO)
     patient_schedule_test.patient_schedule()
-    patient_schedule_test.patient_schedule_delete()
 
 def test_NSO_hospitalization(browser_NSO):
     # test_NSO_login(browser_NSO)  # тест авторизации
     patient_hospitalization_test = hospitalization(browser_NSO)
     patient_hospitalization_test.register_patient()
-    patient_hospitalization_test.patient_hospitalization()
-    patient_hospitalization_test.patient_cancel_hospitalization()
-    patient_hospitalization_test.patient_delete_hospitalization()
 
 def test_NSO_search_patient(browser_NSO):
     # test_NSO_login(browser_NSO)  # тест авторизации
     search_patient_test = search_patient(browser_NSO)
     search_patient_test.create_patient()
-    search_patient_test.delete_patient()
 
 # def test_NSO_full(self, browser_NSO):
 #     start = time.time()  # начало отсчета
