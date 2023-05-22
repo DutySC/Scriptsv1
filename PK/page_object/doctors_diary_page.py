@@ -64,7 +64,7 @@ class doctors_diary(BasePage):
                 self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click()  # кнопка "Запись"
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
-            time.sleep(3) # ожидание
+            time.sleep(5) # ожидание
             search_string_1 = self.find_element(locators_doctors_diary.LOCATOR_SEARCH_1) # поиск тестового пациента К002489
             search_string_1.send_keys(prm.patient) # ввод данных
             self.find_element(locators_doctors_diary.LOCATOR_SEARCH_2).click() # кнопка "Найти"
