@@ -58,9 +58,9 @@ class doctors_diary(BasePage):
                 self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click() # кнопка "Запись"
             except ElementClickInterceptedException:
                 self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click()  # кнопка "Запись"
-            self.find_element_pb()  # прогрессбар
-            self.find_element_pb()  # прогрессбар
-            time.sleep(3) # ожидание
+            self.find_element_pb(time=60)  # прогрессбар
+            self.find_element_pb(time=60)  # прогрессбар
+            time.sleep(5) # ожидание
             search_string_1 = self.find_element(locators_doctors_diary.LOCATOR_SEARCH_1) # поиск тестового пациента 11/003414
             search_string_1.send_keys(prm.patient_1) # ввод данных
             self.find_element(locators_doctors_diary.LOCATOR_SEARCH_2).click() # кнопка "Найти"
