@@ -46,6 +46,7 @@ class locators_doctors_diary:
 class doctors_diary(BasePage):
     def diary(self):
         try:
+            start_doctors_diary = time.time()
             self.find_element(locators_doctors_diary.LOCATOR_DIARY_1).click() # вкладка "Рабочие места"
             self.find_element(locators_doctors_diary.LOCATOR_DIARY_2).click() # вкладка "Дневник врача"
             start_diary = time.time() # начало отчета времени формирования окна
@@ -134,6 +135,9 @@ class doctors_diary(BasePage):
             self.find_element_pb()  # прогрессбар
             print('✅ Запись удалена') # вывод
             time.sleep(3) # ожидание
+            end_doctors_diary = time.time()
+            full_doctors_diary = end_doctors_diary - start_doctors_diary
+            print('   🔼 Модуль - "Дневник врача", выполнен за: ', round(full_doctors_diary, 2), 'с')
         except Exception as error:
             self.get_screenshots('Results/PK_sc/Дневник.png')
             print('❗️ Ошибка:', error)
