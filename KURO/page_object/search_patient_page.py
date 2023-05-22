@@ -138,7 +138,7 @@ class search_patient(BasePage):
             search_string_8.send_keys(prm.home) # указать номер дома
             self.find_element(search_patient_locators.LOCATOR_OK).click()  # кнопка "ОК"
             self.find_element_pb()  # прогрессбар
-            print('✅ Тестовый пользователь - создан') # вывод
+            print('✅ Тестовый пациент - создан')  # вывод
             ###########след.этап########################################################################################
             # self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_1).click() # вкладка "Еще"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_2).click() # вкладка "Словари"
@@ -190,7 +190,7 @@ class search_patient(BasePage):
             except TimeoutException:
                 time.sleep(10) # ожидание
                 pass
-            print('✅ Тестовый пользователь - удален') # вывод
+            print('✅ Тестовый пациент - удален')  # вывод
             end_search_patient = time.time()
             full_search_patient = end_search_patient - start_search_patient
             print('   🔼 Модуль - "Поиск пациентов", выполнен за: ', round(full_search_patient, 2), 'с')
