@@ -131,6 +131,7 @@ class search_patient(BasePage):
             self.find_element(search_patient_locators.LOCATOR_AREA_OK).click()  # кнопка "Ок"
             self.find_element_pb()  # прогрессбар
             self.find_element(search_patient_locators.LOCATOR_ENTER_AREA).click()  # ввод адреса
+            self.find_element_pb()  # прогрессбар
             self.find_element(search_patient_locators.LOCATOR_CHOOSE_ABAKANSKAYA).click()
             self.find_element_pb()  # прогрессбар
             search_string_9 = self.find_element(search_patient_locators.LOCATOR_HOME)  # выбрать дом
