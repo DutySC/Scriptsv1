@@ -4,6 +4,12 @@ from telebot import types
 bot = telebot.TeleBot('6149957194:AAHvsUnLJPLMWzxHPUQik6dhqxRSZziuV0w')
 requests.get('https://t.me/@TestMapInChatBot')
 
+groups = [1158889635, -1001742179859]  # chat id
+
+@bot.message_handler(func=lambda message: message.chat.id not in groups)
+def some(message):
+    bot.send_message(message.chat.id, 'Доступ ограничен')
+
 def remove_pic(name):
     try:
         os.remove("".join(glob.glob('./Results/'+name+'/*')))
@@ -40,12 +46,15 @@ def send_pic(message, name):
 @bot.message_handler(commands=["start"])
 def any_msg(message):
     markup = types.InlineKeyboardMarkup()
-    btn1 = types.InlineKeyboardButton(text="Приморье", callback_data="PROD_PK")
-    btn2 = types.InlineKeyboardButton(text="НСО", callback_data="PROD_NSO")
-    btn3 = types.InlineKeyboardButton(text="Ростов", callback_data="PROD_RO")
-    btn4 = types.InlineKeyboardButton(text="Курск", callback_data="PROD_KURO")
-    markup.add(btn1, btn2, btn3, btn4)
-    bot.send_message(message.chat.id, "Выбирите регион/отдельного клиента, для тестирования\nкрит. модулей продуктивного стенда сервиса - МИС", reply_markup=markup)
+    btn1 = types.InlineKeyboardButton(text="Приморский край", callback_data="PROD_PK")
+    btn2 = types.InlineKeyboardButton(text="Новосибирская область", callback_data="PROD_NSO")
+    btn3 = types.InlineKeyboardButton(text="Ростовская область", callback_data="PROD_RO")
+    btn4 = types.InlineKeyboardButton(text="Курская область", callback_data="PROD_KURO")
+    markup.add(btn1)
+    markup.add(btn2)
+    markup.add(btn3)
+    markup.add(btn4)
+    bot.send_message(message.chat.id, "Выберите регион/отдельного клиента, для тестирования\nкрит. модулей продуктивного стенда сервиса - МИС", reply_markup=markup)
 
 @bot.message_handler(commands=["help"])
 def help_msg(message):
@@ -54,20 +63,14 @@ def help_msg(message):
     markup.add(btn1)
     bot.send_message(message.chat.id, 'Правила по эксплуатации бота:\n * нельзя запускать несколько тестов подряд\n * если возникла проблема во время создании записи/тестовго пациента - самостоятельно удалить запись/тестовго пациента**\n * пользоваться ботом только в чате - "PROD AUTO-TEST (DutySC)"\n * в случае возникновении вопросов/предложений обращаться через "Контакты"', reply_markup=markup)
 
-@bot.callback_query_handler(func=lambda call: True)
-def callback_inline_2(call):
-    # Если сообщение из чата с ботом
-    if call.message:
-        if call.data == "contacts":
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Разработчик - Ахтямов Тимур (@ELCUY)\nРуководитель отдела - Григорий Ефремов (@greegree)")
-        else:
-            pass
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline_1(call):
     # Если сообщение из чата с ботом
     if call.message:
-        if call.data == "PROD_PK":
+        if call.data == "contacts":
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Разработчик - Ахтямов Тимур (@ELCUY)\nРуководитель отдела - Григорий Ефремов (@greegree)")
+        elif call.data == "PROD_PK":
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда - Приморья 🔽")
             remove_pic('PK_sc')
             os.system('pytest -s test_PK.py > Results/PK.log')  # команда запуска скрипта test_PK.py и запись результата в файл logs.txt
@@ -76,6 +79,7 @@ def callback_inline_1(call):
                 opt_1 = re.sub(r'\s[.]', '\n', f)  # удаление точек в логах
                 opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
                 opt_3 = re.sub(r'\D[=]', '', opt_2)
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🟢Закончена проверка крит. модулей продуктивного стенда - Приморья 🔽")
             bot.send_message(call.message.chat.id, opt_3)  # ответ бота с выводом результата тестирования
             send_pic(call.message, 'PK_sc')
         elif call.data == "PROD_NSO":
