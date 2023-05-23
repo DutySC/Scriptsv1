@@ -10,6 +10,19 @@ groups = [1158889635, -1001742179859]  # chat id
 def some(message):
     bot.send_message(message.chat.id, 'Доступ ограничен')
 
+def autotest_prod(message, test_name, log, directory_name, address, region):
+    bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда - <a href='"+address+"'>"+region+"</a> 🔽", parse_mode='html')
+    remove_pic(directory_name)
+    os.system('pytest -s '+test_name+' > Results/'+log+'')  # команда запуска скрипта test_PK.py и запись результата в файл logs.txt
+    with open('Results/'+log+'', 'r', -1, 'utf-8') as fi:
+        f = fi.read()[186:1100]  # отчет о тестировании
+        opt_1 = re.sub(r'\s[.]', '\n', f)  # удаление точек в логах
+        opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
+        opt_3 = re.sub(r'\D[=]', '', opt_2)
+    bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🟢Закончена проверка крит. модулей продуктивного стенда - <a href='"+address+"'>"+region+"</a> 🔽", parse_mode='html')
+    bot.send_message(message.chat.id, opt_3)  # ответ бота с выводом результата тестирования
+    send_pic(message, directory_name)
+
 def remove_pic(name):
     try:
         os.remove("".join(glob.glob('./Results/'+name+'/*')))
@@ -61,7 +74,7 @@ def help_msg(message):
     markup = types.InlineKeyboardMarkup()
     btn1 = types.InlineKeyboardButton(text="Контакты", callback_data="contacts")
     markup.add(btn1)
-    bot.send_message(message.chat.id, 'Правила по эксплуатации бота:\n * нельзя запускать несколько тестов подряд\n * если возникла проблема во время создании записи/тестовго пациента - самостоятельно удалить запись/тестовго пациента**\n * пользоваться ботом только в чате - "PROD AUTO-TEST (DutySC)"\n * в случае возникновении вопросов/предложений обращаться через "Контакты"', reply_markup=markup)
+    bot.send_message(message.chat.id, '<b>Правила по эксплуатации бота:\n * нельзя запускать несколько тестов подряд\n * если возникла проблема во время создании записи/тестовго пациента - самостоятельно удалить запись/тестовго пациента**\n * пользоваться ботом только в чате - "PROD AUTO-TEST (DutySC)"\n * в случае возникновении вопросов/предложений обращаться через "Контакты"</b>', reply_markup=markup, parse_mode='html')
 
 
 @bot.callback_query_handler(func=lambda call: True)
@@ -71,50 +84,46 @@ def callback_inline_1(call):
         if call.data == "contacts":
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Разработчик - Ахтямов Тимур (@ELCUY)\nРуководитель отдела - Григорий Ефремов (@greegree)")
         elif call.data == "PROD_PK":
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда - Приморья 🔽")
-            remove_pic('PK_sc')
-            os.system('pytest -s test_PK.py > Results/PK.log')  # команда запуска скрипта test_PK.py и запись результата в файл logs.txt
-            with open('Results/PK.log', 'r', -1, 'utf-8') as fi:
-                f = fi.read()[186:1100]  # отчет о тестировании
-                opt_1 = re.sub(r'\s[.]', '\n', f)  # удаление точек в логах
-                opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
-                opt_3 = re.sub(r'\D[=]', '', opt_2)
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🟢Закончена проверка крит. модулей продуктивного стенда - Приморья 🔽")
-            bot.send_message(call.message.chat.id, opt_3)  # ответ бота с выводом результата тестирования
-            send_pic(call.message, 'PK_sc')
+            autotest_prod(call.message, test_name='test_PK.py', log='PK.log', directory_name='PK_sc', address='https://192.168.233.171:25443/', region='Приморья')
         elif call.data == "PROD_NSO":
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда - НСО 🔽")
-            remove_pic('NSO_sc')
-            os.system('pytest -s test_NSO.py > Results/NSO.log')  # команда запуска скрипта test_NSO.py и запись результата в файл logs.txt
-            with open('Results/NSO.log', 'r', -1, 'utf-8') as fi:
-                f = fi.read()[186:1100]  # отчет о тестировании
-                opt_1 = re.sub(r'\s[.]', '\n', f)
-                opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
-                opt_3 = re.sub(r'\D[=]', '', opt_2)
-            bot.send_message(call.message.chat.id, opt_3)  # ответ бота с выводом результата тестирования
-            send_pic(call.message, 'NSO_sc')
+            autotest_prod(call.message, test_name='test_NSO.py', log='NSO.log', directory_name='NSO_sc', address='http://192.168.233.169:3980', region='НСО')
+            # bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда - <a href='http://192.168.233.169:3980'>НСО</a> 🔽", parse_mode='html')
+            # remove_pic('NSO_sc')
+            # os.system('pytest -s test_NSO.py > Results/NSO.log')  # команда запуска скрипта test_NSO.py и запись результата в файл logs.txt
+            # with open('Results/NSO.log', 'r', -1, 'utf-8') as fi:
+            #     f = fi.read()[186:1100]  # отчет о тестировании
+            #     opt_1 = re.sub(r'\s[.]', '\n', f)
+            #     opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
+            #     opt_3 = re.sub(r'\D[=]', '', opt_2)
+            # bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🟢Закончена проверка крит. модулей продуктивного стенда - <a href='http://192.168.233.169:3980'>НСО</a> 🔽", parse_mode='html')
+            # bot.send_message(call.message.chat.id, opt_3)  # ответ бота с выводом результата тестирования
+            # send_pic(call.message, 'NSO_sc')
         elif call.data == "PROD_RO":
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда - Ростова 🔽")
-            remove_pic('RO_sc')
-            os.system('pytest -s test_RO.py > Results/RO.log')  # команда запуска скрипта test_RO.py и запись результата в файл logs.txt
-            with open('Results/RO.log', 'r', -1, 'utf-8') as fi:
-                f = fi.read()[186:1100]  # отчет о тестировании
-                opt_1 = re.sub(r'\s[.]', '\n', f)
-                opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
-                opt_3 = re.sub(r'\D[=]', '', opt_2)
-            bot.send_message(call.message.chat.id, opt_3)  # ответ бота с выводом результата тестирования
-            send_pic(call.message, 'RO_sc')
+            autotest_prod(call.message, test_name='test_RO.py', log='RO.log', directory_name='RO_sc', address='http://192.168.233.98:61027/', region='Ростова')
+            # bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда - <a href='http://192.168.233.98:61027/'>Ростова</a> 🔽", parse_mode='html')
+            # remove_pic('RO_sc')
+            # os.system('pytest -s test_RO.py > Results/RO.log')  # команда запуска скрипта test_RO.py и запись результата в файл logs.txt
+            # with open('Results/RO.log', 'r', -1, 'utf-8') as fi:
+            #     f = fi.read()[186:1100]  # отчет о тестировании
+            #     opt_1 = re.sub(r'\s[.]', '\n', f)
+            #     opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
+            #     opt_3 = re.sub(r'\D[=]', '', opt_2)
+            # bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🟢Закончена проверка крит. модулей продуктивного стенда - <a href='http://192.168.233.98:61027/'>Ростова</a> 🔽", parse_mode='html')
+            # bot.send_message(call.message.chat.id, opt_3)  # ответ бота с выводом результата тестирования
+            # send_pic(call.message, 'RO_sc')
         elif call.data == "PROD_KURO":
-            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда - Курска 🔽")
-            remove_pic('KURO_sc')
-            os.system('pytest -s test_KURO.py > Results/KURO.log')  # команда запуска скрипта test_KURO.py и запись результата в файл logs.txt
-            with open('Results/KURO.log', 'r', -1, 'utf-8') as fi:
-                f = fi.read()[186:1100]  # отчет о тестировании
-                opt_1 = re.sub(r'\s[.]', '\n', f)
-                opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
-                opt_3 = re.sub(r'\D[=]', '', opt_2)
-            bot.send_message(call.message.chat.id, opt_3)  # ответ бота с выводом результата тестирования
-            send_pic(call.message, 'KURO_sc')
+            autotest_prod(call.message, test_name='test_KURO.py', log='KURO.log', directory_name='KURO_sc', address='http://192.168.234.14:7280/', region='Курска')
+            # bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда - <a href='http://192.168.234.14:7280/'>Курска</a> 🔽", parse_mode='html')
+            # remove_pic('KURO_sc')
+            # os.system('pytest -s test_KURO.py > Results/KURO.log')  # команда запуска скрипта test_KURO.py и запись результата в файл logs.txt
+            # with open('Results/KURO.log', 'r', -1, 'utf-8') as fi:
+            #     f = fi.read()[186:1100]  # отчет о тестировании
+            #     opt_1 = re.sub(r'\s[.]', '\n', f)
+            #     opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
+            #     opt_3 = re.sub(r'\D[=]', '', opt_2)
+            # bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="🟢Закончена проверка крит. модулей продуктивного стенда - <a href='http://192.168.234.14:7280/'>Курска</a> 🔽", parse_mode='html')
+            # bot.send_message(call.message.chat.id, opt_3)  # ответ бота с выводом результата тестирования
+            # send_pic(call.message, 'KURO_sc')
 
 # #Тестирование кнопки назад
 # @bot.message_handler(commands=["start","help"])

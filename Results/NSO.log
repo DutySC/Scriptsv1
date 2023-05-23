@@ -1,15 +1,14 @@
-============================= test session starts =============================
-platform win32 -- Python 3.10.9, pytest-7.2.2, pluggy-1.0.0
-rootdir: C:\Users\timur\PycharmProjects\pythonProject\Scriptsv0.7
-plugins: allure-pytest-2.13.0, html-3.2.0, metadata-2.0.4
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-7.2.2, pluggy-1.0.0
+rootdir: /Users/timurahtyamov/PycharmProjects/Scriptsv1
 collected 1 item
 
 test_NSO.py E
 
-=================================== ERRORS ====================================
-_____________________ ERROR at setup of Test_NSO.test_NSO _____________________
+==================================== ERRORS ====================================
+_____________________ ERROR at setup of Test_NSO.test_NSO ______________________
 
-self = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
+self = <urllib3.connection.HTTPConnection object at 0x1029ad090>
 
     def _new_conn(self):
         """Establish a socket connection and set nodelay settings on it.
@@ -28,8 +27,8 @@ self = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
                 (self._dns_host, self.port), self.timeout, **extra_kw
             )
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py:174: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/connection.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 address = ('172.17.0.2', 4444), timeout = None, source_address = None
 socket_options = [(6, 1, 1)]
@@ -94,8 +93,8 @@ socket_options = [(6, 1, 1)]
         if err is not None:
 >           raise err
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\connection.py:95: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/util/connection.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 address = ('172.17.0.2', 4444), timeout = None, source_address = None
 socket_options = [(6, 1, 1)]
@@ -149,19 +148,19 @@ socket_options = [(6, 1, 1)]
                 if source_address:
                     sock.bind(source_address)
 >               sock.connect(sa)
-E               TimeoutError: [WinError 10060] Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера
+E               OSError: [Errno 51] Network is unreachable
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\connection.py:85: TimeoutError
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/util/connection.py:85: OSError
 
 During handling of the above exception, another exception occurred:
 
-self = <urllib3.connectionpool.HTTPConnectionPool object at 0x0000023CF096A9B0>
+self = <urllib3.connectionpool.HTTPConnectionPool object at 0x102960710>
 method = 'POST', url = '/wd/hub/session'
 body = '{"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "goog:ch...e-logging"], "extensions": [], "args": ["--ignore-certificate-errors", "--ignore-ssl-errors", "--start-maximized"]}}}}'
-headers = {'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json;charset=UTF-8', 'User-Agent': 'selenium/4.8.2 (python windows)'}
+headers = {'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json;charset=UTF-8', 'User-Agent': 'selenium/4.8.2 (python mac)'}
 retries = Retry(total=0, connect=None, read=None, redirect=None, status=None)
 redirect = False, assert_same_host = False
-timeout = <object object at 0x0000023CED62A0F0>, pool_timeout = None
+timeout = <object object at 0x100d84e90>, pool_timeout = None
 release_conn = True, chunked = False, body_pos = None
 response_kw = {'request_url': 'http://172.17.0.2:4444/wd/hub/session'}
 parsed_url = Url(scheme=None, auth=None, host=None, port=None, path='/wd/hub/session', query=None, fragment=None)
@@ -359,14 +358,14 @@ http_tunnel_required = False, err = None, clean_exit = False
                 chunked=chunked,
             )
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:703: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/connectionpool.py:703: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <urllib3.connectionpool.HTTPConnectionPool object at 0x0000023CF096A9B0>
-conn = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
+self = <urllib3.connectionpool.HTTPConnectionPool object at 0x102960710>
+conn = <urllib3.connection.HTTPConnection object at 0x1029ad090>
 method = 'POST', url = '/wd/hub/session'
 timeout = Timeout(connect=None, read=None, total=None), chunked = False
-httplib_request_kw = {'body': '{"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal",...ion': 'keep-alive', 'Content-Type': 'application/json;charset=UTF-8', 'User-Agent': 'selenium/4.8.2 (python windows)'}}
+httplib_request_kw = {'body': '{"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal",...nection': 'keep-alive', 'Content-Type': 'application/json;charset=UTF-8', 'User-Agent': 'selenium/4.8.2 (python mac)'}}
 timeout_obj = Timeout(connect=None, read=None, total=None)
 
     def _make_request(
@@ -408,13 +407,13 @@ timeout_obj = Timeout(connect=None, read=None, total=None)
             else:
 >               conn.request(method, url, **httplib_request_kw)
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:398: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/connectionpool.py:398: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
+self = <urllib3.connection.HTTPConnection object at 0x1029ad090>
 method = 'POST', url = '/wd/hub/session'
 body = '{"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "goog:ch...e-logging"], "extensions": [], "args": ["--ignore-certificate-errors", "--ignore-ssl-errors", "--start-maximized"]}}}}'
-headers = {'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json;charset=UTF-8', 'User-Agent': 'selenium/4.8.2 (python windows)'}
+headers = {'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json;charset=UTF-8', 'User-Agent': 'selenium/4.8.2 (python mac)'}
 
     def request(self, method, url, body=None, headers=None):
         # Update the inner socket's timeout value to send the request.
@@ -431,26 +430,26 @@ headers = {'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Ty
             headers["User-Agent"] = _get_default_user_agent()
 >       super(HTTPConnection, self).request(method, url, body=body, headers=headers)
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py:244: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/connection.py:244: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
+self = <urllib3.connection.HTTPConnection object at 0x1029ad090>
 method = 'POST', url = '/wd/hub/session'
 body = '{"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "goog:ch...e-logging"], "extensions": [], "args": ["--ignore-certificate-errors", "--ignore-ssl-errors", "--start-maximized"]}}}}'
-headers = {'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json;charset=UTF-8', 'User-Agent': 'selenium/4.8.2 (python windows)'}
+headers = {'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json;charset=UTF-8', 'User-Agent': 'selenium/4.8.2 (python mac)'}
 
     def request(self, method, url, body=None, headers={}, *,
                 encode_chunked=False):
         """Send a complete request to the server."""
 >       self._send_request(method, url, body, headers, encode_chunked)
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\http\client.py:1282: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/http/client.py:1283: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
+self = <urllib3.connection.HTTPConnection object at 0x1029ad090>
 method = 'POST', url = '/wd/hub/session'
 body = b'{"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "goog:c...e-logging"], "extensions": [], "args": ["--ignore-certificate-errors", "--ignore-ssl-errors", "--start-maximized"]}}}}'
-headers = {'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json;charset=UTF-8', 'User-Agent': 'selenium/4.8.2 (python windows)'}
+headers = {'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json;charset=UTF-8', 'User-Agent': 'selenium/4.8.2 (python mac)'}
 encode_chunked = False
 
     def _send_request(self, method, url, body, headers, encode_chunked):
@@ -499,10 +498,10 @@ encode_chunked = False
             body = _encode(body, 'body')
 >       self.endheaders(body, encode_chunked=encode_chunked)
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\http\client.py:1328: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/http/client.py:1329: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
+self = <urllib3.connection.HTTPConnection object at 0x1029ad090>
 message_body = b'{"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "goog:c...e-logging"], "extensions": [], "args": ["--ignore-certificate-errors", "--ignore-ssl-errors", "--start-maximized"]}}}}'
 
     def endheaders(self, message_body=None, *, encode_chunked=False):
@@ -518,10 +517,10 @@ message_body = b'{"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserN
             raise CannotSendHeader()
 >       self._send_output(message_body, encode_chunked=encode_chunked)
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\http\client.py:1277: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/http/client.py:1278: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
+self = <urllib3.connection.HTTPConnection object at 0x1029ad090>
 message_body = b'{"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "goog:c...e-logging"], "extensions": [], "args": ["--ignore-certificate-errors", "--ignore-ssl-errors", "--start-maximized"]}}}}'
 encode_chunked = False
 
@@ -536,11 +535,11 @@ encode_chunked = False
         del self._buffer[:]
 >       self.send(msg)
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\http\client.py:1037: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/http/client.py:1038: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
-data = b'POST /wd/hub/session HTTP/1.1\r\nHost: 172.17.0.2:4444\r\nAccept-Encoding: identity\r\nContent-Length: 276\r\nAccept...-Type: application/json;charset=UTF-8\r\nUser-Agent: selenium/4.8.2 (python windows)\r\nConnection: keep-alive\r\n\r\n'
+self = <urllib3.connection.HTTPConnection object at 0x1029ad090>
+data = b'POST /wd/hub/session HTTP/1.1\r\nHost: 172.17.0.2:4444\r\nAccept-Encoding: identity\r\nContent-Length: 276\r\nAccept...tent-Type: application/json;charset=UTF-8\r\nUser-Agent: selenium/4.8.2 (python mac)\r\nConnection: keep-alive\r\n\r\n'
 
     def send(self, data):
         """Send `data' to the server.
@@ -552,18 +551,18 @@ data = b'POST /wd/hub/session HTTP/1.1\r\nHost: 172.17.0.2:4444\r\nAccept-Encodi
             if self.auto_open:
 >               self.connect()
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\http\client.py:975: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/http/client.py:976: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
+self = <urllib3.connection.HTTPConnection object at 0x1029ad090>
 
     def connect(self):
 >       conn = self._new_conn()
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py:205: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/connection.py:205: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
+self = <urllib3.connection.HTTPConnection object at 0x1029ad090>
 
     def _new_conn(self):
         """Establish a socket connection and set nodelay settings on it.
@@ -583,14 +582,19 @@ self = <urllib3.connection.HTTPConnection object at 0x0000023CF096B130>
             )
     
         except SocketTimeout:
->           raise ConnectTimeoutError(
+            raise ConnectTimeoutError(
                 self,
                 "Connection to %s timed out. (connect timeout=%s)"
                 % (self.host, self.timeout),
             )
-E           urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x0000023CF096B130>, 'Connection to 172.17.0.2 timed out. (connect timeout=None)')
+    
+        except SocketError as e:
+>           raise NewConnectionError(
+                self, "Failed to establish a new connection: %s" % e
+            )
+E           urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1029ad090>: Failed to establish a new connection: [Errno 51] Network is unreachable
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py:179: ConnectTimeoutError
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/connection.py:186: NewConnectionError
 
 During handling of the above exception, another exception occurred:
 
@@ -607,38 +611,38 @@ During handling of the above exception, another exception occurred:
 >       driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
 
 conftest.py:80: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py:286: in __init__
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py:286: in __init__
     self.start_session(capabilities, browser_profile)
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py:378: in start_session
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py:378: in start_session
     response = self.execute(Command.NEW_SESSION, parameters)
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py:438: in execute
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py:438: in execute
     response = self.command_executor.execute(driver_command, params)
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\remote_connection.py:290: in execute
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/selenium/webdriver/remote/remote_connection.py:290: in execute
     return self._request(command_info[0], url, body=data)
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\remote_connection.py:311: in _request
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/selenium/webdriver/remote/remote_connection.py:311: in _request
     response = self._conn.request(method, url, body=body, headers=headers)
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\request.py:78: in request
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/request.py:78: in request
     return self.request_encode_body(
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\request.py:170: in request_encode_body
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/request.py:170: in request_encode_body
     return self.urlopen(method, url, **extra_kw)
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\poolmanager.py:376: in urlopen
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/poolmanager.py:376: in urlopen
     response = conn.urlopen(method, u.request_uri, **kw)
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:815: in urlopen
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/connectionpool.py:815: in urlopen
     return self.urlopen(
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:815: in urlopen
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/connectionpool.py:815: in urlopen
     return self.urlopen(
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:815: in urlopen
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/connectionpool.py:815: in urlopen
     return self.urlopen(
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:787: in urlopen
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/connectionpool.py:787: in urlopen
     retries = retries.increment(
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 self = Retry(total=0, connect=None, read=None, redirect=None, status=None)
 method = 'POST', url = '/wd/hub/session', response = None
-error = ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023CF096B130>, 'Connection to 172.17.0.2 timed out. (connect timeout=None)')
-_pool = <urllib3.connectionpool.HTTPConnectionPool object at 0x0000023CF096A9B0>
-_stacktrace = <traceback object at 0x0000023CF096F640>
+error = NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1029ad090>: Failed to establish a new connection: [Errno 51] Network is unreachable')
+_pool = <urllib3.connectionpool.HTTPConnectionPool object at 0x102960710>
+_stacktrace = <traceback object at 0x1029ad980>
 
     def increment(
         self,
@@ -729,13 +733,13 @@ _stacktrace = <traceback object at 0x0000023CF096F640>
     
         if new_retry.is_exhausted():
 >           raise MaxRetryError(_pool, url, error or ResponseError(cause))
-E           urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='172.17.0.2', port=4444): Max retries exceeded with url: /wd/hub/session (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023CF096B130>, 'Connection to 172.17.0.2 timed out. (connect timeout=None)'))
+E           urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='172.17.0.2', port=4444): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1029ad090>: Failed to establish a new connection: [Errno 51] Network is unreachable'))
 
-..\..\..\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\retry.py:592: MaxRetryError
------------------------------ Captured log setup ------------------------------
-WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023CF096ABF0>, 'Connection to 172.17.0.2 timed out. (connect timeout=None)')': /wd/hub/session
-WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023CF096AEC0>, 'Connection to 172.17.0.2 timed out. (connect timeout=None)')': /wd/hub/session
-WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000023CF096AFE0>, 'Connection to 172.17.0.2 timed out. (connect timeout=None)')': /wd/hub/session
-=========================== short test summary info ===========================
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/urllib3/util/retry.py:592: MaxRetryError
+------------------------------ Captured log setup ------------------------------
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1027224d0>: Failed to establish a new connection: [Errno 51] Network is unreachable')': /wd/hub/session
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1029a7050>: Failed to establish a new connection: [Errno 51] Network is unreachable')': /wd/hub/session
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1029ac110>: Failed to establish a new connection: [Errno 51] Network is unreachable')': /wd/hub/session
+=========================== short test summary info ============================
 ERROR test_NSO.py::Test_NSO::test_NSO - urllib3.exceptions.MaxRetryError: HTT...
-========================= 1 error in 84.57s (0:01:24) =========================
+============================== 1 error in 17.20s ===============================
