@@ -92,7 +92,7 @@ class schedule(BasePage):
             full_patient_schedule = end_patient_schedule - start_patient_schedule
             print('   🔼 Модуль - "Расписание", выполнен за: ', round(full_patient_schedule, 2), 'с')
         except Exception as error:
-            self.get_screenshots('Results/PK_sc/Расписание.png')
+            self.get_screenshots('Results/Results_sc/Расписание.png')
             print('❗️ Ошибка:', error)
             self.driver.quit()
 

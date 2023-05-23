@@ -139,7 +139,7 @@ class doctors_diary(BasePage):
             full_doctors_diary = end_doctors_diary - start_doctors_diary
             print('   🔼 Модуль - "Дневник врача", выполнен за: ', round(full_doctors_diary, 2), 'с')
         except Exception as error:
-            self.get_screenshots('Results/PK_sc/Дневник.png')
+            self.get_screenshots('Results/Results_sc/Дневник.png')
             print('❗️ Ошибка:', error)
             self.driver.quit()
 

@@ -16,6 +16,7 @@ class login_locators:
 class login(BasePage):
     def auth(self):
         try:
+            print('Курска 🔽')
             user = self.find_element(login_locators.LOCATOR_USER) # логин
             user.send_keys(prm.login) # ввод логина
             paswd = self.find_element(login_locators.LOCATOR_PASWD) # пароль
@@ -47,6 +48,6 @@ class login(BasePage):
             full_auth = full_auth_1 + full_auth_2 # полное время модуля авторизации
             print('   🔼 Модуль - "Авторизация", выполнен за: ', round(full_auth, 2), 'с') # вывод полного времени модуля авторизации
         except Exception as error:
-            self.get_screenshots('Results/KURO_sc/Авторизация.png')
+            self.get_screenshots('Results/Results_sc/Авторизация.png')
             print('❗️ Ошибка:', error)
             self.driver.quit()

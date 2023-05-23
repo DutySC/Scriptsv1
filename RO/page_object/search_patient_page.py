@@ -192,6 +192,6 @@ class search_patient(BasePage):
             full_search_patient = end_search_patient - start_search_patient
             print('   🔼 Модуль - "Поиск пациентов", выполнен за: ', round(full_search_patient, 2), 'с')
         except Exception as error:
-            self.get_screenshots('Results/RO_sc/Поиск.png')
+            self.get_screenshots('Results/Results_sc/Поиск.png')
             print('❗️ Ошибка:', error)
             self.driver.quit()
