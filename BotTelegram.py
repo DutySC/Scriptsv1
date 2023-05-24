@@ -51,8 +51,8 @@ def autotest_prod(message, test_name, address):
     with open('Results/Results.log', 'r', -1, 'utf-8') as fi:
         f = fi.read()[187:1100]  # отчет о тестировании
         opt_1 = re.sub(r'\s[.]', '\n', f)  # удаление точек в логах
-        opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
-        opt_3 = re.sub(r'\D[=]', '', opt_2)
+        opt_2 = re.sub(r'\D[=]', ' ', opt_1)  # редактирование последней строчки
+        opt_3 = re.sub(r'\D[=]', ' ', opt_2)
     bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🟢Закончена проверка крит. модулей продуктивного стенда <a href='"+address+"'><u><b>"+test_name+"🔽</b></u></a>", parse_mode='html')
     bot.send_message(message.chat.id, opt_3)
     send_pic(message, 'Results_sc')
