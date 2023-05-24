@@ -5,23 +5,11 @@ bot = telebot.TeleBot('6149957194:AAHvsUnLJPLMWzxHPUQik6dhqxRSZziuV0w')
 requests.get('https://t.me/@TestMapInChatBot')
 
 groups = [1158889635, -1001742179859]  # chat id
-dict = {'test_PK.py': 'https://192.168.233.171:25443/', 'test_NSO.py': 'http://192.168.233.169:3980/', 'test_RO.py': 'http://192.168.233.98:61027/', 'test_KURO.py': 'http://192.168.234.14:7280/'}
+dict = {'Приморья': 'https://192.168.233.171:25443/', 'НСО': 'http://192.168.233.169:3980/', 'Ростова': 'http://192.168.233.98:61027/', 'Курска': 'http://192.168.234.14:7280/'}
 
 @bot.message_handler(func=lambda message: message.chat.id not in groups)
 def some(message):
     bot.send_message(message.chat.id, 'Доступ ограничен')
-
-def autotest_prod(message, test_name, address):
-    bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда", parse_mode='html')
-    remove_pic('Results_sc')
-    os.system('pytest -s '+test_name+' > Results/Results.log')  # команда запуска скрипта test_PK.py и запись результата в файл logs.txt
-    with open('Results/Results.log', 'r', -1, 'utf-8') as fi:
-        f = fi.read()[227:1000]  # отчет о тестировании
-        opt_1 = re.sub(r'\s[.]', '\n', f)  # удаление точек в логах
-        opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
-        opt_3 = re.sub(r'\D[=]', '', opt_2)
-    bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🟢Закончена проверка крит. модулей продуктивного <a href='"+address+"'>"'<u><b>стенда</b></u>'"</a>"' - '+opt_3+"", parse_mode='html')
-    send_pic(message, 'Results_sc')
 
 def remove_pic(name):
     try:
@@ -56,13 +44,24 @@ def send_pic(message, name):
     except Exception:
         pass
 
+def autotest_prod(message, test_name, address):
+    bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда <a href='"+address+"'>"'<u><b>'+test_name+'</b></u>'"</a>\n", parse_mode='html')
+    remove_pic('Results_sc')
+    os.system('pytest -s '+test_name+'.py > Results/Results.log')  # команда запуска скрипта test.py и запись результата в файл logs.txt
+    with open('Results/Results.log', 'r', -1, 'utf-8') as fi:
+        f = fi.read()[190:975]  # отчет о тестировании
+        opt_1 = re.sub(r'\s[.]', '\n', f)  # удаление точек в логах
+        opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
+    bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🟢Закончена проверка крит. модулей продуктивного стенда <a href='"+address+"'>"'<u><b>'+test_name+'🔽</b></u>'"</a>"+opt_2+"", parse_mode='html')
+    send_pic(message, 'Results_sc')
+
 @bot.message_handler(commands=["start"])
 def any_msg(message):
     markup = types.InlineKeyboardMarkup()
-    btn1 = types.InlineKeyboardButton(text="Приморский край", callback_data="test_PK.py")
-    btn2 = types.InlineKeyboardButton(text="Новосибирская область", callback_data="test_NSO.py")
-    btn3 = types.InlineKeyboardButton(text="Ростовская область", callback_data="test_RO.py")
-    btn4 = types.InlineKeyboardButton(text="Курская область", callback_data="test_KURO.py")
+    btn1 = types.InlineKeyboardButton(text="Приморский край", callback_data="Приморья")
+    btn2 = types.InlineKeyboardButton(text="Новосибирская область", callback_data="НСО")
+    btn3 = types.InlineKeyboardButton(text="Ростовская область", callback_data="Ростова")
+    btn4 = types.InlineKeyboardButton(text="Курская область", callback_data="Курска")
     markup.add(btn1)
     markup.add(btn2)
     markup.add(btn3)
@@ -134,7 +133,7 @@ def callback_inline_1(call):
 #     elif message.text == 'Тест Приморья':
 #         remove_pic('PK_sc')
 #         bot.send_message(message.chat.id, '🔴Начата проверка крит. модулей продуктивного стенда - Приморья 🔽')
-#         os.system('pytest -s test_PK.py > Results/PK.log')  # команда запуска скрипта test_PK.py и запись результата в файл logs.txt
+#         os.system('pytest -s Приморья.py > Results/PK.log')  # команда запуска скрипта Приморья.py и запись результата в файл logs.txt
 #         with open('Results/PK.log', 'r', -1, 'utf-8') as fi:
 #             f = fi.read()[186:1100]  # отчет о тестировании
 #             opt_1 = re.sub(r'\s[.]', '\n', f) #удаление точек в логах
@@ -146,7 +145,7 @@ def callback_inline_1(call):
 #     elif message.text == 'Тест Новосибирска':
 #         remove_pic('NSO_sc')
 #         bot.send_message(message.chat.id, '🔴Начата проверка крит. модулей продуктивного стенда - НСО 🔽')
-#         os.system('pytest -s test_NSO.py > Results/NSO.log')  # команда запуска скрипта test_NSO.py и запись результата в файл logs.txt
+#         os.system('pytest -s НСО.py > Results/NSO.log')  # команда запуска скрипта НСО.py и запись результата в файл logs.txt
 #         with open('Results/NSO.log', 'r', -1, 'utf-8') as fi:
 #             f = fi.read()[186:1100]  # отчет о тестировании
 #             opt_1 = re.sub(r'\s[.]', '\n', f)
@@ -158,7 +157,7 @@ def callback_inline_1(call):
 #     elif message.text == 'Тест Курска':
 #         remove_pic('KURO_sc')
 #         bot.send_message(message.chat.id, '🔴Начата проверка крит. модулей продуктивного стенда - Курска 🔽')
-#         os.system('pytest -s test_KURO.py > Results/KURO.log')  # команда запуска скрипта test_KURO.py и запись результата в файл logs.txt
+#         os.system('pytest -s Курска.py > Results/KURO.log')  # команда запуска скрипта Курска.py и запись результата в файл logs.txt
 #         with open('Results/KURO.log', 'r', -1, 'utf-8') as fi:
 #             f = fi.read()[186:1100]  # отчет о тестировании
 #             opt_1 = re.sub(r'\s[.]', '\n', f)
@@ -170,7 +169,7 @@ def callback_inline_1(call):
 #     elif message.text == 'Тест Ростова':
 #         remove_pic('RO_sc')
 #         bot.send_message(message.chat.id, '🔴Начата проверка крит. модулей продуктивного стенда - Ростова 🔽')
-#         os.system('pytest -s test_RO.py > Results/RO.log')  # команда запуска скрипта test_RO.py и запись результата в файл logs.txt
+#         os.system('pytest -s Ростова.py > Results/RO.log')  # команда запуска скрипта Ростова.py и запись результата в файл logs.txt
 #         with open('Results/RO.log', 'r', -1, 'utf-8') as fi:
 #             f = fi.read()[186:1100]  # отчет о тестировании
 #             opt_1 = re.sub(r'\s[.]', '\n', f)

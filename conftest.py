@@ -5,17 +5,17 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 # from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-p_link = 'http://172.17.0.2:4444/wd/hub' # адрес для инициализации драйвера
+p_link = 'http://172.17.0.3:4444/wd/hub' # адрес для инициализации драйвера
 def browser_SNILS():
-    service = Service(executable_path='chromedriver.exe') # путь до драйвера
+    # service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
     chrome_options.add_argument('--ignore-certificate-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--ignore-ssl-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--start-maximized')  # полный экран
-    driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
-    # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
+    # driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
+    driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'https://ortex.github.io/snils-generator/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
     snils_1 = driver.find_element(By.XPATH, '//span').text # получаем содержимое элемента

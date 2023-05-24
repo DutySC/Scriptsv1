@@ -51,7 +51,7 @@ class doctors_diary(BasePage):
             if full_diary <= 10: # условие
                 print('✅ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек')
             else:
-                print('⚠️ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек', '(норма - менее 10 с)')
+                print('⚠️ Формирования окна - Дневник врача: ', round(full_diary, 2), 'сек', '(> 10 с)')
             try:
                 self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click() #кнопка "Запись"
             except ElementClickInterceptedException:
