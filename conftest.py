@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 # from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-p_link = 'http://172.17.0.3:4444/wd/hub' # адрес для инициализации драйвера
+p_link = 'http://172.17.0.2:4444/wd/hub' # адрес для инициализации драйвера
 def browser_SNILS():
     # service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
@@ -24,15 +24,15 @@ def browser_SNILS():
 
 @pytest.fixture(scope='function')
 def browser_PK():
-    # service = Service(executable_path='chromedriver.exe') # путь до драйвера
+    service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     # chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
     chrome_options.add_argument('--ignore-certificate-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--ignore-ssl-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--start-maximized')  # полный экран
-    # driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
-    driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
+    driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
+    # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'https://192.168.233.171:25443/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
     # r = requests.get(link_1)
@@ -47,15 +47,15 @@ def browser_PK():
 
 @pytest.fixture(scope='function')
 def browser_RO():
-    # service = Service(executable_path='chromedriver.exe') # путь до драйвера
+    service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     # chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
     chrome_options.add_argument('--ignore-certificate-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--ignore-ssl-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--start-maximized')  # полный экран
-    # driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
-    driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
+    driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
+    # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'http://192.168.233.98:61027/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
     r = requests.get(link_1)
@@ -69,15 +69,15 @@ def browser_RO():
 
 @pytest.fixture(scope='function')
 def browser_NSO():
-    # service = Service(executable_path='chromedriver.exe') # путь до драйвера
+    service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     # chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
     chrome_options.add_argument('--ignore-certificate-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--ignore-ssl-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--start-maximized')  # полный экран
-    # driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
-    driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
+    driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
+    # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'http://192.168.233.169:3980/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
     r = requests.get(link_1)
@@ -91,15 +91,15 @@ def browser_NSO():
 
 @pytest.fixture(scope='function')
 def browser_KURO():
-    # service = Service(executable_path='chromedriver.exe') # путь до драйвера
+    service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     # chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
     chrome_options.add_argument('--ignore-certificate-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--ignore-ssl-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--start-maximized')  # полный экран
-    # driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
-    driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
+    driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
+    # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'http://192.168.234.14:7280/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
     r = requests.get(link_1)
