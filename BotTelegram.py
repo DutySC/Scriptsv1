@@ -49,7 +49,7 @@ def autotest_prod(message, test_name, address):
     remove_pic('Results_sc')
     os.system('pytest -s '+test_name+'.py > Results/Results.log')  # команда запуска скрипта test.py и запись результата в файл logs.txt
     with open('Results/Results.log', 'r', -1, 'utf-8') as fi:
-        f = fi.read()[187:1100]  # отчет о тестировании
+        f = fi.read()[190:975]  # отчет о тестировании
         opt_1 = re.sub(r'\s[.]', '\n', f)  # удаление точек в логах
         opt_2 = re.sub(r'\D[=]', ' ', opt_1)  # редактирование последней строчки
         opt_3 = re.sub(r'\D[=]', ' ', opt_2)
