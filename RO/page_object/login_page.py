@@ -16,7 +16,7 @@ class login_locators:
 class login(BasePage):
     def auth(self):
         try:
-            print('                         ')
+            print('\n')
             user = self.find_element(login_locators.LOCATOR_USER) # логин
             user.send_keys(prm.login) # ввод логина
             paswd = self.find_element(login_locators.LOCATOR_PASWD) # пароль
