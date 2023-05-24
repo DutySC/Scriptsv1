@@ -1,3 +1,5 @@
+import datetime
+
 from KURO import full_test_KURO
 # from conftest import browser_SNILS, browser_KURO
 import time
@@ -17,4 +19,5 @@ class Test_KURO:
         full_test_KURO.test_KURO_search_patient(browser_KURO)  # тест "Поиск пациентов"
         end = time.time()  # конец отсчета
         full_test = end - start  # полное время авторизации
-        print('🏁 Затраченное время на тестирование: ', round(full_test, 2), 'с')  # вывод полного времени тестирования
+        time_format = time.strftime("%H:%M:%S", time.gmtime(full_test))
+        print('🏁 Затраченное время на тестирование: ', time_format)  # вывод полного времени тестирования
