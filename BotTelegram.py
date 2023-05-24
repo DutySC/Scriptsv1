@@ -5,9 +5,7 @@ bot = telebot.TeleBot('6149957194:AAHvsUnLJPLMWzxHPUQik6dhqxRSZziuV0w')
 requests.get('https://t.me/@TestMapInChatBot')
 
 groups = [1158889635, -1001742179859]  # chat id
-# PK = {'address': 'https://192.168.233.171:25443/', 'log': 'PK.log', 'test_name': 'test_PK.py', 'directory_nme': 'PK_sc', 'region': 'Приморья'}
 dict = {'test_PK.py': 'https://192.168.233.171:25443/', 'test_NSO.py': 'http://192.168.233.169:3980/', 'test_RO.py': 'http://192.168.233.98:61027/', 'test_KURO.py': 'http://192.168.234.14:7280/'}
-
 
 @bot.message_handler(func=lambda message: message.chat.id not in groups)
 def some(message):
@@ -15,15 +13,15 @@ def some(message):
 
 def autotest_prod(message, test_name, address):
     bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда", parse_mode='html')
+    remove_pic('Results_sc')
     os.system('pytest -s '+test_name+' > Results/Results.log')  # команда запуска скрипта test_PK.py и запись результата в файл logs.txt
     with open('Results/Results.log', 'r', -1, 'utf-8') as fi:
-        f = fi.read()[227:1100]  # отчет о тестировании
+        f = fi.read()[227:1000]  # отчет о тестировании
         opt_1 = re.sub(r'\s[.]', '\n', f)  # удаление точек в логах
         opt_2 = re.sub(r'\D[=]', '', opt_1)  # редактирование последней строчки
         opt_3 = re.sub(r'\D[=]', '', opt_2)
-    bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🟢Закончена проверка крит. модулей продуктивного <a href='"+address+"'>"'стенда - '"</a>"+opt_3+"", parse_mode='html')
+    bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🟢Закончена проверка крит. модулей продуктивного <a href='"+address+"'>"'<u><b>стенда</b></u>'"</a>"' - '+opt_3+"", parse_mode='html')
     send_pic(message, 'Results_sc')
-    remove_pic('Results_sc')
 
 def remove_pic(name):
     try:
