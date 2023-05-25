@@ -1,6 +1,6 @@
 from RO import full_test_RO
 # from conftest import browser_SNILS, browser_RO
-import time
+import time, testit
 
 class Test_RO:
     """Актуальный номер СНИЛСа"""
@@ -8,6 +8,11 @@ class Test_RO:
     # print(browser_SNILS()) # вывод полученного значения СНИЛС
 
     """Тест по модулям"""
+    @testit.workItemIds(214615, 214616, 214617, 214618, 214619)
+    @testit.displayName('Ростовская область')
+    @testit.title('Крит. модули')
+    @testit.labels('AUTOTEST_SC')
+    @testit.link('https://testit.bars.group//projects/214392/tests?isolatedSection=ce794613-67d8-4087-bfc7-786165c54492')
     def test_RO(self, browser_RO):
         start = time.time()  # начало отсчета
         full_test_RO.test_RO_login(browser_RO)  # тест модуля авторизации

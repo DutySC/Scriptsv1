@@ -1,3 +1,4 @@
+import testit
 from PK.page_object.login_page import login
 from PK.page_object.doctors_diary_page import doctors_diary
 from PK.page_object.schedule_page import schedule
@@ -6,25 +7,39 @@ from PK.page_object.search_patient_page import search_patient
 # import time
 
 
+@testit.step('Модуль: Авторизация')
+@testit.description('Проверка авторизации на продуктивном стенде')
 def test_PK_login(browser_PK):
     start_page = login(browser_PK)
     start_page.auth()
 
+
+@testit.step('Модуль: Дневник врача')
+@testit.description('Проврка записи пациента, оказание услуги и ее отмены')
 def test_PK_doctors_diary(browser_PK):
     # test_PK_login(browser_PK)  # тест авторизации
     doctors_diary_test = doctors_diary(browser_PK)
     doctors_diary_test.diary()
 
+
+@testit.step('Модуль: Расписание')
+@testit.description('Проверка записи пациента к врачу')
 def test_PK_schedule(browser_PK):
     # test_PK_login(browser_PK)  # тест авторизации
     patient_schedule_test = schedule(browser_PK)
     patient_schedule_test.patient_schedule()
 
+
+@testit.step('Модуль: Госпитализация')
+@testit.description('Проверка госпитализации пользователя на продуктивном стенде')
 def test_PK_hospitalization(browser_PK):
     # test_PK_login(browser_PK)  # тест авторизации
     patient_hospitalization_test = hospitalization(browser_PK)
     patient_hospitalization_test.register_patient()
 
+
+@testit.step('Модуль: Поиск пациента')
+@testit.description('Создание тестового пациента на продуктивном стенде')
 def test_PK_search_patient(browser_PK):
     # test_PK_login(browser_PK)  # тест авторизации
     search_patient_test = search_patient(browser_PK)

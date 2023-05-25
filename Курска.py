@@ -1,8 +1,6 @@
-import datetime
-
 from KURO import full_test_KURO
 # from conftest import browser_SNILS, browser_KURO
-import time
+import time, testit
 
 class Test_KURO:
     """Актуальный номер СНИЛСа"""
@@ -10,6 +8,11 @@ class Test_KURO:
     # print(browser_SNILS()) # вывод полученного значения СНИЛС
 
     """Тест по модулям"""
+    @testit.workItemIds(214620, 214621, 214622, 214623, 214624)
+    @testit.displayName('Курская область')
+    @testit.title('Крит. модули')
+    @testit.labels('AUTOTEST_SC')
+    @testit.link('https://testit.bars.group//projects/214392/tests?isolatedSection=209dbcc0-ff8d-4f70-a294-d204c5b97dfb')
     def test_KURO(self, browser_KURO):
         start = time.time()  # начало отсчета
         full_test_KURO.test_KURO_login(browser_KURO)  # тест "Авторизации"
