@@ -5,6 +5,7 @@ from BASE_PAGE import BasePage
 from selenium.webdriver.common.by import By
 
 class locators_doctors_diary:
+    LOCATOR_READ_ALL = (By.XPATH, '//a[contains(text(), "Прочитать все")]')
     LOCATOR_DIARY_1 = (By.XPATH, '//span[contains(text(), "Рабочие места")]')
     LOCATOR_DIARY_2 = (By.XPATH, '//span[contains(text(), "Дневник")]')
     LOCATOR_REGISTER_1 = (By.XPATH, '//body[1]//table[5]//td[2]')
@@ -47,6 +48,11 @@ class doctors_diary(BasePage):
     def diary(self):
         try:
             start_doctors_diary = time.time()
+            try:
+                self.find_element(locators_doctors_diary.LOCATOR_READ_ALL, time=5).click() # прочесть все системные сообщения
+                self.find_element_pb(time=5)  # прогрессбар
+            except Exception:
+                pass
             self.find_element(locators_doctors_diary.LOCATOR_DIARY_1).click() # вкладка "Рабочие места"
             self.find_element(locators_doctors_diary.LOCATOR_DIARY_2).click() # вкладка "Дневник врача"
             start_diary = time.time() # начало отчета времени формирования окна

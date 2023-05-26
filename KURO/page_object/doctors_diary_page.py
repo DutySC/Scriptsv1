@@ -5,6 +5,7 @@ from BASE_PAGE import BasePage
 from selenium.webdriver.common.by import By
 
 class locators_doctors_diary:
+    LOCATOR_READ_ALL = (By.XPATH, '//a[contains(text(), "Прочитать все")]')
     LOCATOR_DIARY_1 = (By.XPATH, '//span[contains(text(), "Рабочие места")]')
     LOCATOR_DIARY_2 = (By.XPATH, '//body[1]//tr[1]//span[1][contains(text(), "Дневник")]')
     LOCATOR_REGISTER_1 = (By.XPATH, '//body[1]//table[5]//td[2][contains(text(), "Записать")]')
@@ -24,7 +25,6 @@ class locators_doctors_diary:
     LOCATOR_BASIC_3_1 = (By.XPATH, '//body[1]/div[7]//tr[2]/td/div[1]//tr[4]/td[2]//img[1]')
     LOCATOR_BASIC_3_2 = (By.XPATH, '//span[contains(text(), "Направлен на обследования")]')
     LOCATOR_DIAGNOSIS = (By.XPATH, '//div[contains(text(), "Диагноз")]')
-
     LOCATOR_MKB = (By.XPATH, '//body[1]/div[7]//tr[3]//tr[3]//tr[3]//tr[1]/td[1]//img[1]')
     LOCATOR_MKB_SEARCH_1 = (By.XPATH, '//body[1]/div[8]//tr[2]/td[1]//input[1]')
     LOCATOR_MKB_SEARCH_2 = (By.XPATH, '//td[contains(text(), "Поиск")]')
@@ -41,6 +41,11 @@ class doctors_diary(BasePage):
     def diary(self):
         try:
             start_doctors_diary = time.time()
+            try:
+                self.find_element(locators_doctors_diary.LOCATOR_READ_ALL, time=5).click() # прочесть все системные сообщения
+                self.find_element_pb(time=5)  # прогрессбар
+            except Exception:
+                pass
             self.find_element(locators_doctors_diary.LOCATOR_DIARY_1).click() # вкладка "Рабочие места"
             self.find_element(locators_doctors_diary.LOCATOR_DIARY_2).click() # вкладка "Дневник врача"
             start_diary = time.time() # начало отчета времени формирования окна
