@@ -10,7 +10,7 @@ class login_locators:
     LOCATOR_LPU_1 = (By.XPATH, '//div[@class="cmbb-button"]')
     LOCATOR_LPU_2 = (By.XPATH, '//span[contains(text(), "0000 - ЛПУ (НЕ ВЫБИРАТЬ)")]')
     LOCATOR_LC_1 = (By.XPATH, '//div[@name="CABLAB"]/div[@class="cmbb-button"]')
-    LOCATOR_LC_2 = (By.XPATH, '//div[@cmptype="Form"]/div[@cmptype="ComboBoxDL"]/table/tbody/tr[2]/td/div[@class="item_block"]')
+    LOCATOR_LC_2 = (By.XPATH, '//span[contains(text(), "Терапевтический")]')
     LOCATOR_ENTERLPU = (By.XPATH, '//tr[3]/td[1]/div[1]/div[1]')
 
 class login(BasePage):
@@ -34,6 +34,17 @@ class login(BasePage):
             self.find_element(login_locators.LOCATOR_LPU_1).click() # открыть вкладку ЛПУ
             self.find_element(login_locators.LOCATOR_LPU_2).click() # выбор ЛПУ
             self.find_element_pb()  # прогрессбар
+            try:
+                self.find_element(login_locators.LOCATOR_LC_1).click()
+                self.find_element(login_locators.LOCATOR_LC_2, time=5).click()
+            except Exception:
+                self.driver.refresh()
+                self.find_element(login_locators.LOCATOR_LPU_1).click()  # открыть вкладку ЛПУ
+                self.find_element(login_locators.LOCATOR_LPU_2).click()  # выбор ЛПУ
+                self.find_element_pb()  # прогрессбар
+                self.find_element(login_locators.LOCATOR_LC_1).click()
+                self.find_element(login_locators.LOCATOR_LC_2, time=5).click()
+                pass
             self.find_element(login_locators.LOCATOR_ENTERLPU).click() # продолжить
             start_auth_2 = time.time() # начало отсчета
             self.find_element_pb()  # прогрессбар
