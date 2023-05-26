@@ -5,7 +5,10 @@ bot = telebot.TeleBot('6149957194:AAHvsUnLJPLMWzxHPUQik6dhqxRSZziuV0w')
 requests.get('https://t.me/@TestMapInChatBot')
 
 groups = [1158889635, -1001742179859]  # chat id
-dict = {'Приморья': 'https://192.168.233.171:25443/', 'НСО': 'http://192.168.233.169:3980/', 'Ростова': 'http://192.168.233.98:61027/', 'Курска': 'http://192.168.234.14:7280/'}
+dict = {'Приморья': 'https://192.168.233.171:25443/', 'НСО': 'http://192.168.233.169:3980/',
+        'Ростова': 'http://192.168.233.98:61027/', 'Курска': 'http://192.168.234.14:7280/',
+        'Сахалина': 'http://192.168.233.170:8080/', 'Хабаровска': 'http://192.168.233.222:2780/',
+        'Алании': 'http://192.168.234.31:1580/'}
 
 @bot.message_handler(func=lambda message: message.chat.id not in groups)
 def some(message):
