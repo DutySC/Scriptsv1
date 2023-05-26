@@ -47,7 +47,7 @@ def send_pic(message, name):
 def autotest_prod(message, test_name, address):
     bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда <a href='"+address+"'>"'<u><b>'+test_name+'</b></u>'"</a>", parse_mode='html')
     remove_pic('Results_sc')
-    os.system('pytest -s '+test_name+'.py > Results/Results.log')  # команда запуска скрипта test.py и запись результата в файл logs.txt
+    os.system('pytest --testit -s '+test_name+'.py > Results/Results.log')  # команда запуска скрипта test.py и запись результата в файл logs.txt
     with open('Results/Results.log', 'r', -1, 'utf-8') as fi:
         f = fi.read()[190:971]  # отчет о тестировании
         opt_1 = re.sub(r'\s[.]', '\n', f)  # удаление точек в логах
