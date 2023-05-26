@@ -62,7 +62,7 @@ class hospitalization(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_JORNAL_1).click() # открытие выпадающего таблицы
             self.find_element(locators_hospitalization.LOCATOR_JORNAL_2).click() # выбор журнала
-            self.find_element_pb()  # прогрессбар
+            self.find_element_pb(time=80)  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_DEPARTMENT_1).click() # выбор отделения
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_DEPARTMENT_2).click() # отделение "Гинекологическое отделение"
             self.find_element(locators_hospitalization.LOCATOR_PALLET_1).click()  # выбор койки
