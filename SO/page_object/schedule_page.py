@@ -1,16 +1,15 @@
-import PK.parametrize as prm
+import SO.parametrize as prm
 import time
 from BASE_PAGE import BasePage
 from selenium.webdriver.common.by import By
 
 class locators_schedule:
     LOCATOR_SCHEDULE_1 = (By.XPATH, '//span[contains(text(), "Регистратура")]')
-    LOCATOR_SCHEDULE_2 = (By.XPATH, '//tr[5]//span[1][contains(text(), "Расписание")]')
+    LOCATOR_SCHEDULE_2 = (By.XPATH, '//tbody/tr[3]//span[contains(text(), "Расписание")]')
     LOCATOR_FILTER = (By.XPATH, '//tbody/tr[3]//div[2]/div[3]')
     LOCATOR_FILTER_DEPARTMENT = (By.XPATH, '//body[1]//div[1]/table[1]/tbody[1]/tr[3]//tr[2]/td[2]//input[1]')
     LOCATOR_FILTER_CABINET = (By.XPATH, '//body[1]//tbody[1]/tr[3]//tr[3]/td[1]//input[1]')
     LOCATOR_FILTER_DOCTOR = (By.XPATH, '//body[1]/div[1]/div[1]//tr[3]/td[2]//input[1]')
-    LOCATOR_PRESS_DEPARTMENT = (By.XPATH, f'//body[1]//table[1]//table[1]//table[1]//a[1][contains(text(), "{prm.department}")]')
     LOCATOR_CHOOSE_DOCTOR = (By.XPATH, f'//tbody//a[1][contains(text(), "{prm.doctor}")]')
     LOCATOR_SEARCH_1 = (By.XPATH, '//body[1]//tr[3]//td[contains(text(), "Найти")]')
     LOCATOR_REG_CONTAINER = (By.XPATH, '//div[@id = "RegContainer"]')
@@ -44,15 +43,12 @@ class schedule(BasePage):
             else:
                 print('⚠️️ Формирование окна - Расписание: ', round(full_time_schedule, 2), 'с', '(> 15 с)') # вывод затраченного времени
             self.find_element(locators_schedule.LOCATOR_FILTER).click() # шторка вниз
-            search_string_1 = self.find_element(locators_schedule.LOCATOR_FILTER_DEPARTMENT) # ввод отделения
-            search_string_1.send_keys(prm.department) # указать отделение
-            search_string_2 = self.find_element(locators_schedule.LOCATOR_FILTER_CABINET) # ввод кабинета
-            search_string_2.send_keys(prm.polyclinic) # указать кабинет
-            search_string_3 = self.find_element(locators_schedule.LOCATOR_FILTER_DOCTOR) # ввод врача
-            search_string_3.send_keys(prm.doctor) # указать врача
+            search_string_1 = self.find_element(locators_schedule.LOCATOR_FILTER_CABINET) # ввод кабинета
+            search_string_1.send_keys(prm.polyclinic) # указать кабинет
+            search_string_2 = self.find_element(locators_schedule.LOCATOR_FILTER_DOCTOR) # ввод врача
+            search_string_2.send_keys(prm.doctor) # указать врача
             self.find_element(locators_schedule.LOCATOR_SEARCH_1).click() # кнопка "Найти"
             self.find_element_pb() # прогрессбар
-            self.find_element(locators_schedule.LOCATOR_PRESS_DEPARTMENT).click() # раскрытия списка отделения
             self.find_element(locators_schedule.LOCATOR_CHOOSE_DOCTOR).click() # выбор врача Тестирование П.
             self.find_element_pb() # прогрессбар
             self.find_element(locators_schedule.LOCATOR_NEXT_PAGE).click() # выбор следующей недели
@@ -76,7 +72,6 @@ class schedule(BasePage):
             print('✅ Пациент записан к врачу') # вывод
             ###########след.этап########################################################################################
             time.sleep(2)  # ожидание
-            self.find_element(locators_schedule.LOCATOR_PRESS_DEPARTMENT).click()  # раскрытия списка отделения
             self.find_element(locators_schedule.LOCATOR_CHOOSE_DOCTOR).click()  # выбор врача Тестирование П.
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_schedule.LOCATOR_NEXT_PAGE).click()  # выбор следующей недели

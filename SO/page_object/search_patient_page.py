@@ -1,4 +1,4 @@
-import PK.parametrize as prm
+import SO.parametrize as prm
 import time
 from BASE_PAGE import BasePage
 from selenium.webdriver.common.by import By
@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 
 class search_patient_locators:
     LOCATOR_SEARCH_PATIENT_1 = (By.XPATH, '//span[contains(text(), "Регистратура")]')
-    LOCATOR_SEARCH_PATIENT_2 = (By.XPATH, '//tbody/tr[7]/td[2]/a[1]/span[1]')
+    LOCATOR_SEARCH_PATIENT_2 = (By.XPATH, '//tbody/tr[5]/td[2]/a[1]/span[1]')
     LOCATOR_NEW_PATIENT = (By.XPATH, '//td[contains(text(), "Новый пациент")]')
     LOCATOR_LAST_NAME = (By.XPATH, '//body[1]//div[7]/div[1]/div[1]/table[1]//tr[4]/td[1]//input[1]')
     LOCATOR_FIRST_NAME = (By.XPATH, '//body[1]//div[7]/div[1]/div[1]/table[1]//tr[4]/td[2]//input[1]')
@@ -16,8 +16,6 @@ class search_patient_locators:
     LOCATOR_SNILS = (By.XPATH, '//body[1]/div[7]//tr[10]/td[1]//input[1]')
     LOCATOR_ENTER_POLIS = (By.XPATH, '//body[1]/div[7]//td[1]/div[1]//div[1]/div[2]//td[2]//input[1]')
     LOCATOR_INSURANCE_COMPANY = (By.XPATH, '//body[1]/div[7]//tr[2]/td[1]//td[1]/div[1]//tr[4]//img[1]')
-    LOCATOR_OBLASTI = (By.XPATH, '//body[1]/div[8]//div[1]/div[1]/div[1]/div[1]/div[1]//img[1]')
-    LOCATOR_OBLAST = (By.XPATH, '//body[1]/div[9]//span[contains(text(), "Все")]')
     LOCATOR_OBLAST_OK = (By.XPATH, '//td[contains(text(), "Ок")]')
     LOCATOR_TYPE_OF_POLIS = (By.XPATH, '//body[1]/div[7]//div[1]/div[1]/div[1]//div[1]//div[1]/div[2]//tr[2]//img[1]')
     LOCATOR_CHOOSE_POLIS = (By.XPATH, '//span[contains(text(), "Временное свидетельство")]')
@@ -32,12 +30,14 @@ class search_patient_locators:
     LOCATOR_DATA_3 = (By.XPATH, '//body[1]/div[7]//td[1]/div[2]//tr[4]//div/div/div[1]')
     LOCATOR_DATA_4 = (By.XPATH, '//div[contains(text(), "Сегодня")]')
     LOCATOR_WHO_GAVE = (By.XPATH, '//body[1]/div[7]//td[1]/div[2]/table[1]/tbody[1]/tr[2]/td[1]/div[1]//textarea[1]')
-    LOCATOR_TAB_AREAS = (By.XPATH, '//body[1]/div[7]//td[1]/div[2]/table[1]/tbody[1]/tr[1]//div[2]/div[2]')
+    LOCATOR_TAB_AREAS = (By.XPATH, '//body[1]/div[7]//tr[2]//div[contains(text(), "Адреса")]')
     LOCATOR_AREA = (By.XPATH, '//body[1]/div[7]//tbody[1]/tr[2]//tr[2]/td[1]//td[1]/div[1]//tr[2]//img[1]')
     LOCATOR_AREA_OK = (By.XPATH, '//td[contains(text(), "Ок")]')
     LOCATOR_ENTER_AREA = (By.XPATH, '//body[1]/div[7]//tr[2]/td[1]/div[2]//td/div[1]//tr[3]//img[1]')
-    LOCATOR_CHOOSE_ANYCHINSKIY = (By.XPATH, '//a[contains(text(), "Анучинский")]')
-    LOCATOR_CHOOSE_ABRICOSOVOE = (By.XPATH, '//a[contains(text(), "Абрикосовое")]')
+    LOCATOR_UP_FILTER = (By.XPATH, '//td[contains(text(), "Вверх")]')
+    LOCATOR_CHOOSE_ANYVSKI = (By.XPATH, '//a[contains(text(), "Анивский")]')
+    LOCATOR_CHOOSE_ANYVA= (By.XPATH, '//a[contains(text(), "Анива")]')
+    LOCATOR_CHOOSE_ALLEYNAYA = (By.XPATH, '//a[contains(text(), "Аллейная")]')
     LOCATOR_HOME = (By.XPATH, '//body[1]/div[7]//tbody[1]//tbody[1]//tbody[1]/tr[2]//tr[2]/td[1]/div[1]//tr[4]/td[2]//input[1]')
     LOCATOR_OK = (By.XPATH, '//td[contains(text(), "ОК")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_1 = (By.XPATH, '//span[contains(text(), "Словари")]')
@@ -49,11 +49,15 @@ class search_patient_locators:
     LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_2 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//span[contains(text(), "Контрагенты физ. лица")]')
-    LOCATOR_DELETE_USER_2 = (By.XPATH, '//body[1]/div[2]/div[2]/div[5]/table[1]/tbody[1]/tr[5]/td[2]')
+    LOCATOR_DELETE_FILTER_1 = (By.XPATH, '//div[3]/div[1]//td[3]//input[1]')
+    LOCATOR_DELETE_FILTER_2 = (By.XPATH, '//div[3]/div[1]//td[4]//input[1]')
+    LOCATOR_DELETE_FILTER_3 = (By.XPATH, '//div[3]/div[1]//td[5]//input[1]')
+    LOCATOR_SEARCH_PATIENT_3 = (By.XPATH, '//td[2]/div[1]//span[contains(text(), "Найти")]')
+    LOCATOR_DELETE_USER_2 = (By.XPATH, '//body[1]/div[2]/div[2]/div[4]/table[1]/tbody[1]/tr[5]/td[2]')
 
 class search_patient(BasePage):
     def create_patient(self):
-        try:
+        # try:
             start_search_patient = time.time()
             self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_1).click()  # вкладка "Регистратура"
             self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_2).click()  # вкладка "Поиск пациентов"
@@ -83,9 +87,6 @@ class search_patient(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
             time.sleep(2)  # ожидание
-            self.find_element(search_patient_locators.LOCATOR_OBLASTI).click()  # выкидное окно для указания областей
-            self.find_element(search_patient_locators.LOCATOR_OBLAST).click()  # выбор всех областей
-            self.find_element_pb()  # прогрессбар
             self.find_element(search_patient_locators.LOCATOR_OBLAST_OK).click()  # кнопка "Ок"
             self.find_element_pb()  # прогрессбар
             self.find_element(search_patient_locators.LOCATOR_TYPE_OF_POLIS).click()  # выбор вида полиса
@@ -113,9 +114,13 @@ class search_patient(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element(search_patient_locators.LOCATOR_ENTER_AREA).click()  # ввод адреса
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ANYCHINSKIY).click()  # выбрать Анучинский
+            self.find_element(search_patient_locators.LOCATOR_UP_FILTER).click()
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ABRICOSOVOE).click()  # выбрать Абрикосовое
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ANYVSKI).click()  # выбрать Анучинский
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ANYVA).click()  # выбрать Абрикосовое
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ALLEYNAYA).click()  # выбрать Абрикосовое
             self.find_element_pb()  # прогрессбар
             search_string_8 = self.find_element(search_patient_locators.LOCATOR_HOME)  # выбрать дом
             search_string_8.send_keys(prm.home) # указать номер дома
@@ -139,6 +144,14 @@ class search_patient(BasePage):
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_2).click() # вкладка "Контрагенты"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты физ. лица"
             self.find_element_pb()  # прогрессбар
+            search_string_9 = self.find_element(search_patient_locators.LOCATOR_DELETE_FILTER_1)
+            search_string_9.send_keys(prm.last_name)
+            search_string_10 = self.find_element(search_patient_locators.LOCATOR_DELETE_FILTER_2)
+            search_string_10.send_keys(prm.first_name)
+            search_string_11 = self.find_element(search_patient_locators.LOCATOR_DELETE_FILTER_3)
+            search_string_11.send_keys(prm.surname)
+            self.actionchains(search_patient_locators.LOCATOR_SEARCH_PATIENT_3).click()
+            self.find_element_pb()  # прогрессбар
             self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION).perform()  # ПКМ по имени созданного пациента
             self.find_element(search_patient_locators.LOCATOR_DELETE_USER_2).click() # кнопка "Удалить"
             self.driver.switch_to.alert.accept()  # принятие всплывающего окна
@@ -147,7 +160,7 @@ class search_patient(BasePage):
             end_search_patient = time.time()
             full_search_patient = end_search_patient - start_search_patient
             print('   🔼 Модуль - "Поиск пациентов", выполнен за: ', round(full_search_patient, 2), 'с')
-        except Exception as error:
-            self.get_screenshots('Results/Results_sc/Поиск.png')
-            print('❗️ Ошибка:', error)
-            self.driver.quit()
+        # except Exception as error:
+        #     self.get_screenshots('Results/Results_sc/Поиск.png')
+        #     print('❗️ Ошибка:', error)
+        #     self.driver.quit()

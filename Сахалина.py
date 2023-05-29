@@ -17,9 +17,9 @@ class Test_SO:
         start = time.time()  # начало отсчета
         full_test_SO.test_SO_login(browser_SO)  # тест модуля авторизации
         full_test_SO.test_SO_doctors_diary(browser_SO) # тест модуля "Дневник врача"
-        # full_test_SO.test_SO_schedule(browser_SO) # тест модуля "Расписание"
-        # full_test_SO.test_SO_hospitalization(browser_SO) # тест модуля "Госпитализация"
-        # full_test_SO.test_SO_search_patient(browser_SO)  # тест модуля "Поиск пациентов"
+        full_test_SO.test_SO_schedule(browser_SO) # тест модуля "Расписание"
+        full_test_SO.test_SO_hospitalization(browser_SO) # тест модуля "Госпитализация"
+        full_test_SO.test_SO_search_patient(browser_SO)  # тест модуля "Поиск пациентов"
         end = time.time()  # конец отсчета
         full_test = end - start  # полное время авторизации
         time_format = time.strftime("%H:%M:%S", time.gmtime(full_test))
