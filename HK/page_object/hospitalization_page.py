@@ -16,9 +16,9 @@ class locators_hospitalization:
     LOCATOR_SEARCH_PATIENT_3 = (By.XPATH, '//td[contains(text(), "Найти")]')
     LOCATOR_SEARCH_PATIENT_4 = (By.XPATH, f'//body[1]/div[8]//tr[1]//tr[1]//a[contains(text(), "{prm.name_patient}")]')
     LOCATOR_JORNAL_1 = (By.XPATH, '//body[1]/div[7]//div[1]/div[1]/table[1]//tr[2]//img[1]')
-    LOCATOR_JORNAL_2 = (By.XPATH, '//body[1]/div[8]//tr[4]//span[contains(text(), "ДС")]')
+    LOCATOR_JORNAL_2 = (By.XPATH, '//div[8]//span[contains(text(), "терап")]')
     LOCATOR_PALLET_1 = (By.XPATH, '//body[1]/div[7]//tbody[2]/tr[2]//img[1]')
-    LOCATOR_PALLET_2 = (By.XPATH, '//body[1]/div[8]//tr[4]//span[contains(text(), "Терапевтические")]')
+    LOCATOR_PALLET_2 = (By.XPATH, '//tr[3]//span[contains(text(), "Терапевтические")]')
     LOCATOR_DIAGNOSIS_1 = (By.XPATH, '//body[1]/div[7]//fieldset[1]//tbody[3]/tr[1]//img[1]')
     LOCATOR_DIAGNOSIS_2 = (By.XPATH, '//body[1]/div[8]//tr[2]/td[1]//input[1]')
     LOCATOR_DIAGNOSIS_3 = (By.XPATH, '//body[1]/div[8]//div[1]/div[1]/div[1]/div[1]/div[1]//td[3]//td[2]')
@@ -34,7 +34,7 @@ class locators_hospitalization:
 
 class hospitalization(BasePage):
     def register_patient(self):
-        try:
+        # try:
             start_patient_hospitalization = time.time()
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_1).click() # вкладка "Регистратура"
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_2).click() # вкладка "Приемный покой"
@@ -42,12 +42,12 @@ class hospitalization(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_PATIENT_REG_CONTAINER) # полная прогрузка элементов страницы
-            time.sleep(3)  # ожидание
+            time.sleep(5)  # ожидание
             self.actionchains(locators_hospitalization.LOCATOR_WINDOW_RCM_1).perform() # ПКМ по области окна
             self.find_element(locators_hospitalization.LOCATOR_WINDOW_RCM_2).click() # добавить пациента для создания направления
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
-            time.sleep(2)
+            time.sleep(3)
             self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_1).click() # открытие окна для выбора пациента
             self.find_element_pb()  # прогрессбар
             search_string_1 = self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_2)  # окно ввода
@@ -77,6 +77,7 @@ class hospitalization(BasePage):
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_1).click() # госпитализация пациента
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
+            time.sleep(2)
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_2).click() # кнопка "Далее"
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_3).click() # кнопка "ОК"
@@ -102,7 +103,7 @@ class hospitalization(BasePage):
             end_patient_hospitalization = time.time()
             full_patient_hospitalization = end_patient_hospitalization - start_patient_hospitalization
             print('   🔼 Модуль - "Госпитализация", выполнен за: ', round(full_patient_hospitalization, 2), 'с')
-        except Exception as error:
-            self.get_screenshots('Results/Results_sc/Госпитализация.png')
-            print('❗️ Ошибка:', error)
-            self.driver.quit()
+        # except Exception as error:
+        #     self.get_screenshots('Results/Results_sc/Госпитализация.png')
+        #     print('❗️ Ошибка:', error)
+        #     self.driver.quit()

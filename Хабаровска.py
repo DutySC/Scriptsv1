@@ -16,10 +16,10 @@ class Test_HK:
     def test_HK(self, browser_HK):
         start = time.time()  # начало отсчета
         full_test_HK.test_HK_login(browser_HK)
-        full_test_HK.test_HK_doctors_diary(browser_HK)
+        # full_test_HK.test_HK_doctors_diary(browser_HK)
         # full_test_HK.test_HK_schedule(browser_HK)
         # full_test_HK.test_HK_hospitalization(browser_HK)
-        # full_test_HK.test_HK_search_patient(browser_HK)
+        full_test_HK.test_HK_search_patient(browser_HK)
         end = time.time()  # конец отсчета
         full_test = end - start  # полное время авторизации
         time_format = time.strftime("%H:%M:%S", time.gmtime(full_test))
