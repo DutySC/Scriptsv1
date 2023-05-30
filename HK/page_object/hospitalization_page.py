@@ -34,7 +34,7 @@ class locators_hospitalization:
 
 class hospitalization(BasePage):
     def register_patient(self):
-        # try:
+        try:
             start_patient_hospitalization = time.time()
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_1).click() # вкладка "Регистратура"
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_2).click() # вкладка "Приемный покой"
@@ -72,7 +72,7 @@ class hospitalization(BasePage):
             self.find_element(locators_hospitalization.LOCATOR_CREATE_DIRECTION).click() # кнопка "ОК"
             self.find_element_pb()  # прогрессбар
             print('✅ Пациент записан на госпитализацию') # вывод
-        ###########след.этап########################################################################################
+            ###########след.этап########################################################################################
             self.actionchains(locators_hospitalization.LOCATOR_CHOOSE_PATIENT_PCM).perform() # ПКМ по имени пациента
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_1).click() # госпитализация пациента
             self.find_element_pb()  # прогрессбар
@@ -103,7 +103,7 @@ class hospitalization(BasePage):
             end_patient_hospitalization = time.time()
             full_patient_hospitalization = end_patient_hospitalization - start_patient_hospitalization
             print('   🔼 Модуль - "Госпитализация", выполнен за: ', round(full_patient_hospitalization, 2), 'с')
-        # except Exception as error:
-        #     self.get_screenshots('Results/Results_sc/Госпитализация.png')
-        #     print('❗️ Ошибка:', error)
-        #     self.driver.quit()
+        except Exception as error:
+            self.get_screenshots('Results/Results_sc/Госпитализация.png')
+            print('❗️ Ошибка:', error)
+            self.driver.quit()

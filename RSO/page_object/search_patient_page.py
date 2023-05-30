@@ -65,7 +65,7 @@ class search_patient_locators:
 
 class search_patient(BasePage):
     def create_patient(self):
-        # try:
+        try:
             # self.driver.refresh()
             start_search_patient = time.time()
             self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_1).click()  # вкладка "Регистратура"
@@ -183,7 +183,7 @@ class search_patient(BasePage):
             end_search_patient = time.time()
             full_search_patient = end_search_patient - start_search_patient
             print('   🔼 Модуль - "Поиск пациентов", выполнен за: ', round(full_search_patient, 2), 'с')
-        # except Exception as error:
-        #     self.get_screenshots('Results/Results_sc/Поиск.png')
-        #     print('❗️ Ошибка:', error)
-        #     self.driver.quit()
+        except Exception as error:
+            self.get_screenshots('Results/Results_sc/Поиск.png')
+            print('❗️ Ошибка:', error)
+            self.driver.quit()
