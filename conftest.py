@@ -113,15 +113,15 @@ def browser_KURO():
 
 @pytest.fixture(scope='function')
 def browser_SO():
-    service = Service(executable_path='chromedriver.exe') # путь до драйвера
+    # service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     # chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
     chrome_options.add_argument('--ignore-certificate-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--ignore-ssl-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--start-maximized')  # полный экран
-    driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
-    # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
+    # driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
+    driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'http://192.168.233.170:8080/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
     r = requests.get(link_1)
@@ -135,15 +135,15 @@ def browser_SO():
 
 @pytest.fixture(scope='function')
 def browser_HK():
-    service = Service(executable_path='chromedriver.exe') # путь до драйвера
+    # service = Service(executable_path='chromedriver.exe') # путь до драйвера
     chrome_options = ChromeOptions() # объект для опций
     # chrome_options.add_argument('--headless') # фоновый режим
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging']) # включение экспериментальных функций
     chrome_options.add_argument('--ignore-certificate-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--ignore-ssl-errors') # игнорирование проверки сертификата
     chrome_options.add_argument('--start-maximized')  # полный экран
-    driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
-    # driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
+    # driver = webdriver.Chrome(service=service, options=chrome_options) # настройка драйвера
+    driver = webdriver.Remote(command_executor=f'{p_link}', options=chrome_options)  # настройка драйвера
     link_1 = 'http://192.168.233.222:2780/' # адрес для подключения
     driver.get(link_1) # подключение по указанному адресу
     r = requests.get(link_1)
