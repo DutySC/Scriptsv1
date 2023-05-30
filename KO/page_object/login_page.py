@@ -8,7 +8,7 @@ class login_locators:
     LOCATOR_PASWD = (By.XPATH, '//tr[2]//input[1]')
     LOCATOR_ENTER = (By.XPATH, '//div[contains(text(), "Войти")]')
     LOCATOR_LPU_1 = (By.XPATH, '//div[@class="cmbb-button"]')
-    LOCATOR_LPU_2 = (By.XPATH, '//span[contains(text(), "999999 - МИАЦ")]')
+    LOCATOR_LPU_2 = (By.XPATH, '//span[contains(text(), "1000 - МИАЦ")]')
     LOCATOR_LC_1 = (By.XPATH, '//div[@name="CABLAB"]/div[@class="cmbb-button"]')
     LOCATOR_LC_2 = (By.XPATH, '//span[contains(text(), "Терапевт")]')
     LOCATOR_ENTERLPU = (By.XPATH, '//tr[3]/td[1]/div[1]/div[1]')
