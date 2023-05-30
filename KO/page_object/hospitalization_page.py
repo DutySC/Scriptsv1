@@ -16,17 +16,20 @@ class locators_hospitalization:
     LOCATOR_SEARCH_PATIENT_3 = (By.XPATH, '//td[contains(text(), "Найти")]')
     LOCATOR_SEARCH_PATIENT_4 = (By.XPATH, f'//body[1]/div[8]//tr[1]//tr[1]//a[contains(text(), "{prm.name_patient}")]')
     LOCATOR_JORNAL_1 = (By.XPATH, '//body[1]/div[7]//div[1]/div[1]/table[1]//tr[2]//img[1]')
-    LOCATOR_JORNAL_2 = (By.XPATH, '//div[8]//span[contains(text(), "терап")]')
-    LOCATOR_PALLET_1 = (By.XPATH, '//body[1]/div[7]//tbody[2]/tr[2]//img[1]')
-    LOCATOR_PALLET_2 = (By.XPATH, '//tr[3]//span[contains(text(), "Терапевтические")]')
+    LOCATOR_JORNAL_2 = (By.XPATH, '//div[8]//tr[5]//span[contains(text(), "Стационар")]')
+    LOCATOR_DEPARTMENT_1 = (By.XPATH, '//fieldset[1]//tbody[2]/tr[1]/td/table[1]//img[1]')
+    LOCATOR_DEPARTMENT_2 = (By.XPATH, '//div[8]//tr[2]//span[contains(text(), "Стационар")]')
     LOCATOR_DIAGNOSIS_1 = (By.XPATH, '//body[1]/div[7]//fieldset[1]//tbody[3]/tr[1]//img[1]')
     LOCATOR_DIAGNOSIS_2 = (By.XPATH, '//body[1]/div[8]//tr[2]/td[1]//input[1]')
     LOCATOR_DIAGNOSIS_3 = (By.XPATH, '//body[1]/div[8]//div[1]/div[1]/div[1]/div[1]/div[1]//td[3]//td[2]')
     LOCATOR_DIAGNOSIS_4 = (By.XPATH, '//td[contains(text(), "Ок")]')
+    LOCATOR_DATATIME_1 = (By.XPATH, '//tr[7]//div[1]/div[1]/div[1]')
+    LOCATOR_DATATIME_2 = (By.XPATH, '//div[contains(text(), "Сегодня")]')
     LOCATOR_CREATE_DIRECTION = (By.XPATH, '//td[contains(text(), "ОК")]')
     LOCATOR_CHOOSE_PATIENT_PCM = (By.XPATH, f'//tbody//a[contains(text(), "{prm.name_patient}")]')
     LOCATOR_HOSPITALIZATION_PATIENT_1 = (By.XPATH, '//body[1]//tr[14]/td[contains(text(), "Госпитализировать")]')
     LOCATOR_HOSPITALIZATION_PATIENT_2 = (By.XPATH, '//td[contains(text(), "Далее")]')
+    LOCATOR_NUMBER_DISEASE = (By.XPATH, '//div[1]/div[1]//div[1]//div[1]//tr[3]//table[1]//input[1]')
     LOCATOR_HOSPITALIZATION_PATIENT_3 = (By.XPATH, '//td[contains(text(), "ОК")]')
     LOCATOR_CANCEL_HOSPITALIZATION = (By.XPATH, '//td[contains(text(), "Отменить госпитализацию")]')
     LOCATOR_DELETE_HOSPITALIZATION = (By.XPATH, '//td[contains(text(), "Удалить")]')
@@ -59,8 +62,9 @@ class hospitalization(BasePage):
             self.find_element(locators_hospitalization.LOCATOR_JORNAL_1).click() # открытие выпадающего таблицы
             self.find_element(locators_hospitalization.LOCATOR_JORNAL_2).click() # выбор журнала
             self.find_element_pb()  # прогрессбар
-            self.find_element(locators_hospitalization.LOCATOR_PALLET_1).click()  #
-            self.find_element(locators_hospitalization.LOCATOR_PALLET_2).click()  #
+            self.find_element(locators_hospitalization.LOCATOR_DEPARTMENT_1).click()
+            self.find_element(locators_hospitalization.LOCATOR_DEPARTMENT_2).click()
+            self.find_element_pb()  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_1).click() # окно выбора диагноза
             self.find_element_pb()  # прогрессбар
             search_string_2 = self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_2) # поиск диагноза Z00.0
@@ -69,6 +73,8 @@ class hospitalization(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_4).click() # кнопка "ОК"
             self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_DATATIME_1).click()
+            self.find_element(locators_hospitalization.LOCATOR_DATATIME_2).click()
             self.find_element(locators_hospitalization.LOCATOR_CREATE_DIRECTION).click() # кнопка "ОК"
             self.find_element_pb()  # прогрессбар
             print('✅ Пациент записан на госпитализацию') # вывод
@@ -78,6 +84,8 @@ class hospitalization(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
             time.sleep(2)
+            search_string_3 = self.find_element(locators_hospitalization.LOCATOR_NUMBER_DISEASE)
+            search_string_3.send_keys(prm.n_disease)
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_2).click() # кнопка "Далее"
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_PATIENT_3).click() # кнопка "ОК"
