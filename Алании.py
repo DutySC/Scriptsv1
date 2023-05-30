@@ -16,7 +16,7 @@ class Test_RSO:
     def test_RSO(self, browser_RSO):
         start = time.time()  # начало отсчета
         full_test_RSO.test_RSO_login(browser_RSO)  # тест "Авторизации"
-        # full_test_RSO.test_RSO_doctors_diary(browser_RSO)  # тест "Дневник врача"
+        full_test_RSO.test_RSO_doctors_diary(browser_RSO)  # тест "Дневник врача"
         # full_test_RSO.test_RSO_schedule(browser_RSO)  # тест "Расписание"
         # full_test_RSO.test_RSO_hospitalization(browser_RSO)  # тест "Госпитализация"
         # full_test_RSO.test_RSO_search_patient(browser_RSO)  # тест "Поиск пациентов"

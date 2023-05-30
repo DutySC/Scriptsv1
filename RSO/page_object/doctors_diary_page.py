@@ -19,23 +19,19 @@ class locators_doctors_diary:
     LOCATOR_PROVIDE_SERVICE = (By.XPATH, '//a[contains(text(), "Оказать")]')
     LOCATOR_STATISTICAL_DESIGN = (By.XPATH, '//div[contains(text(), "Статистическое")]')
     LOCATOR_FULLSCREEN_WINDOW = (By.XPATH, '//tbody/tr[2]/td[2]//div[4]')
-    LOCATOR_RESULT_APPEAL_1 = (By.XPATH, '//body[1]/div[7]//div[3]//tr[6]//img[1]')
-    LOCATOR_RESULT_APPEAL_2 = (By.XPATH, '//span[contains(text(), "Случай незакончен")]')
-    LOCATOR_RESULT_APPEAL_3 = (By.XPATH, '//body[1]/div[7]//tr[9]/td[4]//img[1]')
-    LOCATOR_RESULT_APPEAL_4 = (By.XPATH, '//span[contains(text(), "304 - Лечение продолжено")]')
-    LOCATOR_RESULT_APPEAL_5 = (By.XPATH, '//td[contains(text(), "Ок")]')
-    LOCATOR_NUMBER_PP = (By.XPATH, '//body[1]/div[7]//tr[12]//table[2]//img[1]')
-    LOCATOR_DIAGNOSIS = (By.XPATH, '// div[contains(text(), "Диагноз")]')
+    LOCATOR_RESULT_APPEAL_1 = (By.XPATH, '//body[1]/div[7]/table[1]/tbody[1]/tr[3]/td[2]/div[1]/div[1]/div[4]/div[2]/table[1]/tbody[1]/tr[2]/td[1]/table[1]/tbody[1]/tr[2]/td[1]/div[6]/table[1]/tbody[1]/tr[9]/td[2]//img[1]')
+    LOCATOR_RESULT_APPEAL_2 = (By.XPATH, '//span[contains(text(), "1- по поводу заболевания")]')
+    LOCATOR_DIAGNOSIS = (By.XPATH, '//div[contains(text(), "ДИАГНОЗ")]')
     LOCATOR_MKB = (By.XPATH, '//body[1]/div[7]//tr[2]//tr[2]//tr[2]//tr[3]/td[1]/table[1]/tbody[1]/tr[2]/td[1]/table[1]//img[1]')
     LOCATOR_MKB_SEARCH_1 = (By.XPATH, '//body[1]/div[8]//tr[2]/td[1]//input[1]')
     LOCATOR_MKB_SEARCH_2 = (By.XPATH, '//td[contains(text(), "Поиск")]')
     LOCATOR_MKB_CHOICE = (By.XPATH, '//td[contains(text(), "Ок")]')
     LOCATOR_MKB_TYPE_1 = (By.XPATH, '//body[1]/div[7]//tr[2]//tr[2]//tr[2]//tr[3]//td[4]//img[1]')
-    LOCATOR_MKB_TYPE_2 = (By.XPATH, '//body[1]/div[8]//span[contains(text(), "Заключительный")]')
+    LOCATOR_MKB_TYPE_2 = (By.XPATH, '//body[1]/div[8]//span[contains(text(), "Предварительный")]')
     LOCATOR_SAVE_SERVICE = (By.XPATH, '//body[1]/div[7]//table[2]//td[2][contains(text(), "Сохранить")]')
     LOCATOR_PATIENT_RCM = (By.XPATH, f'//body[1]//a[contains(text(), "{prm.name_patient}")]')
     LOCATOR_CANCEL_SERVICE = (By.XPATH, '//td[contains(text(), "Отменить оказание")]')
-    LOCATOR_DELETE_PATIENT = (By.XPATH, '//body[1]//div[23]//td[contains(text(), "Удалить направление")]')
+    LOCATOR_DELETE_PATIENT = (By.XPATH, '//div[13]//td[contains(text(), "Удалить направление")]')
 
 class doctors_diary(BasePage):
     def diary(self):
@@ -86,15 +82,10 @@ class doctors_diary(BasePage):
             self.find_element_pb(time=50)  # прогрессбар
             self.find_element_pb(time=50)  # прогрессбар
             time.sleep(5)  # ожидание
+            self.find_element(locators_doctors_diary.LOCATOR_FULLSCREEN_WINDOW).click()  # открыть окно в полный экран
             self.find_element(locators_doctors_diary.LOCATOR_STATISTICAL_DESIGN).click() # выбор вкладки "Статический оформление обращения (посещения)"
-            self.find_element(locators_doctors_diary.LOCATOR_FULLSCREEN_WINDOW).click() # открыть окно в полный экран
-            self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_1).click()  # выбор "Результат визита"
-            self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_2).click()  # выбор визита "Случай незакончен"
-            self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_3).click() # выбор "Результат обращения"
-            self.find_element_pb()  # прогрессбар
-            self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_4).click() # выбор обращения "304"
-            self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_5).click()  # кнопка "Ок"
-            self.find_element(locators_doctors_diary.LOCATOR_NUMBER_PP).click() # номер п/п
+            self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_1).click()  # выбор "Вид посещения"
+            self.find_element(locators_doctors_diary.LOCATOR_RESULT_APPEAL_2).click()  # выбор визита "1-по поводу заболевания"
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_doctors_diary.LOCATOR_DIAGNOSIS).click() # вкладка "Диагноз"
             self.find_element(locators_doctors_diary.LOCATOR_MKB).click() # окно заболеваний

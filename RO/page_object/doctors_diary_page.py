@@ -25,7 +25,7 @@ class locators_doctors_diary:
     LOCATOR_RESULT_APPEAL_4 = (By.XPATH, '//span[contains(text(), "304 - Лечение продолжено")]')
     LOCATOR_RESULT_APPEAL_5 = (By.XPATH, '//td[contains(text(), "Ок")]')
     LOCATOR_NUMBER_PP = (By.XPATH, '//body[1]/div[7]//tr[12]//table[2]//img[1]')
-    LOCATOR_DIAGNOSIS = (By.XPATH, '// div[contains(text(), "Диагноз")]')
+    LOCATOR_DIAGNOSIS = (By.XPATH, '//div[contains(text(), "Диагноз")]')
     LOCATOR_MKB = (By.XPATH, '//body[1]/div[7]//tr[2]//tr[2]//tr[2]//tr[3]/td[1]/table[1]/tbody[1]/tr[2]/td[1]/table[1]//img[1]')
     LOCATOR_MKB_SEARCH_1 = (By.XPATH, '//body[1]/div[8]//tr[2]/td[1]//input[1]')
     LOCATOR_MKB_SEARCH_2 = (By.XPATH, '//td[contains(text(), "Поиск")]')
