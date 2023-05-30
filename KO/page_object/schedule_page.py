@@ -5,17 +5,18 @@ from selenium.webdriver.common.by import By
 
 class locators_schedule:
     LOCATOR_SCHEDULE_1 = (By.XPATH, '//span[contains(text(), "Регистратура")]')
-    LOCATOR_SCHEDULE_2 = (By.XPATH, '//tr[4]//span[contains(text(), "Расписание")]')
+    LOCATOR_SCHEDULE_2 = (By.XPATH, '//tr[3]//span[contains(text(), "Расписание")]')
     LOCATOR_REG_CONTAINER = (By.XPATH, '//div[@id = "RegContainer"]')
+    LOCATOR_FILTER = (By.XPATH, '//tbody/tr[3]/td[1]/div[1]/div[1]/div[2]/div[3]')
     LOCATOR_FILTER_CABINET = (By.XPATH, '//body[1]//tbody[1]/tr[3]//tr[3]/td[1]//input[1]')
     LOCATOR_SEARCH_1 = (By.XPATH, '//body[1]//tr[3]//td[contains(text(), "Найти")]')
-    LOCATOR_CHOOSE_SCHEDULE = (By.XPATH, '//a[contains(text(), "Врач О.Г.")]')
-    LOCATOR_NEXT_PAGE = (By.XPATH, '//body[1]/div[7]//table[2]//img[1]')
+    LOCATOR_CHOOSE_SCHEDULE = (By.XPATH, '//a[contains(text(), "Врач Г.З.")]')
+    LOCATOR_NEXT_PAGE = (By.XPATH, '//tr[3]//tr[3]//table[2]//img[1]')
     LOCATOR_WRITE_TO_DOCTOR = (By.XPATH, '//tbody//b[2]/a[contains(text(), "Записать")]')
-    LOCATOR_CARD_NUMBER = (By.XPATH, '//div[10]//td[5]//input[1]')
+    LOCATOR_CARD_NUMBER = (By.XPATH, '//div[6]//td[5]//input[1]')
     LOCATOR_SEARCH_2 = (By.XPATH, '//body[1]/div[8]//td[3]//td[contains(text(), "Найти")]')
     LOCATOR_PATIENT_ON_WRITE = (By.XPATH, f'//body[1]//tr[1]//tr[1]//a[contains(text(), "{prm.name_patient}")]')
-    LOCATOR_SERVICE_1 = (By.XPATH, '//div[12]//tbody[1]//tbody[1]/tr[2]//img[1]')
+    LOCATOR_SERVICE_1 = (By.XPATH, '//div[8]//div[8]//tbody[1]/tr[2]//input[1]')
     LOCATOR_SERVICE_2 = (By.XPATH, '//span[contains(text(), "B01.047.001 Прием (осмотр, консультация) врача-тер")]')
     LOCATOR_WRITE = (By.XPATH, '//body[1]/div[8]//table[2]//td[contains(text(), "Записать")]')
     LOCATOR_ESC_1 = (By.XPATH, '//body[1]/div[9]//div[5]')
@@ -39,6 +40,7 @@ class schedule(BasePage):
                 print('✅ Формирование окна - Расписание: ', round(full_time_schedule, 2), 'с') # вывод затраченного времени
             else:
                 print('⚠️️ Формирование окна - Расписание: ', round(full_time_schedule, 2), 'с', '(> 15 с)') # вывод затраченного времени
+            self.find_element(locators_schedule.LOCATOR_FILTER).click()
             search_string_2 = self.find_element(locators_schedule.LOCATOR_FILTER_CABINET) # ввод кабинета
             search_string_2.send_keys(prm.polyclinic) # указать кабинет
             self.find_element(locators_schedule.LOCATOR_SEARCH_1).click() # кнопка "Найти"
