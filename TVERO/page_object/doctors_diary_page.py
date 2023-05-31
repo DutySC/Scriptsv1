@@ -1,5 +1,5 @@
 from selenium.common import UnexpectedAlertPresentException, ElementClickInterceptedException
-import SO.parametrize as prm
+import TVERO.parametrize as prm
 import time
 from BASE_PAGE import BasePage
 from selenium.webdriver.common.by import By
@@ -17,37 +17,26 @@ class locators_doctors_diary:
     LOCATOR_REGISTER_2 = (By.XPATH, '//td[3][contains(text(), "Записать")]')
     LOCATOR_CLOSE_1 = (By.XPATH, '//body[1]/div[8]//div[5]')
     LOCATOR_PROVIDE_SERVICE = (By.XPATH, '//a[contains(text(), "Оказать")]')
-    LOCATOR_FULL_WINDOW = (By.XPATH, '//tbody/tr[2]/td[2]//div[4]')
-    LOCATOR_VISIT_PURPOSE_1 = (By.XPATH, '//div[2]/table[1]/tbody[1]/tr[2]/td[1]/table[1]/tbody[1]/tr[2]/td[1]/div[1]//tr[1]/td[1]//img[1]')
-    LOCATOR_VISIT_PURPOSE_2 = (By.XPATH, '//span[contains(text(), "лечебно-диагностическая")]')
-    LOCATOR_VISIT_PURPOSE_3 = (By.XPATH, '//td[contains(text(), "Ок")]')
-    LOCATOR_OBJECTIVE_STATUS_1 = (By.XPATH, '//div[contains(text(), "Объективный")]')
-    LOCATOR_OBJECTIVE_STATUS_2 = (By.XPATH, '//body[1]/div[7]//div[3]//tr[3]//img[1]')
-    LOCATOR_OBJECTIVE_STATUS_3 = (By.XPATH, '//body[1]/div[8]//tr[2]//span[contains(text(), "Удовлетворительное")]')
     LOCATOR_DIAGNOSIS = (By.XPATH, '//div[contains(text(), "Диагноз")]')
-    LOCATOR_MKB = (By.XPATH, '//div[4]//div[4]//div[1]/table[1]/tbody[1]/tr[3]/td[1]/table[1]/tbody[1]/tr[2]/td[1]//img[1]')
+    LOCATOR_MKB = (By.XPATH, '//tr[3]//tr[3]//div[1]/table[1]/tbody[1]/tr[3]/td[1]/table[1]/tbody[1]/tr[2]/td[1]//img[1]')
     LOCATOR_MKB_SEARCH_1 = (By.XPATH, '//body[1]/div[8]//tr[2]/td[1]//input[1]')
     LOCATOR_MKB_SEARCH_2 = (By.XPATH, '//td[contains(text(), "Поиск")]')
     LOCATOR_MKB_CHOICE = (By.XPATH, '//td[contains(text(), "Ок")]')
-    LOCATOR_EXODUS_1 = (By.XPATH, '//body[1]/div[7]//div[2]//div[4]//tr[1]/td[1]//img[1]')
-    LOCATOR_EXODUS_2 = (By.XPATH, '//span[contains(text(), "Продолжить лечение")]')
-    LOCATOR_EXODUS_3 = (By.XPATH, '//td[contains(text(), "Ок")]')
-    LOCATOR_RESULT_1 = (By.XPATH, '//div[4]/table[1]/tbody[1]/tr[1]/td[2]/table[1]//img[1]')
-    LOCATOR_RESULT_2 = (By.XPATH, '//tr[1]/td[3]/span[contains(text(), "Лечение продолжено")]')
-    LOCATOR_RESULT_3 = (By.XPATH, '//td[contains(text(), "Ок")]')
-    LOCATOR_PERIOD_1 = (By.XPATH, '//div[4]/table[1]/tbody[1]/tr[1]/td[2]/table[2]//img[1]')
-    LOCATOR_PERIOD_2 = (By.XPATH, '//span[contains(text(), "Повторно")]')
-    LOCATOR_TYPE_DIAGNOSIS_1 = (By.XPATH, '//tr[3]//tr[3]//tr[3]//tr[3]//table[2]//img[1]')
-    LOCATOR_TYPE_DIAGNOSIS_2 = (By.XPATH, '//body[1]/div[8]//span[contains(text(), "Заключительный")]')
-    LOCATOR_CHARACTER_1 = (By.XPATH, '//body[1]/div[7]//tr[3]//tr[3]//tr[3]//tr[9]//img[1]')
-    LOCATOR_CHARACTER_2 = (By.XPATH, '//body[1]/div[8]//span[contains(text(), "Острое")]')
+    LOCATOR_CHARACTER_1 = (By.XPATH, '//div[3]/table[1]/tbody/tr[3]//tr[3]//td[4]//img[1]')
+    LOCATOR_CHARACTER_2 = (By.XPATH, '//div[8]//span[contains(text(), "Острое")]')
+    LOCATOR_DEFAULT_DATA_1 = (By.XPATH, '//div[contains(text(), "Стат.данные")]')
+    LOCATOR_DEFAULT_DATA_2 = (By.XPATH, '//td[1]//tr[6]/td[1]/table[1]//img[1]')
+    LOCATOR_DEFAULT_DATA_3 = (By.XPATH, '//span[contains(text(), "Лечение продолжено")]')
+    LOCATOR_DEFAULT_DATA_4 = (By.XPATH, '//td[contains(text(), "Ок")]')
+    LOCATOR_DEFAULT_DATA_5 = (By.XPATH, '//tr[9]/td[1]/table[1]//img[1]')
+    LOCATOR_DEFAULT_DATA_6 = (By.XPATH, '//div[8]//span[contains(text(), "Без перемен")]')
     LOCATOR_SAVE_SERVICE = (By.XPATH, '//body[1]//table[2]//td[contains(text(), "Сохранить")]')
     LOCATOR_OPEN_WINDOW_SAVE_SERVICE_1 = (By.XPATH, '//body[1]/div[8]//tr[7]//img[1]')
     LOCATOR_OPEN_WINDOW_SAVE_SERVICE_2 = (By.XPATH, '//td[contains(text(), "ОК")]')
     LOCATOR_OPEN_WINDOW_SAVE_SERVICE_3 = (By.XPATH, '//body[1]/div[8]//div/table[2]//td[contains(text(), "Сохранить")]')
     LOCATOR_PATIENT_RCM = (By.XPATH, f'//body//a[contains(text(), "{prm.schedule_patient}")]')
     LOCATOR_CANCEL_SERVICE = (By.XPATH, '//td[contains(text(), "Отменить оказание")]')
-    LOCATOR_DELETE_PATIENT = (By.XPATH, '//div[1]/div[10]//td[contains(text(), "Удалить направление")]')
+    LOCATOR_DELETE_PATIENT = (By.XPATH, '//div[1]/div[12]//td[contains(text(), "Удалить направление")]')
 
 class doctors_diary(BasePage):
     def diary(self):
@@ -63,7 +52,7 @@ class doctors_diary(BasePage):
             start_diary = time.time() # начало отчета времени формирования окна
             self.find_element_pb() # прогрессбар
             self.find_element_pb()  # прогрессбар
-            time.sleep(3)  # ожидание
+            time.sleep(1)  # ожидание
             end_diary = time.time() # конец отчета времени формирования окна
             full_diary = end_diary - start_diary # суммарное время формирования окна "Дневник врача"
             if full_diary <= 10: # условие
@@ -76,7 +65,7 @@ class doctors_diary(BasePage):
                 self.find_element(locators_doctors_diary.LOCATOR_REGISTER_1).click()  # кнопка "Запись"
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
-            time.sleep(5) # ожидание
+            time.sleep(2) # ожидание
             search_string_1 = self.find_element(locators_doctors_diary.LOCATOR_SEARCH_1) # поиск тестового пациента К002489
             search_string_1.send_keys(prm.patient) # ввод данных
             self.find_element(locators_doctors_diary.LOCATOR_SEARCH_2).click() # кнопка "Найти"
@@ -87,7 +76,8 @@ class doctors_diary(BasePage):
             self.find_element(locators_doctors_diary.LOCATOR_SERVICE).click() # выбор услуги
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_doctors_diary.LOCATOR_REGISTER_2).click() #кнопка "Записать"
-            self.find_element_pb() # прогрессбар
+            time.sleep(3)
+            self.driver.switch_to.alert.accept()  # принятие всплывающего окна
             self.find_element(locators_doctors_diary.LOCATOR_CLOSE_1).click() # закрыть окно
             self.find_element_pb()  # прогрессбар
             print('✅ Пациент записан на услугу') # вывод
@@ -96,14 +86,6 @@ class doctors_diary(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
             time.sleep(5)  # ожидание
-            self.find_element(locators_doctors_diary.LOCATOR_FULL_WINDOW).click()
-            self.find_element(locators_doctors_diary.LOCATOR_VISIT_PURPOSE_1).click()
-            self.find_element_pb()  # прогрессбар
-            self.find_element(locators_doctors_diary.LOCATOR_VISIT_PURPOSE_2).click()
-            self.find_element(locators_doctors_diary.LOCATOR_VISIT_PURPOSE_3).click()
-            self.find_element(locators_doctors_diary.LOCATOR_OBJECTIVE_STATUS_1).click() # вкладка "Обьективный статус"
-            self.find_element(locators_doctors_diary.LOCATOR_OBJECTIVE_STATUS_2).click()
-            self.find_element(locators_doctors_diary.LOCATOR_OBJECTIVE_STATUS_3).click()
             self.find_element(locators_doctors_diary.LOCATOR_DIAGNOSIS).click() # выбор вкладки "Диагноз"
             self.find_element(locators_doctors_diary.LOCATOR_MKB).click() # окно заболеваний
             search_string_2 = self.find_element(locators_doctors_diary.LOCATOR_MKB_SEARCH_1) # поиск заболевания "K00.0"
@@ -113,22 +95,15 @@ class doctors_diary(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_doctors_diary.LOCATOR_MKB_CHOICE).click() # выбор заболевания "K00.0"
             self.find_element_pb()  # прогрессбар
-            self.find_element(locators_doctors_diary.LOCATOR_EXODUS_1).click()
-            self.find_element_pb()  # прогрессбар
-            self.find_element(locators_doctors_diary.LOCATOR_EXODUS_2).click()
-            self.find_element(locators_doctors_diary.LOCATOR_EXODUS_3).click()
-            self.find_element_pb()  # прогрессбар
-            self.find_element(locators_doctors_diary.LOCATOR_RESULT_1).click()
-            self.find_element_pb()  # прогрессбар
-            self.find_element(locators_doctors_diary.LOCATOR_RESULT_2).click()
-            self.find_element(locators_doctors_diary.LOCATOR_RESULT_3).click()
-            self.find_element_pb()  # прогрессбар
-            self.find_element(locators_doctors_diary.LOCATOR_PERIOD_1).click()
-            self.find_element(locators_doctors_diary.LOCATOR_PERIOD_2).click()
-            self.find_element(locators_doctors_diary.LOCATOR_TYPE_DIAGNOSIS_1).click()
-            self.find_element(locators_doctors_diary.LOCATOR_TYPE_DIAGNOSIS_2).click()
             self.find_element(locators_doctors_diary.LOCATOR_CHARACTER_1).click()
             self.find_element(locators_doctors_diary.LOCATOR_CHARACTER_2).click()
+            self.find_element(locators_doctors_diary.LOCATOR_DEFAULT_DATA_1).click()
+            self.find_element(locators_doctors_diary.LOCATOR_DEFAULT_DATA_2).click()
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_doctors_diary.LOCATOR_DEFAULT_DATA_3).click()
+            self.find_element(locators_doctors_diary.LOCATOR_DEFAULT_DATA_4).click()
+            self.find_element(locators_doctors_diary.LOCATOR_DEFAULT_DATA_5).click()
+            self.find_element(locators_doctors_diary.LOCATOR_DEFAULT_DATA_6).click()
             self.find_element(locators_doctors_diary.LOCATOR_SAVE_SERVICE).click() # сохранение приема
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
@@ -151,5 +126,3 @@ class doctors_diary(BasePage):
             self.get_screenshots('Results/Results_sc/Дневник.png')
             print('❗️ Ошибка:', error)
             self.driver.quit()
-
-
