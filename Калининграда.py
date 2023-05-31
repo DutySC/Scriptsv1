@@ -16,12 +16,12 @@ class Test_KO:
     def test_KO(self, browser_KO):
         start = time.time()  # начало отсчета
         full_test_KO.test_KO_login(browser_KO)
-        # full_test_KO.test_KO_doctors_diary(browser_KO)
-        # full_test_KO.test_KO_schedule(browser_KO)
-        # full_test_KO.test_KO_hospitalization(browser_KO)
+        full_test_KO.test_KO_doctors_diary(browser_KO)
+        full_test_KO.test_KO_schedule(browser_KO)
+        full_test_KO.test_KO_hospitalization(browser_KO)
         full_test_KO.test_KO_search_patient(browser_KO)
         end = time.time()  # конец отсчета
         full_test = end - start  # полное время авторизации
         time_format = time.strftime("%H:%M:%S", time.gmtime(full_test))
-        print('Затраченное время на тестирование: ', time_format)  # вывод полного времени тестирования
+        print('🏁 Затраченное время на тестирование: ', time_format)  # вывод полного времени тестирования
 
