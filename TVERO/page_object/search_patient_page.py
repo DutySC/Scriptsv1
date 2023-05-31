@@ -6,8 +6,9 @@ from selenium.webdriver.common.by import By
 
 class search_patient_locators:
     LOCATOR_SEARCH_PATIENT_1 = (By.XPATH, '//span[contains(text(), "Регистратура")]')
-    LOCATOR_SEARCH_PATIENT_2 = (By.XPATH, '//tbody/tr[5]/td[2]/a[1]/span[1]')
+    LOCATOR_SEARCH_PATIENT_2 = (By.XPATH, '//span[contains(text(), "Поиск пациентов")]')
     LOCATOR_NEW_PATIENT = (By.XPATH, '//td[contains(text(), "Новый пациент")]')
+    LOCATOR_FULL_WINDOW = (By.XPATH, '//tbody/tr[2]/td[2]/div[1]/div[2]/div[4]')
     LOCATOR_LAST_NAME = (By.XPATH, '//body[1]//div[7]/div[1]/div[1]/table[1]//tr[4]/td[1]//input[1]')
     LOCATOR_FIRST_NAME = (By.XPATH, '//body[1]//div[7]/div[1]/div[1]/table[1]//tr[4]/td[2]//input[1]')
     LOCATOR_SURNAME = (By.XPATH, '//body[1]//div[7]/div[1]/div[1]/table[1]//tr[4]/td[3]//input[1]')
@@ -34,10 +35,10 @@ class search_patient_locators:
     LOCATOR_AREA = (By.XPATH, '//body[1]/div[7]//tbody[1]/tr[2]//tr[2]/td[1]//td[1]/div[1]//tr[2]//img[1]')
     LOCATOR_AREA_OK = (By.XPATH, '//td[contains(text(), "Ок")]')
     LOCATOR_ENTER_AREA = (By.XPATH, '//body[1]/div[7]//tr[2]/td[1]/div[2]//td/div[1]//tr[3]//img[1]')
-    LOCATOR_UP_FILTER = (By.XPATH, '//td[contains(text(), "Вверх")]')
-    LOCATOR_CHOOSE_ANYVSKI = (By.XPATH, '//a[contains(text(), "Анивский")]')
-    LOCATOR_CHOOSE_ANYVA= (By.XPATH, '//a[contains(text(), "Анива")]')
-    LOCATOR_CHOOSE_ALLEYNAYA = (By.XPATH, '//a[contains(text(), "Аллейная")]')
+    LOCATOR_CHOOSE_RUSSIA = (By.XPATH, '//a[contains(text(), "Россия")]')
+    LOCATOR_CHOOSE_ADIGYA= (By.XPATH, '//a[contains(text(), "Адыгея")]')
+    LOCATOR_CHOOSE_ADIGESK = (By.XPATH, '//a[contains(text(), "Адыгейск")]')
+    LOCATOR_CHOOSE_ABADTHEHSKAYA = (By.XPATH, '//a[contains(text(), "Абадзехская")]')
     LOCATOR_HOME = (By.XPATH, '//body[1]/div[7]//tbody[1]//tbody[1]//tbody[1]/tr[2]//tr[2]/td[1]/div[1]//tr[4]/td[2]//input[1]')
     LOCATOR_OK = (By.XPATH, '//td[contains(text(), "ОК")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_1 = (By.XPATH, '//span[contains(text(), "Словари")]')
@@ -67,6 +68,7 @@ class search_patient(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
             time.sleep(5) # ожидание
+            self.find_element(search_patient_locators.LOCATOR_FULL_WINDOW).click()
             search_string_1 = self.find_element(search_patient_locators.LOCATOR_LAST_NAME)  # ввод фамилии
             search_string_1.send_keys(prm.last_name)  # указывается фамилия
             search_string_2 = self.find_element(search_patient_locators.LOCATOR_FIRST_NAME)  # ввод имени
@@ -114,13 +116,13 @@ class search_patient(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element(search_patient_locators.LOCATOR_ENTER_AREA).click()  # ввод адреса
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_UP_FILTER).click()
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_RUSSIA).click()  # выбрать Анучинский
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ANYVSKI).click()  # выбрать Анучинский
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ADIGYA).click()  # выбрать Абрикосовое
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ANYVA).click()  # выбрать Абрикосовое
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ADIGESK).click()  # выбрать Абрикосовое
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ALLEYNAYA).click()  # выбрать Абрикосовое
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ABADTHEHSKAYA).click()  # выбрать Абрикосовое
             self.find_element_pb()  # прогрессбар
             search_string_8 = self.find_element(search_patient_locators.LOCATOR_HOME)  # выбрать дом
             search_string_8.send_keys(prm.home) # указать номер дома
