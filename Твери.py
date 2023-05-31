@@ -17,8 +17,8 @@ class Test_TVERO:
         start = time.time()  # начало отсчета
         full_test_TVERO.test_TVERO_login(browser_TVERO)  # тест модуля авторизации
         # full_test_TVERO.test_TVERO_doctors_diary(browser_TVERO) # тест модуля "Дневник врача"
-        full_test_TVERO.test_TVERO_schedule(browser_TVERO) # тест модуля "Расписание"
-        # full_test_TVERO.test_TVERO_hospitalization(browser_TVERO) # тест модуля "Госпитализация"
+        # full_test_TVERO.test_TVERO_schedule(browser_TVERO) # тест модуля "Расписание"
+        full_test_TVERO.test_TVERO_hospitalization(browser_TVERO) # тест модуля "Госпитализация"
         # full_test_TVERO.test_TVERO_search_patient(browser_TVERO)  # тест модуля "Поиск пациентов"
         end = time.time()  # конец отсчета
         full_test = end - start  # полное время авторизации
