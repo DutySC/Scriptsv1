@@ -16,10 +16,10 @@ class Test_TO:
     def test_TO(self, browser_TO):
         start = time.time()  # начало отсчета
         full_test_TO.test_TO_login(browser_TO)  # тест модуля авторизации
-        # full_test_TO.test_TO_doctors_diary(browser_TO) # тест модуля "Дневник врача"
+        full_test_TO.test_TO_doctors_diary(browser_TO) # тест модуля "Дневник врача"
         full_test_TO.test_TO_schedule(browser_TO) # тест модуля "Расписание"
-        # full_test_TO.test_TO_hospitalization(browser_TO) # тест модуля "Госпитализация"
-        # full_test_TO.test_TO_search_patient(browser_TO)  # тест модуля "Поиск пациентов"
+        full_test_TO.test_TO_hospitalization(browser_TO) # тест модуля "Госпитализация"
+        full_test_TO.test_TO_search_patient(browser_TO)  # тест модуля "Поиск пациентов"
         end = time.time()  # конец отсчета
         full_test = end - start  # полное время авторизации
         time_format = time.strftime("%H:%M:%S", time.gmtime(full_test))

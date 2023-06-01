@@ -16,18 +16,21 @@ class locators_hospitalization:
     LOCATOR_SEARCH_PATIENT_3 = (By.XPATH, '//td[contains(text(), "Найти")]')
     LOCATOR_SEARCH_PATIENT_4 = (By.XPATH, f'//body[1]/div[8]//tr[1]//tr[1]//a[contains(text(), "{prm.name_patient}")]')
     LOCATOR_JORNAL_1 = (By.XPATH, '//body[1]/div[7]//div[1]/div[1]/table[1]//tr[2]//img[1]')
-    LOCATOR_JORNAL_2 = (By.XPATH, '//div[8]//span[contains(text(), "терап")]')
+    LOCATOR_JORNAL_2 = (By.XPATH, '//div[8]//span[contains(text(), "Дневной стационар")]')
+    LOCATOR_WAY_1 = (By.XPATH, '//table[2]/tbody[1]/tr[1]//img[1]')
+    LOCATOR_WAY_2 = (By.XPATH, '//td[contains(text(), "OK")]')
+    LOCATOR_DEPARTMENT = (By.XPATH, '//tbody[2]/tr[1]/td/table[1]//img[1]')
     LOCATOR_PALLET_1 = (By.XPATH, '//body[1]/div[7]//tbody[2]/tr[2]//img[1]')
-    LOCATOR_PALLET_2 = (By.XPATH, '//tr[3]//span[contains(text(), "Терапевтические")]')
+    LOCATOR_PALLET_2 = (By.XPATH, '//div[8]//span[contains(text(), "терапевтические")]')
     LOCATOR_DIAGNOSIS_1 = (By.XPATH, '//body[1]/div[7]//fieldset[1]//tbody[3]/tr[1]//img[1]')
     LOCATOR_DIAGNOSIS_2 = (By.XPATH, '//body[1]/div[8]//tr[2]/td[1]//input[1]')
     LOCATOR_DIAGNOSIS_3 = (By.XPATH, '//body[1]/div[8]//div[1]/div[1]/div[1]/div[1]/div[1]//td[3]//td[2]')
     LOCATOR_DIAGNOSIS_4 = (By.XPATH, '//td[contains(text(), "Ок")]')
-    LOCATOR_CREATE_DIRECTION = (By.XPATH, '//td[contains(text(), "ОК")]')
+    LOCATOR_CREATE_DIRECTION = (By.XPATH, '//div[7]//td[contains(text(), "ОК")]')
     LOCATOR_CHOOSE_PATIENT_PCM = (By.XPATH, f'//tbody//a[contains(text(), "{prm.name_patient}")]')
     LOCATOR_HOSPITALIZATION_PATIENT_1 = (By.XPATH, '//body[1]//tr[14]/td[contains(text(), "Госпитализировать")]')
     LOCATOR_HOSPITALIZATION_PATIENT_2 = (By.XPATH, '//td[contains(text(), "Далее")]')
-    LOCATOR_HOSPITALIZATION_PATIENT_3 = (By.XPATH, '//td[contains(text(), "ОК")]')
+    LOCATOR_HOSPITALIZATION_PATIENT_3 = (By.XPATH, '//div[7]//td[contains(text(), "ОК")]')
     LOCATOR_CANCEL_HOSPITALIZATION = (By.XPATH, '//td[contains(text(), "Отменить госпитализацию")]')
     LOCATOR_DELETE_HOSPITALIZATION = (By.XPATH, '//td[contains(text(), "Удалить")]')
 
@@ -56,9 +59,16 @@ class hospitalization(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_SEARCH_PATIENT_4).click()  # выбор пользователя "Тест Берем Карта"
             self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_WAY_1).click()
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_WAY_2).click()
+            self.find_element_pb()  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_JORNAL_1).click() # открытие выпадающего таблицы
             self.find_element(locators_hospitalization.LOCATOR_JORNAL_2).click() # выбор журнала
             self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_DEPARTMENT).click()
+            self.find_element_pb()  # прогрессбар
+            self.find_element(locators_hospitalization.LOCATOR_JORNAL_2).click()
             self.find_element(locators_hospitalization.LOCATOR_PALLET_1).click()  #
             self.find_element(locators_hospitalization.LOCATOR_PALLET_2).click()  #
             self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_1).click() # окно выбора диагноза
