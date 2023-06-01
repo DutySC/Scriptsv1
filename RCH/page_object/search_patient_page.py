@@ -7,8 +7,9 @@ from selenium.common import TimeoutException
 
 class search_patient_locators:
     LOCATOR_SEARCH_PATIENT_1 = (By.XPATH, '//span[contains(text(), "Регистратура")]')
-    LOCATOR_SEARCH_PATIENT_2 = (By.XPATH, '//body[1]//div[5]//tr[1]//a[1]/span[contains(text(), "Поиск пациентов")]')
+    LOCATOR_SEARCH_PATIENT_2 = (By.XPATH, '//tbody/tr[6]/td[2]/a[1]/span[contains(text(), "Поиск пациентов")]')
     LOCATOR_NEW_PATIENT = (By.XPATH, '//td[contains(text(), "Новый пациент")]')
+    LOCATOR_FULL_WINDOW = (By.XPATH, '//tbody/tr[2]/td[2]/div[1]/div[2]/div[4]')
     LOCATOR_LAST_NAME = (By.XPATH, '//body[1]//div[7]/div[1]/div[1]/table[1]//tr[4]/td[1]//input[1]')
     LOCATOR_FIRST_NAME = (By.XPATH, '//body[1]//div[7]/div[1]/div[1]/table[1]//tr[4]/td[2]//input[1]')
     LOCATOR_SURNAME = (By.XPATH, '//body[1]//div[7]/div[1]/div[1]/table[1]//tr[4]/td[3]//input[1]')
@@ -24,12 +25,11 @@ class search_patient_locators:
     LOCATOR_DATA_2 = (By.XPATH, '//div[contains(text(), "Сегодня")]')
     LOCATOR_TAB_STATUS = (By.XPATH, '//div[contains(text(), "Соц.")]')
     LOCATOR_STATUS_OPEN = (By.XPATH, '//body[1]/div[7]//td[1]/div[1]//div[3]/div[2]//img[1]')
-    LOCATOR_STATUS_CH00SE = (By.XPATH, '//span[contains(text(), "Прочее")]')
+    LOCATOR_STATUS_CH00SE = (By.XPATH, '//span[contains(text(), "Неработающий пациент трудоспособного возраста")]')
     LOCATOR_STATUS_OK = (By.XPATH, '//td[contains(text(), "Ок")]')
     LOCATOR_TAB_DOCUMENTS = (By.XPATH, '//div[contains(text(),"Документы")]')
     LOCATOR_TYPE_OF_DOCUMENTS = (By.XPATH, '//body[1]/div[7]//td[1]/div[2]/table[1]/tbody[1]/tr[2]/td[1]/div[1]//tr[2]//img[1]')
     LOCATOR_CHOOSE_DOCUMENT = (By.XPATH, '//span[contains(text(), "Вид на жительство")]')
-    LOCATOR_PUT_NUMBER = (By.XPATH, '//body[1]/div[7]//td/div[2]//td[3]//input[1]')
     LOCATOR_DATA_3 = (By.XPATH, '//body[1]/div[7]//td[1]/div[2]//tr[4]//div/div/div[1]')
     LOCATOR_DATA_4 = (By.XPATH, '//div[contains(text(), "Сегодня")]')
     LOCATOR_WHO_GAVE = (By.XPATH, '//body[1]/div[7]//td[1]/div[2]/table[1]/tbody[1]/tr[2]/td[1]/div[1]//textarea[1]')
@@ -37,7 +37,8 @@ class search_patient_locators:
     LOCATOR_AREA = (By.XPATH, '//body[1]/div[7]//tbody[1]/tr[2]//tr[2]/td[1]//td[1]/div[1]//tr[2]//img[1]')
     LOCATOR_AREA_OK = (By.XPATH, '//td[contains(text(), "Ок")]')
     LOCATOR_ENTER_AREA = (By.XPATH, '//body[1]/div[7]//tr[2]/td[1]/div[2]//td/div[1]//tr[3]//img[1]')
-    LOCATOR_CHOOSE_ABAKANSKAYA = (By.XPATH, '//a[contains(text(), "Абаканская")]')
+    LOCATOR_CHOOSE_ARGUN = (By.XPATH, '//a[contains(text(), "Аргун")]')
+    LOCATOR_CHOOSE_ABDULKADIROVA = (By.XPATH, '//a[contains(text(), "А.Абдулкадырова")]')
     LOCATOR_HOME = (By.XPATH, '//body[1]/div[7]//tbody[1]//tbody[1]//tbody[1]/tr[2]//tr[2]/td[1]/div[1]//tr[4]/td[2]//input[1]')
     LOCATOR_OK = (By.XPATH, '//td[contains(text(), "ОК")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
@@ -45,9 +46,9 @@ class search_patient_locators:
     LOCATOR_DICTIONARY_PATIENT_CARD_3 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_4 = (By.XPATH, '//span[contains(text(), "Карты пациентов")]')
     LOCATOR_FILTER_1 = (By.XPATH, '//td[2]/div[1]//span[contains(text(), "Показать фильтр")]')
-    LOCATOR_FILTER_2 = (By.XPATH, '//div[3]/div[1]//td[3]//input[1]')
-    LOCATOR_FILTER_3 = (By.XPATH, '//div[3]/div[1]//td[4]//input[1]')
-    LOCATOR_FILTER_4 = (By.XPATH, '//div[3]/div[1]//td[5]//input[1]')
+    LOCATOR_FILTER_2 = (By.XPATH, '//div[3]/div[1]//td[2]//input[1]')
+    LOCATOR_FILTER_3 = (By.XPATH, '//div[3]/div[1]//td[3]//input[1]')
+    LOCATOR_FILTER_4 = (By.XPATH, '//div[3]/div[1]//td[4]//input[1]')
     LOCATOR_FILTER_5 = (By.XPATH, '//td[2]/div[1]//span[contains(text(), "Найти")]')
     # LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]/div[1]//td[8]//td[3]//img[1]')
     LOCATOR_LAST_NAME_NEWVERSION_1 = (By.XPATH, '//span[contains(text(), "Новаяверсия")]')
@@ -55,16 +56,14 @@ class search_patient_locators:
     LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_2 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
-    LOCATOR_DICTIONARY_INDIVIDUAL_4 = (By.XPATH, '//body[1]/div[1]/div[2]//tr[1]//span[contains(text(), "Контрагенты")]')
-    LOCATOR_HEAD = (By.XPATH, '//body//div[1]/div/div/div/div/div[3]/div[1]')
-    LOCATOR_FILTER_CATALOGS_1 = (By.XPATH, '//body//div[1]/div[2]//span[contains(text(), "Показать фильтр")]')
-    LOCATOR_FILTER_CATALOGS_2 = (By.XPATH, '//body[1]//div[3]/div[1]//td[4]//input[1]')
-    LOCATOR_FILTER_CATALOGS_3 = (By.XPATH, '//body[1]//div[3]/div[1]//td[5]//input[1]')
-    LOCATOR_FILTER_CATALOGS_4 = (By.XPATH, '//body[1]//div[3]/div[1]//td[6]//input[1]')
+    LOCATOR_DICTIONARY_INDIVIDUAL_4 = (By.XPATH, '//span[contains(text(), "Контрагенты физ. лица")]')
+    LOCATOR_FILTER_CATALOGS_2 = (By.XPATH, '//body[1]//div[3]/div[1]//td[3]//input[1]')
+    LOCATOR_FILTER_CATALOGS_3 = (By.XPATH, '//body[1]//div[3]/div[1]//td[4]//input[1]')
+    LOCATOR_FILTER_CATALOGS_4 = (By.XPATH, '//body[1]//div[3]/div[1]//td[5]//input[1]')
     LOCATOR_CATALOGS_1 = (By.XPATH, '//div[@id="TreeArea_CATALOGS_DEFAULT"]')
     LOCATOR_CATALOGS_2 = (By.XPATH, '//td[contains(text(), "Список")]')
-    LOCATOR_LAST_NAME_NEWVERSION_2 = (By.XPATH, '//tbody/tr[1]/td[6]/span[1][contains(text(), "Новаяверсия")]')
-    LOCATOR_DELETE_USER_2 = (By.XPATH, '//body[1]/div[2]/div[2]//td[2][contains(text(), "Удалить")]')
+    LOCATOR_LAST_NAME_NEWVERSION_2 = (By.XPATH, '//tbody/tr[1]/td[5]/span[contains(text(), "Новаяверсия")]')
+    LOCATOR_DELETE_USER_2 = (By.XPATH, '//body[1]/div[2]/div[2]//td[contains(text(), "Удалить")]')
 
 class search_patient(BasePage):
     def create_patient(self):
@@ -79,6 +78,7 @@ class search_patient(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
             time.sleep(5) # ожидание
+            self.find_element(search_patient_locators.LOCATOR_FULL_WINDOW).click()
             search_string_1 = self.find_element(search_patient_locators.LOCATOR_LAST_NAME)  # ввод фамилии
             search_string_1.send_keys(prm.last_name)  # указывается фамилия
             search_string_2 = self.find_element(search_patient_locators.LOCATOR_FIRST_NAME)  # ввод имени
@@ -118,9 +118,6 @@ class search_patient(BasePage):
             self.find_element(search_patient_locators.LOCATOR_TAB_DOCUMENTS).click()  # вкладка Документы/Адреса
             self.find_element(search_patient_locators.LOCATOR_TYPE_OF_DOCUMENTS).click()  # тип документа
             self.find_element(search_patient_locators.LOCATOR_CHOOSE_DOCUMENT).click()  # указать тип документа "Вид на жительство"
-            self.find_element(search_patient_locators.LOCATOR_PUT_NUMBER).click() # выбрать поле для указания номера
-            search_string_7 = self.find_element(search_patient_locators.LOCATOR_PUT_NUMBER) # номер документа
-            search_string_7.send_keys(prm.rand_2) # написать номер документа
             self.find_element(search_patient_locators.LOCATOR_DATA_3).click()  # дата выдачи
             self.find_element(search_patient_locators.LOCATOR_DATA_4).click()  # указать дату выдачи
             search_string_8 = self.find_element(search_patient_locators.LOCATOR_WHO_GAVE)  # кем выдан
@@ -132,7 +129,9 @@ class search_patient(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element(search_patient_locators.LOCATOR_ENTER_AREA).click()  # ввод адреса
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ABAKANSKAYA).click()
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ARGUN).click()
+            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ABDULKADIROVA).click()
             self.find_element_pb()  # прогрессбар
             search_string_9 = self.find_element(search_patient_locators.LOCATOR_HOME)  # выбрать дом
             search_string_9.send_keys(prm.home) # указать номер дома
@@ -170,7 +169,6 @@ class search_patient(BasePage):
                 self.find_element_pb()  # прогрессбар
             except TimeoutException:
                 time.sleep(20)
-            self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_1).click()  # открыть поиск по фильтрам
             search_string_13 = self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_2) # фамилия
             search_string_13.send_keys(prm.last_name) # написать фамилию
             search_string_14 = self.find_element(search_patient_locators.LOCATOR_FILTER_CATALOGS_3) # имя
