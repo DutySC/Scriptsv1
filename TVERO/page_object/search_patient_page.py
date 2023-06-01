@@ -1,6 +1,7 @@
 import TVERO.parametrize as prm
 import time
 from BASE_PAGE import BasePage
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 # from conftest import browser_SNILS
 
@@ -46,7 +47,7 @@ class search_patient_locators:
     LOCATOR_DICTIONARY_PATIENT_CARD_3 = (By.XPATH, '//span[contains(text(), "Карты пациентов")]')
     LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]/div[1]//td[7]//td[3]//img[1]')
     LOCATOR_LAST_NAME_NEWVERSION = (By.XPATH, '//span[contains(text(), "Новаяверсия")]')
-    LOCATOR_DELETE_USER_1 = (By.XPATH, '//body[1]/div[2]/div[2]/div[4]/table[1]/tbody[1]/tr[5]/td[2]')
+    LOCATOR_DELETE_USER_1 = (By.XPATH, '//body[1]/div[2]/div[2]/div[3]/table[1]/tbody[1]/tr[5]/td[2]')
     LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_2 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//span[contains(text(), "Контрагенты физ. лица")]')
@@ -63,11 +64,11 @@ class search_patient(BasePage):
             self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_1).click()  # вкладка "Регистратура"
             self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_2).click()  # вкладка "Поиск пациентов"
             self.find_element_pb()  # прогрессбар
-            time.sleep(3)  # ожидание
+            time.sleep(2)  # ожидание
             self.find_element(search_patient_locators.LOCATOR_NEW_PATIENT).click()  # создание нового пациента
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
-            time.sleep(5) # ожидание
+            time.sleep(2) # ожидание
             self.find_element(search_patient_locators.LOCATOR_FULL_WINDOW).click()
             search_string_1 = self.find_element(search_patient_locators.LOCATOR_LAST_NAME)  # ввод фамилии
             search_string_1.send_keys(prm.last_name)  # указывается фамилия
@@ -151,8 +152,9 @@ class search_patient(BasePage):
             search_string_10 = self.find_element(search_patient_locators.LOCATOR_DELETE_FILTER_2)
             search_string_10.send_keys(prm.first_name)
             search_string_11 = self.find_element(search_patient_locators.LOCATOR_DELETE_FILTER_3)
-            search_string_11.send_keys(prm.surname)
-            self.actionchains(search_patient_locators.LOCATOR_SEARCH_PATIENT_3).click()
+            search_string_11.send_keys(prm.surname, Keys.ENTER)
+            time.sleep(2)
+            # self.actionchains(search_patient_locators.LOCATOR_SEARCH_PATIENT_3).click()
             self.find_element_pb()  # прогрессбар
             self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION).perform()  # ПКМ по имени созданного пациента
             self.find_element(search_patient_locators.LOCATOR_DELETE_USER_2).click() # кнопка "Удалить"
