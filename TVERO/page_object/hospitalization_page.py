@@ -32,7 +32,8 @@ class locators_hospitalization:
 
 class hospitalization(BasePage):
     def register_patient(self):
-        try:
+        # try:
+            self.driver.refresh()
             start_patient_hospitalization = time.time()
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_1).click() # вкладка "Регистратура"
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_2).click() # вкладка "Приемный покой"
@@ -41,7 +42,7 @@ class hospitalization(BasePage):
             self.find_element_pb(time=60)  # прогрессбар
             self.find_element_pb(time=60)  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_PATIENT_REG_CONTAINER) # полная прогрузка элементов страницы
-            time.sleep(10)  # ожидание
+            time.sleep(5)  # ожидание
             self.actionchains(locators_hospitalization.LOCATOR_WINDOW_RCM_1).perform() # ПКМ по области окна
             self.find_element(locators_hospitalization.LOCATOR_WINDOW_RCM_2).click() # добавить пациента для создания направления
             self.find_element_pb()  # прогрессбар
@@ -102,10 +103,10 @@ class hospitalization(BasePage):
             end_patient_hospitalization = time.time()
             full_patient_hospitalization = end_patient_hospitalization - start_patient_hospitalization
             print('   🔼 Модуль - "Госпитализация", выполнен за: ', round(full_patient_hospitalization, 2), 'с')
-        except Exception as error:
-            self.get_screenshots('Results/Results_sc/Госпитализация.png')
-            print('❗️ Ошибка:', error)
-            self.driver.quit()
+        # except Exception as error:
+        #     self.get_screenshots('Results/Results_sc/Госпитализация.png')
+        #     print('❗️ Ошибка:', error)
+        #     self.driver.quit()
 
 
 

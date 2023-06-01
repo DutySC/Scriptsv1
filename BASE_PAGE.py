@@ -24,3 +24,6 @@ class BasePage:
 
     def get_screenshots(self, name):
         return self.driver.save_screenshot(name)
+
+    # def refresh(self):
+    #     return self.driver.refresh()

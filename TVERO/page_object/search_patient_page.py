@@ -60,6 +60,7 @@ class search_patient_locators:
 class search_patient(BasePage):
     def create_patient(self):
         try:
+            self.driver.refresh()
             start_search_patient = time.time()
             self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_1).click()  # вкладка "Регистратура"
             self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_2).click()  # вкладка "Поиск пациентов"
