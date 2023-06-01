@@ -18,8 +18,8 @@ class Test_RCH:
         full_test_RCH.test_RCH_login(browser_RCH)  # тест модуля авторизации
         # full_test_RCH.test_RCH_doctors_diary(browser_RCH) # тест модуля "Дневник врача"
         # full_test_RCH.test_RCH_schedule(browser_RCH) # тест модуля "Расписание"
-        full_test_RCH.test_RCH_hospitalization(browser_RCH) # тест модуля "Госпитализация"
-        # full_test_RCH.test_RCH_search_patient(browser_RCH)  # тест модуля "Поиск пациентов"
+        # full_test_RCH.test_RCH_hospitalization(browser_RCH) # тест модуля "Госпитализация"
+        full_test_RCH.test_RCH_search_patient(browser_RCH)  # тест модуля "Поиск пациентов"
         end = time.time()  # конец отсчета
         full_test = end - start  # полное время авторизации
         time_format = time.strftime("%H:%M:%S", time.gmtime(full_test))

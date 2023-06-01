@@ -16,17 +16,13 @@ class locators_hospitalization:
     LOCATOR_SEARCH_PATIENT_3 = (By.XPATH, '//td[contains(text(), "Найти")]')
     LOCATOR_SEARCH_PATIENT_4 = (By.XPATH, f'//body[1]/div[8]//tr[1]//tr[1]//a[contains(text(), "{prm.name_patient}")]')
     LOCATOR_JORNAL_1 = (By.XPATH, '//body[1]/div[7]//div[1]/div[1]/table[1]//tr[2]//img[1]')
-    LOCATOR_JORNAL_2 = (By.XPATH, '//body[1]/div[8]//span[contains(text(), "Журнал госпитализации")]')
-    LOCATOR_HOSPITALIZATION_DEPARTMENT_1 = (By.XPATH, '//body[1]/div[7]//fieldset[1]//tbody[2]/tr[1]/td/table[1]//img[1]')
-    LOCATOR_HOSPITALIZATION_DEPARTMENT_2 = (By.XPATH, '//span[contains(text(), "Гинекологическое отделение")]')
-    LOCATOR_PALLET_1 = (By.XPATH, '//body[1]/div[7]//tbody[2]/tr[2]//img[1]')
-    LOCATOR_PALLET_2 = (By.XPATH, '//span[contains(text(), "Кардиохирургические")]')
+    LOCATOR_JORNAL_2 = (By.XPATH, '//div[8]//span[contains(text(), "ДС")]')
     LOCATOR_DIAGNOSIS_1 = (By.XPATH, '//body[1]/div[7]//fieldset[1]//tbody[3]/tr[1]//img[1]')
     LOCATOR_DIAGNOSIS_2 = (By.XPATH, '//body[1]/div[8]//tr[2]/td[1]//input[1]')
     LOCATOR_DIAGNOSIS_3 = (By.XPATH, '//body[1]/div[8]//div[1]/div[1]/div[1]/div[1]/div[1]//td[3]//td[2]')
     LOCATOR_DIAGNOSIS_4 = (By.XPATH, '//td[contains(text(), "Ок")]')
-    LOCATOR_DATA_1 = (By.XPATH, '//tbody/tr[6]/td[2]/div/div/div[1]')
-    LOCATOR_DATA_2 = (By.XPATH, '//div[contains(text(), "Сегодня")]')
+    LOCATOR_TYPE_HOSPITALIZATION_1 = (By.XPATH, '//tbody[4]/tr[2]//img[1]')
+    LOCATOR_TYPE_HOSPITALIZATION_2 = (By.XPATH, '//span[contains(text(), "Дневной в АПУ")]')
     LOCATOR_CREATE_DIRECTION = (By.XPATH, '//body[1]/div[7]//td[contains(text(), "ОК")]')
     LOCATOR_CHOOSE_PATIENT_PCM = (By.XPATH, f'//tbody//a[contains(text(), "{prm.name_patient}")]')
     LOCATOR_HOSPITALIZATION_PATIENT_1 = (By.XPATH, '//body[1]//tr[14]/td[contains(text(), "Госпитализировать")]')
@@ -63,10 +59,6 @@ class hospitalization(BasePage):
             self.find_element(locators_hospitalization.LOCATOR_JORNAL_1).click() # открытие выпадающего таблицы
             self.find_element(locators_hospitalization.LOCATOR_JORNAL_2).click() # выбор журнала
             self.find_element_pb(time=80)  # прогрессбар
-            self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_DEPARTMENT_1).click() # выбор отделения
-            self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_DEPARTMENT_2).click() # отделение "Гинекологическое отделение"
-            self.find_element(locators_hospitalization.LOCATOR_PALLET_1).click()  # выбор койки
-            self.find_element(locators_hospitalization.LOCATOR_PALLET_2).click()  # койка "Кардиохирургические"
             self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_1).click() # окно выбора диагноза
             self.find_element_pb()  # прогрессбар
             search_string_2 = self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_2) # поиск диагноза Z00.0
@@ -75,8 +67,8 @@ class hospitalization(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_hospitalization.LOCATOR_DIAGNOSIS_4).click() # кнопка "ОК"
             self.find_element_pb()  # прогрессбар
-            self.find_element(locators_hospitalization.LOCATOR_DATA_1).click() # выбор даты
-            self.find_element(locators_hospitalization.LOCATOR_DATA_2).click() # сегодняшняя дата
+            self.find_element(locators_hospitalization.LOCATOR_TYPE_HOSPITALIZATION_1).click()
+            self.find_element(locators_hospitalization.LOCATOR_TYPE_HOSPITALIZATION_2).click()
             self.find_element(locators_hospitalization.LOCATOR_CREATE_DIRECTION).click() # кнопка "ОК"
             self.find_element_pb()  # прогрессбар
             print('✅ Пациент записан на госпитализацию') # вывод
