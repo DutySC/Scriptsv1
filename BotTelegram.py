@@ -67,10 +67,12 @@ def any_msg(message):
     btn2 = types.InlineKeyboardButton(text="Новосибирская область", callback_data="НСО")
     btn3 = types.InlineKeyboardButton(text="Ростовская область", callback_data="Ростова")
     btn4 = types.InlineKeyboardButton(text="Курская область", callback_data="Курска")
+    btn5 = types.InlineKeyboardButton(text="РСО-Алания", callback_data="Алании")
     markup.add(btn1)
     markup.add(btn2)
     markup.add(btn3)
     markup.add(btn4)
+    markup.add(btn5)
     bot.send_message(message.chat.id, "Выберите регион/отдельного клиента, для тестирования\nкрит. модулей продуктивного стенда сервиса - МИС", reply_markup=markup)
 
 @bot.message_handler(commands=["help"])
