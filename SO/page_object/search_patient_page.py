@@ -1,3 +1,4 @@
+from selenium.webdriver import Keys
 import SO.parametrize as prm
 import time
 from BASE_PAGE import BasePage
@@ -36,7 +37,8 @@ class search_patient_locators:
     LOCATOR_ENTER_AREA = (By.XPATH, '//body[1]/div[7]//tr[2]/td[1]/div[2]//td/div[1]//tr[3]//img[1]')
     LOCATOR_UP_FILTER = (By.XPATH, '//td[contains(text(), "Вверх")]')
     LOCATOR_CHOOSE_ANYVSKI = (By.XPATH, '//a[contains(text(), "Анивский")]')
-    LOCATOR_CHOOSE_ANYVA= (By.XPATH, '//a[contains(text(), "Анива")]')
+    LOCATOR_CHOOSE_SEARCH = (By.XPATH, '//div[8]//td[2]//td[2]//input[1]')
+    LOCATOR_CHOOSE_ANYVA= (By.XPATH, '//tr[2]/td[2]/a[contains(text(), "Анива")]')
     LOCATOR_CHOOSE_ALLEYNAYA = (By.XPATH, '//a[contains(text(), "Аллейная")]')
     LOCATOR_HOME = (By.XPATH, '//body[1]/div[7]//tbody[1]//tbody[1]//tbody[1]/tr[2]//tr[2]/td[1]/div[1]//tr[4]/td[2]//input[1]')
     LOCATOR_OK = (By.XPATH, '//td[contains(text(), "ОК")]')
@@ -57,7 +59,7 @@ class search_patient_locators:
 
 class search_patient(BasePage):
     def create_patient(self):
-        try:
+        # try:
             start_search_patient = time.time()
             self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_1).click()  # вкладка "Регистратура"
             self.find_element(search_patient_locators.LOCATOR_SEARCH_PATIENT_2).click()  # вкладка "Поиск пациентов"
@@ -116,14 +118,17 @@ class search_patient(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element(search_patient_locators.LOCATOR_UP_FILTER).click()
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ANYVSKI).click()  # выбрать Анучинский
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ANYVSKI).click()  # выбрать Анивский
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ANYVA).click()  # выбрать Абрикосовое
+            search_string_8 = self.find_element(search_patient_locators.LOCATOR_CHOOSE_SEARCH)
+            search_string_8.send_keys(prm.aniva, Keys.ENTER)
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ALLEYNAYA).click()  # выбрать Абрикосовое
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ANYVA).click()  # выбрать Анива
             self.find_element_pb()  # прогрессбар
-            search_string_8 = self.find_element(search_patient_locators.LOCATOR_HOME)  # выбрать дом
-            search_string_8.send_keys(prm.home) # указать номер дома
+            self.find_element(search_patient_locators.LOCATOR_CHOOSE_ALLEYNAYA).click()  # выбрать Аллейная
+            self.find_element_pb()  # прогрессбар
+            search_string_9 = self.find_element(search_patient_locators.LOCATOR_HOME)  # выбрать дом
+            search_string_9.send_keys(prm.home) # указать номер дома
             self.find_element(search_patient_locators.LOCATOR_OK).click()  # кнопка "ОК"
             self.find_element_pb()  # прогрессбар
             print('✅ Тестовый пациент - создан') # вывод
@@ -144,12 +149,12 @@ class search_patient(BasePage):
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_2).click() # вкладка "Контрагенты"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты физ. лица"
             self.find_element_pb()  # прогрессбар
-            search_string_9 = self.find_element(search_patient_locators.LOCATOR_DELETE_FILTER_1)
-            search_string_9.send_keys(prm.last_name)
-            search_string_10 = self.find_element(search_patient_locators.LOCATOR_DELETE_FILTER_2)
-            search_string_10.send_keys(prm.first_name)
-            search_string_11 = self.find_element(search_patient_locators.LOCATOR_DELETE_FILTER_3)
-            search_string_11.send_keys(prm.surname)
+            search_string_10 = self.find_element(search_patient_locators.LOCATOR_DELETE_FILTER_1)
+            search_string_10.send_keys(prm.last_name)
+            search_string_11 = self.find_element(search_patient_locators.LOCATOR_DELETE_FILTER_2)
+            search_string_11.send_keys(prm.first_name)
+            search_string_12 = self.find_element(search_patient_locators.LOCATOR_DELETE_FILTER_3)
+            search_string_12.send_keys(prm.surname)
             self.actionchains(search_patient_locators.LOCATOR_SEARCH_PATIENT_3).click()
             self.find_element_pb()  # прогрессбар
             self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION).perform()  # ПКМ по имени созданного пациента
@@ -160,7 +165,7 @@ class search_patient(BasePage):
             end_search_patient = time.time()
             full_search_patient = end_search_patient - start_search_patient
             print('   🔼 Модуль - "Поиск пациентов", выполнен за: ', round(full_search_patient, 2), 'с')
-        except Exception as error:
-            self.get_screenshots('Results/Results_sc/Поиск.png')
-            print('❗️ Ошибка:', error)
-            self.driver.quit()
+        # except Exception as error:
+        #     self.get_screenshots('Results/Results_sc/Поиск.png')
+        #     print('❗️ Ошибка:', error)
+        #     self.driver.quit()
