@@ -29,7 +29,7 @@ class locators_doctors_diary:
     LOCATOR_MKB_SEARCH_1 = (By.XPATH, '//body[1]/div[8]//tr[2]/td[1]//input[1]')
     LOCATOR_MKB_SEARCH_2 = (By.XPATH, '//td[contains(text(), "Поиск")]')
     LOCATOR_MKB_CHOICE = (By.XPATH, '//td[contains(text(), "Ок")]')
-    LOCATOR_MKB_DISEASE_1 = (By.XPATH, '//body[1]/div[7]//div[8]/table[1]/tbody/tr[3]//tr[3]//td[4]//img[1]')
+    LOCATOR_MKB_DISEASE_1 = (By.XPATH, '//body[1]/div[7]//div[7]/table[1]/tbody/tr[3]//tr[3]//td[4]//img[1]')
     LOCATOR_MKB_DISEASE_2 = (By.XPATH, '//body[1]/div[8]//span[2][contains(text(), "Острое")]')
     LOCATOR_SAVE_SERVICE = (By.XPATH, '//body[1]/div[7]//table[2]//td[2][contains(text(), "Сохранить")]')
     LOCATOR_PATIENT_RCM = (By.XPATH, f'//body[1]//a[contains(text(), "{prm.name_patient_1}")]')
