@@ -38,6 +38,7 @@ class locators_hospitalization:
 
 class hospitalization(BasePage):
     def register_patient(self):
+        global end_patient_hospitalization, start_patient_hospitalization
         try:
             start_patient_hospitalization = time.time()
             self.find_element(locators_hospitalization.LOCATOR_HOSPITALIZATION_1).click() # вкладка "Регистратура"
@@ -112,6 +113,8 @@ class hospitalization(BasePage):
             full_patient_hospitalization = end_patient_hospitalization - start_patient_hospitalization
             print('   🔼 Модуль - "Госпитализация", выполнен за: ', round(full_patient_hospitalization, 2), 'с')
         except Exception as error:
+            full_patient_hospitalization = end_patient_hospitalization - start_patient_hospitalization
+            print('   ❌ Модуль - "Госпитализация", завершен за: ', round(full_patient_hospitalization, 2), 'с')
             self.get_screenshots('Results/Results_sc/Госпитализация.png')
             print('❗️ Ошибка:', error)
             self.driver.quit()
