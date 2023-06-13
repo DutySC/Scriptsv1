@@ -15,7 +15,7 @@ class login_locators:
 
 class login(BasePage):
     def auth(self):
-        global full_auth_1, full_auth_2
+        # global full_auth_1, full_auth_2
         try:
             print('=================\n')
             user = self.find_element(login_locators.LOCATOR_USER) # логин
@@ -47,8 +47,8 @@ class login(BasePage):
             full_auth = full_auth_1 + full_auth_2 # полное время модуля авторизации
             print('   🔼 Модуль - "Авторизация", выполнен за: ', round(full_auth, 2), 'с') # вывод полного времени модуля авторизации
         except Exception as error:
-            full_auth = full_auth_1 + full_auth_2  # полное время модуля авторизации
-            print('   ❌ Модуль - "Авторизация", завершен за: ', round(full_auth, 2), 'с')  # вывод полного времени модуля авторизации
+            # full_auth = full_auth_1 + full_auth_2  # полное время модуля авторизации
+            # print('   ❌ Модуль - "Авторизация", завершен за: ', round(full_auth, 2), 'с')  # вывод полного времени модуля авторизации
             self.get_screenshots('Results/Results_sc/Авторизация.png')
             print('❗️ Ошибка:', error)
             self.driver.quit()

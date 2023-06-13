@@ -26,7 +26,6 @@ class locators_schedule:
 
 class schedule(BasePage):
     def patient_schedule(self):
-        global end_patient_schedule, start_patient_schedule
         try:
             start_patient_schedule = time.time()
             self.find_element(locators_schedule.LOCATOR_SCHEDULE_1).click() # вкладка "Регистратура"
@@ -85,8 +84,6 @@ class schedule(BasePage):
             full_patient_schedule = end_patient_schedule - start_patient_schedule
             print('   🔼 Модуль - "Расписание", выполнен за: ', round(full_patient_schedule, 2), 'с')
         except Exception as error:
-            full_patient_schedule = end_patient_schedule - start_patient_schedule
-            print('   ❌ Модуль - "Расписание", завершен за: ', round(full_patient_schedule, 2), 'с')
             self.get_screenshots('Results/Results_sc/Расписание.png')
             print('❗️ Ошибка:', error)
             self.driver.quit()

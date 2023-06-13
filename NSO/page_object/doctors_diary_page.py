@@ -37,7 +37,6 @@ class locators_doctors_diary:
 
 class doctors_diary(BasePage):
     def diary(self):
-        global end_doctors_diary, start_doctors_diary
         try:
             start_doctors_diary = time.time()
             try:
@@ -121,8 +120,6 @@ class doctors_diary(BasePage):
             full_doctors_diary = end_doctors_diary - start_doctors_diary
             print('   🔼 Модуль - "Дневник врача", выполнен за: ', round(full_doctors_diary, 2), 'с')
         except Exception as error:
-            full_doctors_diary = end_doctors_diary - start_doctors_diary
-            print('   ❌ Модуль - "Дневник врача", завершен за: ', round(full_doctors_diary, 2), 'с')
             self.get_screenshots('Results/Results_sc/Дневник.png')
             print('❗️ Ошибка:', error)
             self.driver.quit()
