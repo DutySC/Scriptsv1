@@ -25,7 +25,7 @@ class locators_doctors_diary:
     LOCATOR_OBJECTIVE_STATUS_2 = (By.XPATH, '//body[1]/div[7]//div[3]//tr[3]//img[1]')
     LOCATOR_OBJECTIVE_STATUS_3 = (By.XPATH, '//body[1]/div[8]//tr[2]//span[contains(text(), "Удовлетворительное")]')
     LOCATOR_DIAGNOSIS = (By.XPATH, '//div[contains(text(), "Диагноз")]')
-    LOCATOR_MKB = (By.XPATH, '//div[4]//div[4]//div[1]/table[1]/tbody[1]/tr[3]/td[1]/table[1]/tbody[1]/tr[2]/td[1]//img[1]')
+    LOCATOR_MKB = (By.XPATH, '//div[4]//div[1]/table[1]/tbody[1]/tr[3]/td[1]/table[1]/tbody[1]/tr[2]/td[1]/table[1]//img[1]')
     LOCATOR_MKB_SEARCH_1 = (By.XPATH, '//body[1]/div[8]//tr[2]/td[1]//input[1]')
     LOCATOR_MKB_SEARCH_2 = (By.XPATH, '//td[contains(text(), "Поиск")]')
     LOCATOR_MKB_CHOICE = (By.XPATH, '//td[contains(text(), "Ок")]')
@@ -97,6 +97,7 @@ class doctors_diary(BasePage):
             self.find_element_pb()  # прогрессбар
             time.sleep(5)  # ожидание
             self.find_element(locators_doctors_diary.LOCATOR_FULL_WINDOW).click()
+            time.sleep(1)  # ожидание
             self.find_element(locators_doctors_diary.LOCATOR_VISIT_PURPOSE_1).click()
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_doctors_diary.LOCATOR_VISIT_PURPOSE_2).click()
