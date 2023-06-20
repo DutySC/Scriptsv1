@@ -90,7 +90,7 @@ class doctors_diary(BasePage):
             self.find_element(locators_doctors_diary.LOCATOR_PROVIDE_SERVICE).click() # оказать услугу
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
-            time.sleep(5)  # ожидание
+            time.sleep(8)  # ожидание
             self.find_element(locators_doctors_diary.LOCATOR_DIAGNOSIS).click() # выбор вкладки "Диагноз"
             self.find_element(locators_doctors_diary.LOCATOR_MKB).click() # окно заболеваний
             self.find_element_pb()  # прогрессбар

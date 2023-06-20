@@ -8,7 +8,9 @@ groups = [1158889635, -1001742179859]  # chat id
 dict = {'Приморья': 'https://192.168.233.171:25443/', 'НСО': 'http://192.168.233.169:3980/',
         'Ростова': 'http://192.168.233.98:61027/', 'Курска': 'http://192.168.234.14:7280/',
         'Сахалина': 'http://192.168.233.170:8080/', 'Хабаровска': 'http://192.168.233.222:2780/',
-        'Алании': 'http://192.168.234.31:1580/', 'Калининграда': 'http://192.168.234.44:5180/'}
+        'Томска': 'http://192.168.233.98:7081/', 'Чечни': 'http://192.168.234.61:2090/',
+        'Твери': 'http://192.168.233.98:6916/', 'Алании': 'http://192.168.234.31:1580/',
+        'Калининграда': 'http://192.168.234.44:5180/'}
 
 @bot.message_handler(func=lambda message: message.chat.id not in groups)
 def some(message):
@@ -70,6 +72,10 @@ def any_msg(message):
     btn5 = types.InlineKeyboardButton(text="РСО-Алания", callback_data="Алании")
     btn6 = types.InlineKeyboardButton(text="Калининградская область", callback_data="Калининграда")
     btn7 = types.InlineKeyboardButton(text="Сахалинская область", callback_data="Сахалина")
+    btn8 = types.InlineKeyboardButton(text="Хабаровский край", callback_data="Хабаровска")
+    btn9 = types.InlineKeyboardButton(text="Тверская область", callback_data="Твери")
+    btn10 = types.InlineKeyboardButton(text="Томская область", callback_data="Томска")
+    btn11 = types.InlineKeyboardButton(text="Республика Чечня", callback_data="Чечни")
     markup.add(btn1)
     markup.add(btn2)
     markup.add(btn3)
@@ -77,6 +83,10 @@ def any_msg(message):
     markup.add(btn5)
     markup.add(btn6)
     markup.add(btn7)
+    markup.add(btn8)
+    markup.add(btn9)
+    markup.add(btn10)
+    markup.add(btn11)
     bot.send_message(message.chat.id, "Выберите регион/отдельного клиента, для тестирования\nкрит. модулей продуктивного стенда сервиса - МИС", reply_markup=markup)
 
 @bot.message_handler(commands=["help"])
