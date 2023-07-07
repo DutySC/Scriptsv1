@@ -19,7 +19,7 @@ class locators_doctors_diary:
     LOCATOR_PROVIDE_SERVICE = (By.XPATH, '//a[contains(text(), "Оказать")]')
     LOCATOR_STATISTICAL_DESIGN = (By.XPATH, '//div[contains(text(), "Статистическое")]')
     LOCATOR_FULLSCREEN_WINDOW = (By.XPATH, '//tbody/tr[2]/td[2]//div[4]')
-    LOCATOR_RESULT_APPEAL_1 = (By.XPATH, '//body[1]/div[7]/table[1]/tbody[1]/tr[3]/td[2]/div[1]/div[1]/div[4]/div[2]/table[1]/tbody[1]/tr[2]/td[1]/table[1]/tbody[1]/tr[2]/td[1]/div[6]/table[1]/tbody[1]/tr[9]/td[2]//img[1]')
+    LOCATOR_RESULT_APPEAL_1 = (By.XPATH, '//div[6]//tr[9]/td[2]//img[1]')
     LOCATOR_RESULT_APPEAL_2 = (By.XPATH, '//span[contains(text(), "1- по поводу заболевания")]')
     LOCATOR_DIAGNOSIS = (By.XPATH, '//div[contains(text(), "ДИАГНОЗ")]')
     LOCATOR_MKB = (By.XPATH, '//body[1]/div[7]//tr[2]//tr[2]//tr[2]//tr[3]/td[1]/table[1]/tbody[1]/tr[2]/td[1]/table[1]//img[1]')
@@ -78,9 +78,9 @@ class doctors_diary(BasePage):
             print('✅ Пациент записан на услугу') # вывод
             ###########след.этап########################################################################################
             self.find_element(locators_doctors_diary.LOCATOR_PROVIDE_SERVICE).click() # оказать услугу
-            self.find_element_pb(time=50)  # прогрессбар
-            self.find_element_pb(time=50)  # прогрессбар
-            self.find_element_pb(time=50)  # прогрессбар
+            self.find_element_pb()  # прогрессбар
+            self.find_element_pb()  # прогрессбар
+            self.find_element_pb()  # прогрессбар
             time.sleep(5)  # ожидание
             self.find_element(locators_doctors_diary.LOCATOR_FULLSCREEN_WINDOW).click()  # открыть окно в полный экран
             self.find_element(locators_doctors_diary.LOCATOR_STATISTICAL_DESIGN).click() # выбор вкладки "Статический оформление обращения (посещения)"

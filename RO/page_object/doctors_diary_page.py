@@ -35,7 +35,7 @@ class locators_doctors_diary:
     LOCATOR_SAVE_SERVICE = (By.XPATH, '//body[1]/div[7]//table[2]//td[2][contains(text(), "Сохранить")]')
     LOCATOR_PATIENT_RCM = (By.XPATH, f'//body[1]//a[contains(text(), "{prm.name_patient}")]')
     LOCATOR_CANCEL_SERVICE = (By.XPATH, '//td[contains(text(), "Отменить оказание")]')
-    LOCATOR_DELETE_PATIENT = (By.XPATH, '//body[1]//div[23]//td[contains(text(), "Удалить направление")]')
+    LOCATOR_DELETE_PATIENT = (By.XPATH, '//div[24]//td[contains(text(), "Удалить направление")]')
 
 class doctors_diary(BasePage):
     def diary(self):

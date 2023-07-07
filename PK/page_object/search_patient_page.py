@@ -43,13 +43,18 @@ class search_patient_locators:
     LOCATOR_DICTIONARY_PATIENT_CARD_1 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_2 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_3 = (By.XPATH, '//span[contains(text(), "Карты пациентов")]')
-    LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]/div[1]//td[7]//td[3]//img[1]')
+    LOCATOR_PATIENT_FILTER_1 = (By.XPATH, '//div[4]/div[1]//span[1]//span[1]')
+    LOCATOR_PATIENT_FILTER_2 = (By.XPATH, '//div[3]/div[1]//td[4]//input[1]')
+    LOCATOR_PATIENT_FILTER_SEARCH_1 = (By.XPATH, '//td[2]/div[1]//span[contains(text(), "Найти")]')
     LOCATOR_LAST_NAME_NEWVERSION = (By.XPATH, '//span[contains(text(), "Новаяверсия")]')
     LOCATOR_DELETE_USER_1 = (By.XPATH, '//body[1]/div[2]/div[2]/div[4]/table[1]/tbody[1]/tr[5]/td[2]')
     LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_2 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
-    LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//span[contains(text(), "Контрагенты физ. лица")]')
-    LOCATOR_DELETE_USER_2 = (By.XPATH, '//body[1]/div[2]/div[2]/div[5]/table[1]/tbody[1]/tr[5]/td[2]')
+    LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//div[2]//tr[1]//span[contains(text(), "Контрагенты")]')
+    LOCATOR_PATIENT_FILTER_3 = (By.XPATH, '//div[2]//span[contains(text(), "Показать фильтр")]')
+    LOCATOR_PATIENT_FILTER_4 = (By.XPATH, '//td[6]//input[1]')
+    LOCATOR_PATIENT_FILTER_SEARCH_2 = (By.XPATH, '//div[1]/div[1]/div[2]//span[contains(text(), "Найти")]')
+    LOCATOR_DELETE_USER_2 = (By.XPATH, '//div[2]/div[2]//td[contains(text(), "Удалить")]')
 
 class search_patient(BasePage):
     def create_patient(self):
@@ -127,18 +132,22 @@ class search_patient(BasePage):
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_2).click() # вкладка "Контрагенты"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_3).click() # вкладка "Карты пациентов"
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() # фильтр даты создания мед. карты
-            self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() #  фильтр даты создания мед. карты
-            self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_PATIENT_FILTER_1).click()  # включить поиск по фильтрам
+            search_string_9 = self.find_element(search_patient_locators.LOCATOR_PATIENT_FILTER_2)   # поиск по отчеству
+            search_string_9.send_keys(prm.surname)   # ввод отчества пациента
+            self.find_element(search_patient_locators.LOCATOR_PATIENT_FILTER_SEARCH_1).click()  # кнопка "Найти"
             self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION).perform()  # ПКМ по имени созданного пациента
             self.find_element(search_patient_locators.LOCATOR_DELETE_USER_1).click() # кнопка "Удалить"
             self.driver.switch_to.alert.accept()  # принятие всплывающего окна
             self.find_element_pb()  # прогрессбар
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_1).click() # вкладка "Словари"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_2).click() # вкладка "Контрагенты"
-            self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты физ. лица"
+            self.find_element(search_patient_locators.LOCATOR_DICTIONARY_INDIVIDUAL_3).click() # вкладка "Контрагенты"
             self.find_element_pb()  # прогрессбар
+            self.find_element(search_patient_locators.LOCATOR_PATIENT_FILTER_3).click()  # включить поиск по фильтрам
+            search_string_10 = self.find_element(search_patient_locators.LOCATOR_PATIENT_FILTER_4)   # поиск по отчеству
+            search_string_10.send_keys(prm.surname)   # ввод отчества пациента
+            self.find_element(search_patient_locators.LOCATOR_PATIENT_FILTER_SEARCH_2).click()  # кнопка "Найти"
             self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION).perform()  # ПКМ по имени созданного пациента
             self.find_element(search_patient_locators.LOCATOR_DELETE_USER_2).click() # кнопка "Удалить"
             self.driver.switch_to.alert.accept()  # принятие всплывающего окна
