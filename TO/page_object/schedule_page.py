@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 class locators_schedule:
     LOCATOR_SCHEDULE_1 = (By.XPATH, '//span[contains(text(), "Регистратура")]')
-    LOCATOR_SCHEDULE_2 = (By.XPATH, '//tr[9]//span[contains(text(), "Расписание")]')
+    LOCATOR_SCHEDULE_2 = (By.XPATH, '//tr[8]//span[contains(text(), "Расписание")]')
     LOCATOR_REG_CONTAINER = (By.XPATH, '//div[@id = "RegContainer"]')
     LOCATOR_FILTER = (By.XPATH, '//tbody/tr[3]/td[1]/div[1]/div[1]/div[2]/div[3]')
     LOCATOR_FILTER_CABINET = (By.XPATH, '//body[1]//tbody[1]/tr[3]//tr[3]/td[1]//input[1]')

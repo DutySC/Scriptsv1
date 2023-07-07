@@ -37,9 +37,7 @@ class search_patient_locators:
     LOCATOR_AREA_ZABAYKALSKY = (By.XPATH, '//span[contains(text(), "Забайкальский край")]')
     LOCATOR_AREA_OK = (By.XPATH, '//td[contains(text(), "Ок")]')
     LOCATOR_ENTER_AREA_1 = (By.XPATH, '//body[1]/div[7]//tr[2]/td[1]/div[2]//td/div[1]//tr[3]//img[1]')
-    LOCATOR_ENTER_AREA_2 = (By.XPATH, '//a[contains(text(), "Адыгея")]')
-    LOCATOR_ENTER_AREA_3 = (By.XPATH, '//a[contains(text(), "Адыгейск")]')
-    LOCATOR_ENTER_AREA_4 = (By.XPATH, '//a[contains(text(), "Абадзехская")]')
+    LOCATOR_ENTER_AREA_2 = (By.XPATH, '//a[contains(text(), "Смоленская")]')
     LOCATOR_HOME = (By.XPATH, '//body[1]/div[7]//tbody[1]//tbody[1]//tbody[1]/tr[2]//tr[2]/td[1]/div[1]//tr[4]/td[2]//input[1]')
     LOCATOR_OK = (By.XPATH, '//td[contains(text(), "ОК")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
@@ -124,16 +122,12 @@ class search_patient(BasePage):
             self.find_element(search_patient_locators.LOCATOR_TAB_AREAS).click()  # подвкладка "Адреса"
             self.find_element(search_patient_locators.LOCATOR_AREA).click()  # ввод района
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_AREA_ZABAYKALSKY).click() #
+            self.find_element(search_patient_locators.LOCATOR_AREA_ZABAYKALSKY).click()  #
             self.find_element(search_patient_locators.LOCATOR_AREA_OK).click()  # кнопка "Ок"
             self.find_element_pb()  # прогрессбар
             self.find_element(search_patient_locators.LOCATOR_ENTER_AREA_1).click()  # ввод адреса
             self.find_element_pb()  # прогрессбар
             self.find_element(search_patient_locators.LOCATOR_ENTER_AREA_2).click() # ввод адреса
-            self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_ENTER_AREA_3).click() # ввод адреса
-            self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_ENTER_AREA_4).click() # ввод адреса
             self.find_element_pb()  # прогрессбар
             search_string_8 = self.find_element(search_patient_locators.LOCATOR_HOME)  # выбрать дом
             search_string_8.send_keys(prm.home) # указать номер дома

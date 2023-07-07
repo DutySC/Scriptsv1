@@ -45,6 +45,9 @@ class search_patient_locators:
     LOCATOR_DICTIONARY_PATIENT_CARD_1 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_2 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
     LOCATOR_DICTIONARY_PATIENT_CARD_3 = (By.XPATH, '//span[contains(text(), "Карты пациентов")]')
+    LOCATOR_FILTER_OPEN = (By.XPATH, '//td[2]/div[1]//span[contains(text(), "Показать фильтр")]')
+    LOCATOR_FILTER_SEARCH = (By.XPATH, '//td[2]/div[1]//span[contains(text(), "Найти")]')
+    LOCATOR_FILTER = (By.XPATH, '//td[5]//input[1]')
     LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]/div[1]//td[7]//td[3]//img[1]')
     LOCATOR_LAST_NAME_NEWVERSION = (By.XPATH, '//span[contains(text(), "Новаяверсия")]')
     LOCATOR_DELETE_USER_1 = (By.XPATH, '//body[1]/div[2]/div[2]/div[3]/table[1]/tbody[1]/tr[5]/td[2]')
@@ -136,9 +139,10 @@ class search_patient(BasePage):
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_2).click() # вкладка "Контрагенты"
             self.find_element(search_patient_locators.LOCATOR_DICTIONARY_PATIENT_CARD_3).click() # вкладка "Карты пациентов"
             self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() # фильтр даты создания мед. карты
-            self.find_element_pb()  # прогрессбар
-            self.find_element(search_patient_locators.LOCATOR_CREATE_DATA).click() #  фильтр даты создания мед. карты
+            self.find_element(search_patient_locators.LOCATOR_FILTER_OPEN).click()
+            search_string_9 = self.find_element(search_patient_locators.LOCATOR_FILTER)
+            search_string_9.send_keys(prm.surname)
+            self.find_element(search_patient_locators.LOCATOR_FILTER_SEARCH).click()
             self.find_element_pb()  # прогрессбар
             self.actionchains(search_patient_locators.LOCATOR_LAST_NAME_NEWVERSION).perform()  # ПКМ по имени созданного пациента
             self.find_element(search_patient_locators.LOCATOR_DELETE_USER_1).click() # кнопка "Удалить"
