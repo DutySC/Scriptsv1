@@ -1,4 +1,6 @@
-import telebot, requests, os, re, glob
+import time
+
+import telebot, requests, os, re, glob, threading
 from telebot import types
 
 bot = telebot.TeleBot('6149957194:AAHvsUnLJPLMWzxHPUQik6dhqxRSZziuV0w')
@@ -49,11 +51,24 @@ def send_pic(message, name):
     except Exception:
         pass
 
+def create_log(message, test_name):
+    if not os.path.exists("Results/Results_"+test_name+".log"):
+        with open("Results/Results_"+test_name+".log", "w") as file:
+            file.write('❗️ В данный момент проводится тестирование продуктивного стенда.\nПодождите окончания тестирования (примерно 2-3 минуты).')
+        pass
+    else:
+        with open("Results/Results_"+test_name+".log", "r") as file:
+            f = file.read()
+            bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text=f)
+            file.close()
+            exit()
+
 def autotest_prod(message, test_name, address):
     bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🔴Начата проверка крит. модулей продуктивного стенда <a href='"+address+"'>"'<u><b>'+test_name+'</b></u>'"</a>", parse_mode='html')
     remove_pic('Results_sc')
-    os.system('pytest --testit -s '+test_name+'.py > Results/Results.log')  # команда запуска скрипта test.py и запись результата в файл logs.txt
-    with open('Results/Results.log', 'r', -1, 'utf-8') as fi:
+    create_log(message, test_name)
+    os.system('pytest --testit -s '+test_name+'.py > Results/'+test_name+'.log')  # команда запуска скрипта test.py и запись результата в файл logs.txt
+    with open('Results/'+test_name+'.log', 'r', -1, 'utf-8') as fi:
         f = fi.read()[245:1028]  # отчет о тестировании
         opt_1 = re.sub(r'\s[.]', '\n', f)  # удаление точек в логах
         opt_2 = re.sub(r'\D[=]', ' ', opt_1)  # редактирование последней строчки
@@ -61,6 +76,11 @@ def autotest_prod(message, test_name, address):
     bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text="🟢Закончена проверка крит. модулей продуктивного стенда <a href='"+address+"'><u><b>"+test_name+"🔽</b></u></a>", parse_mode='html')
     bot.send_message(message.chat.id, opt_3)
     send_pic(message, 'Results_sc')
+    os.remove("./Results/Results_" + test_name + ".log")
+
+def start_autotest_thread(message, test_name, address):
+    thread = threading.Thread(target=autotest_prod, args=(message, test_name, address))
+    thread.start()
 
 @bot.message_handler(commands=["start"])
 def any_msg(message):
@@ -99,9 +119,9 @@ def callback_inline_1(call):
     # Если сообщение из чата с ботом
     if call.message:
         if call.data == call.data:
-            autotest_prod(call.message, test_name=call.data, address=dict[call.data])
+            start_autotest_thread(call.message, test_name=call.data, address=dict[call.data])
         else:
-            print('Не имеет функционала')
+            print('Кнопка не имеет функционала')
             pass
 
 

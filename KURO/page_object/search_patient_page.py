@@ -50,20 +50,22 @@ class search_patient_locators:
     LOCATOR_FILTER_3 = (By.XPATH, '//td[2]//td[3]//input[1]')
     LOCATOR_FILTER_4 = (By.XPATH, '//td[2]//td[4]//input[1]')
     LOCATOR_FILTER_5 = (By.XPATH, '//td[2]/div[1]//span[contains(text(), "Найти")]')
-    # LOCATOR_CREATE_DATA = (By.XPATH, '//body[1]/div[1]//td[7]//td[3]//img[1]')
     LOCATOR_LAST_NAME_NEWVERSION_1 = (By.XPATH, '//span[contains(text(), "Новаяверсия")]')
     LOCATOR_DELETE_USER_1 = (By.XPATH, '//body[1]/div[2]/div[2]/div[3]/table[1]/tbody[1]/tr[5]/td[2]')
-    # LOCATOR_DICTIONARY_INDIVIDUAL_1 = (By.XPATH, '//span[contains(text(), "Еще")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_2 = (By.XPATH, '//span[contains(text(), "Словари")]')
     LOCATOR_DICTIONARY_INDIVIDUAL_3 = (By.XPATH, '//span[contains(text(), "Контрагенты")]')
-    LOCATOR_DICTIONARY_INDIVIDUAL_4 = (By.XPATH, '//span[contains(text(), "Контрагенты физ. лица")]')
-    LOCATOR_DELETE_USER_2 = (By.XPATH, '//body[1]/div[2]/div[2]/div[3]/table[1]/tbody[1]/tr[5]/td[2]')
-    LOCATOR_LAST_NAME_NEWVERSION_2 = (By.XPATH, '//tbody/tr[1]/td[4]/span[1][contains(text(), "Тестирование")]')
+    LOCATOR_DICTIONARY_INDIVIDUAL_4 = (By.XPATH, '//tr[1]//span[contains(text(), "Контрагенты")]')
+    LOCATOR_SEARCH_FILTER_1 = (By.XPATH, '//div[2]//span[contains(text(), "Показать фильтр")]')
+    LOCATOR_SEARCH_FILTER_2 = (By.XPATH, '//div[3]/div[1]//td[4]//input[1]')
+    LOCATOR_SEARCH_FILTER_3 = (By.XPATH, '//div[3]/div[1]//td[5]//input[1]')
+    LOCATOR_SEARCH_FILTER_4 = (By.XPATH, '//div[3]/div[1]//td[6]//input[1]')
+    LOCATOR_SEARCH_PATIENT_3 = (By.XPATH, '//div/div/div[2]//span[contains(text(), "Найти")]')
+    LOCATOR_DELETE_USER_2 = (By.XPATH, '//div[2]/div[2]//tr[7]/td[2]')
+    LOCATOR_LAST_NAME_NEWVERSION_2 = (By.XPATH, '//tbody/tr[1]/td[6]/span[1][contains(text(), "Новаяверсия")]')
     LOCATOR_SEARCH_WINDOW = (By.XPATH, '//tbody//td[2]/div[1]//div[3]/div[1]')
-    LOCATOR_SEARCH_PATIENT_3 = (By.XPATH, '//tbody/tr[1]/td[2]/div[1]//span[contains(text(), "Найти")]')
-    LOCATOR_SEARCH_FILTER_3 = (By.XPATH, '//body[1]//td[6]//input[1]')
-    LOCATOR_SEARCH_FILTER_2 = (By.XPATH, '//body[1]//td[5]//input[1]')
-    LOCATOR_SEARCH_FILTER_1 = (By.XPATH, '//body[1]//td[4]//input[1]')
+
+
+
 
 
 
@@ -171,15 +173,16 @@ class search_patient(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
             try:
-                self.find_element_pb(time=80)  # прогрессбар
+                self.find_element_pb()  # прогрессбар
             except TimeoutException:
                 time.sleep(10) # ожидание
-            self.actionchains(search_patient_locators.LOCATOR_SEARCH_WINDOW) # формирования окна
-            search_string_11 = self.find_element(search_patient_locators.LOCATOR_SEARCH_FILTER_1) # окно фамилии
+            # self.actionchains(search_patient_locators.LOCATOR_SEARCH_WINDOW) # формирования окна
+            self.find_element(search_patient_locators.LOCATOR_SEARCH_FILTER_1).click()
+            search_string_11 = self.find_element(search_patient_locators.LOCATOR_SEARCH_FILTER_2) # окно фамилии
             search_string_11.send_keys(prm.last_name) # вписать фамилию
-            search_string_12 = self.find_element(search_patient_locators.LOCATOR_SEARCH_FILTER_2) # окно имени
+            search_string_12 = self.find_element(search_patient_locators.LOCATOR_SEARCH_FILTER_3) # окно имени
             search_string_12.send_keys(prm.first_name) # вписать имя
-            search_string_13 = self.find_element(search_patient_locators.LOCATOR_SEARCH_FILTER_3) # окно отчества
+            search_string_13 = self.find_element(search_patient_locators.LOCATOR_SEARCH_FILTER_4) # окно отчества
             search_string_13.send_keys(prm.surname) # вписать отчество
             self.find_element(search_patient_locators. LOCATOR_SEARCH_PATIENT_3).click() # кнопка "Найти"
             self.find_element_pb()  # прогрессбар

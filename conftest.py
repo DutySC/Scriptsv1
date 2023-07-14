@@ -20,7 +20,7 @@ def browser_SNILS():
     driver.get(link_1) # подключение по указанному адресу
     snils_1 = driver.find_element(By.XPATH, '//span').text # получаем содержимое элемента
     snils_2 = snils_1.replace(" ", "") # убираем пустые символы (пробелы) в полученном значении
-    return snils_2 # получаем значение сгенерированного СНИЛСа
+    return snils_2  # получаем значение сгенерированного СНИЛСа
 
 @pytest.fixture(scope='function')
 def browser_PK():

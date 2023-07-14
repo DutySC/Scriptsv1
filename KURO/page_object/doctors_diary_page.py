@@ -18,6 +18,7 @@ class locators_doctors_diary:
     LOCATOR_CLOSE_1 = (By.XPATH, '//body[1]/div[8]//div[5]')
     LOCATOR_PROVIDE_SERVICE = (By.XPATH, '//a[contains(text(), "Оказать")]')
     LOCATOR_NEW_CREATE = (By.XPATH, '//div[contains(text(), "Создать новый")]')
+    LOCATOR_FULL_SCREEN = (By.XPATH, '//tr[2]/td[2]//div[4]')
     LOCATOR_BASIC_1 = (By.XPATH, '//body[1]/div[7]//tr[2]//div[1]//tr[2]/td[2]//img[1]')
     LOCATOR_BASIC_1_2_3 = (By.XPATH, '//td[contains(text(), "Ок")]')
     LOCATOR_BASIC_2_1 = (By.XPATH, '//body[1]//td[1]/table[1]/tbody[1]/tr[2]/td[1]/div[1]//tr[4]/td[1]//img[1]')
@@ -35,7 +36,7 @@ class locators_doctors_diary:
     LOCATOR_PATIENT_RCM = (By.XPATH, f'//body[1]//a[contains(text(), "{prm.name_patient_1}")]')
     LOCATOR_CANCEL_SERVICE = (By.XPATH, '//td[contains(text(), "Отменить оказание")]')
     LOCATOR_MARKER = (By.XPATH, '//body[1]//div[3]/div[1]//tr[1]/td[5]')
-    LOCATOR_DELETE_PATIENT = (By.XPATH, '//body[1]/div[2]/div[1]/div[10]/table[1]/tbody[1]/tr[23]/td[2][contains(text(), "Удалить направление")]')
+    LOCATOR_DELETE_PATIENT = (By.XPATH, '//body/div[2]/div/div[10]/table/tbody[1]/tr[24]/td[contains(text(), "Удалить направление")]')
 
 class doctors_diary(BasePage):
     def diary(self):
@@ -89,6 +90,7 @@ class doctors_diary(BasePage):
             self.find_element_pb()  # прогрессбар
             self.find_element_pb()  # прогрессбар
             time.sleep(3)  # ожидание
+            self.find_element(locators_doctors_diary.LOCATOR_FULL_SCREEN).click()
             self.find_element(locators_doctors_diary.LOCATOR_BASIC_1).click() # указать цель посещения - по заболеванию
             self.find_element_pb()  # прогрессбар
             self.find_element(locators_doctors_diary.LOCATOR_BASIC_1_2_3).click()  # кнопка "Ок"
